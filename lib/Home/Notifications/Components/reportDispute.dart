@@ -7,14 +7,14 @@ import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:image_picker/image_picker.dart';
 
-class RejectOrder extends StatefulWidget {
-  const RejectOrder({Key? key}) : super(key: key);
+class ReportDispute extends StatefulWidget {
+  const ReportDispute({Key? key}) : super(key: key);
 
   @override
-  State<RejectOrder> createState() => _RejectOrderState();
+  State<ReportDispute> createState() => _ReportDisputeState();
 }
 
-class _RejectOrderState extends State<RejectOrder> {
+class _ReportDisputeState extends State<ReportDispute> {
   TextEditingController storeNameController = TextEditingController();
   TextEditingController addressController = TextEditingController();
   TextEditingController gstinController = TextEditingController();
@@ -48,7 +48,7 @@ class _RejectOrderState extends State<RejectOrder> {
                     width: mQuery.size.width * 0.045,
                   ),
                   Text(
-                    AppLocalizations.of(context)!.rejectorder,
+                    AppLocalizations.of(context)!.reportdispute,
                     style: const TextStyle(
                         fontSize: 20,
                         color: Colors.white,
@@ -89,16 +89,18 @@ class _RejectOrderState extends State<RejectOrder> {
                               width: mQuery.size.width * 0.9,
                               child: Text(
                                 AppLocalizations.of(context)!
-                                    .provideRejectReason,
+                                    .checkedandcollected,
                                 // textAlign: TextAlign.center,
                                 style: const TextStyle(
-                                    fontWeight: FontWeight.w700, fontSize: 16),
+                                    fontWeight: FontWeight.w700,
+                                    fontSize: 16,
+                                    color: Color(0xff29b2fe)),
                               ),
                             ),
                           ],
                         ),
                         SizedBox(
-                          height: mQuery.size.height * 0.032,
+                          height: mQuery.size.height * 0.02,
                         ),
                         //dist is too far
                         Container(
@@ -132,7 +134,8 @@ class _RejectOrderState extends State<RejectOrder> {
                                   width: 8.0,
                                 ),
                                 Text(
-                                  AppLocalizations.of(context)!.distanceTooFar,
+                                  AppLocalizations.of(context)!
+                                      .quantitymismatch,
                                   // textAlign: TextAlign.center,
                                   style: const TextStyle(
                                       fontWeight: FontWeight.w500,
@@ -175,7 +178,7 @@ class _RejectOrderState extends State<RejectOrder> {
                                   width: 8.0,
                                 ),
                                 Text(
-                                  AppLocalizations.of(context)!.notAvailable,
+                                  AppLocalizations.of(context)!.stains,
                                   // textAlign: TextAlign.center,
                                   style: const TextStyle(
                                       fontWeight: FontWeight.w500,
@@ -218,7 +221,7 @@ class _RejectOrderState extends State<RejectOrder> {
                                   width: 8.0,
                                 ),
                                 Text(
-                                  AppLocalizations.of(context)!.notAvailable,
+                                  AppLocalizations.of(context)!.typeofcloth,
                                   // textAlign: TextAlign.center,
                                   style: const TextStyle(
                                       fontWeight: FontWeight.w500,
@@ -227,48 +230,7 @@ class _RejectOrderState extends State<RejectOrder> {
                               ],
                             )),
                         //others
-                        SizedBox(
-                          height: mQuery.size.height * 0.02,
-                        ),
-                        Container(
-                            padding: const EdgeInsets.only(left: 16),
-                            width: double.infinity,
-                            height: mQuery.size.height * 0.06,
-                            decoration: BoxDecoration(
-                              borderRadius: BorderRadius.circular(6),
-                              color: Colors.white,
-                              boxShadow: [
-                                BoxShadow(
-                                  color: Colors.grey.withOpacity(0.5),
-                                  spreadRadius: 2,
-                                  blurRadius: 10,
-                                  offset: const Offset(0,
-                                      0), // changes the position of the shadow
-                                ),
-                              ],
-                            ),
-                            child: Row(
-                              children: [
-                                Checkbox(
-                                  value: _reason1,
-                                  onChanged: (value) {
-                                    setState(() {
-                                      _reason1 = value!;
-                                    });
-                                  },
-                                ),
-                                const SizedBox(
-                                  width: 8.0,
-                                ),
-                                Text(
-                                  AppLocalizations.of(context)!.notAvailable,
-                                  // textAlign: TextAlign.center,
-                                  style: const TextStyle(
-                                      fontWeight: FontWeight.w500,
-                                      fontSize: 14),
-                                ),
-                              ],
-                            )),
+
                         SizedBox(
                           height: mQuery.size.height * 0.03,
                         ),
@@ -286,7 +248,7 @@ class _RejectOrderState extends State<RejectOrder> {
                             Container(
                               width: mQuery.size.width * 0.9,
                               child: Text(
-                                AppLocalizations.of(context)!.anyotherReason,
+                                AppLocalizations.of(context)!.anyotherdispute,
                                 // textAlign: TextAlign.center,
                                 style: const TextStyle(
                                     fontWeight: FontWeight.w700, fontSize: 16),
@@ -300,7 +262,7 @@ class _RejectOrderState extends State<RejectOrder> {
                         Container(
                           padding: const EdgeInsets.only(left: 16),
                           width: double.infinity,
-                          height: mQuery.size.height * 0.15,
+                          height: mQuery.size.height * 0.1,
                           decoration: BoxDecoration(
                             borderRadius: BorderRadius.circular(6),
                             color: Colors.white,
@@ -329,6 +291,42 @@ class _RejectOrderState extends State<RejectOrder> {
                             ),
                           ),
                         ),
+                        SizedBox(
+                          height: mQuery.size.height * 0.03,
+                        ),
+                        Container(
+                          height: 0.5,
+                          width: double.infinity,
+                          color: Colors.grey,
+                        ),
+                        SizedBox(
+                          height: mQuery.size.height * 0.03,
+                        ),
+                        Row(
+                          mainAxisAlignment: MainAxisAlignment.start,
+                          children: [
+                            Container(
+                              width: mQuery.size.width * 0.9,
+                              child: Text(
+                                AppLocalizations.of(context)!.uploadpics,
+                                // textAlign: TextAlign.center,
+                                style: const TextStyle(
+                                    fontWeight: FontWeight.w700, fontSize: 16),
+                              ),
+                            ),
+                          ],
+                        ), SizedBox(
+                          height: mQuery.size.height * 0.03,
+                        ),
+                        Row(
+                          mainAxisAlignment: MainAxisAlignment.spaceAround,
+                          children: [
+                            SvgPicture.asset("assets/imagepicker.svg"),
+                            SvgPicture.asset("assets/imagepicker.svg"),
+                            SvgPicture.asset("assets/imagepicker.svg"),
+                            SvgPicture.asset("assets/imagepicker.svg"),
+                          ],
+                        ),
                         const Spacer(),
                         Container(
                           width: double.infinity,
@@ -338,13 +336,13 @@ class _RejectOrderState extends State<RejectOrder> {
                               borderRadius: BorderRadius.circular(6)),
                           child: Center(
                             child: GestureDetector(
-                              // onTap: () {
-                              //   //SystemNavigator.pop();
-                              //   Navigator.push(context,
-                              //       MaterialPageRoute(builder: (context) {
-                              //     return const HomePage();
-                              //   }));
-                              // },
+                              onTap: () {
+                                //SystemNavigator.pop();
+                                Navigator.pushReplacement(context,
+                                    MaterialPageRoute(builder: (context) {
+                                  return const BotNav();
+                                }));
+                              },
                               child: const Text(
                                 "Submit",
                                 style: TextStyle(
@@ -355,6 +353,7 @@ class _RejectOrderState extends State<RejectOrder> {
                             ),
                           ),
                         ),
+
                         SizedBox(
                           height: mQuery.size.height * 0.04,
                         )

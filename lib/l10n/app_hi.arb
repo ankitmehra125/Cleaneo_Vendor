@@ -54,5 +54,12 @@
     "anyotherReason" : "कोई अन्य कारण/संदेश?",
     "writeReason" : "अपना कारण/संदेश यहां लिखें",
     "orderstatus" : "आदेश की स्थिति",
-    "myEarnings" : "मेरी कमाई"
+    "myEarnings" : "मेरी कमाई",
+    "reportdispute" : "विवाद की रिपोर्ट करें",
+    "checkedandcollected" : "जांच की गई और एकत्रित की गई",
+    "quantitymismatch" : "मात्रा बेमेल",
+     "stains": "दाग",
+    "typeofcloth" : "कपड़े का प्रकार बेमेल",
+    "anyotherdispute" :  "कोई अन्य विवाद/संदेश?",
+    "uploadpics" : "चित्र अपलोड करें"
 }

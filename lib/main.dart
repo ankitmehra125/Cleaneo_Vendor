@@ -1,4 +1,7 @@
- import 'package:cleaneo_vendor/Screens/Splash.dart';
+ 
+import 'package:cleaneo_vendor/Home/Home_/Home.dart';
+import 'package:cleaneo_vendor/Home/BotNav.dart';
+import 'package:cleaneo_vendor/Screens/Splash.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
@@ -44,7 +47,7 @@ class _MyAppState extends State<MyApp> {
         GlobalWidgetsLocalizations.delegate,
       ],
       supportedLocales: const [Locale('en'), Locale('hi')],
-      home: const SplashScreen(),
+      home: const BotNav(),
     );
   }
 }

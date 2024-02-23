@@ -1,37 +1,5 @@
 import 'package:flutter/material.dart';
-
-class DailyEarnings extends StatelessWidget {
-  @override
-  Widget build(BuildContext context) {
-    return Container(
-      child: Center(
-        child: Text('Daily Earnings Widget'),
-      ),
-    );
-  }
-}
-
-class WeeklyEarnings extends StatelessWidget {
-  @override
-  Widget build(BuildContext context) {
-    return Container(
-      child: Center(
-        child: Text('Weekly Earnings Widget'),
-      ),
-    );
-  }
-}
-
-class MonthlyEarnings extends StatelessWidget {
-  @override
-  Widget build(BuildContext context) {
-    return Container(
-      child: Center(
-        child: Text('Monthly Earnings Widget'),
-      ),
-    );
-  }
-}
+import 'package:flutter_svg/svg.dart';
 
 class NavigationWithTabs extends StatefulWidget {
   const NavigationWithTabs({Key? key}) : super(key: key);
@@ -41,17 +9,91 @@ class NavigationWithTabs extends StatefulWidget {
 }
 
 class _NavigationWithTabsState extends State<NavigationWithTabs> {
-  // Index of the currently selected tab
   int _selectedIndex = 0;
-
-  // Custom tab names
   final List<String> _tabNames = ['Daily', 'Weekly', 'Monthly'];
 
-  // Widget builders for each tab
-  final List<Widget Function()> _tabBuilders = [
-    () => DailyEarnings(),
-    () => WeeklyEarnings(),
-    () => MonthlyEarnings(),
+  final List<List<Map<String, List<Map<String, String>>>>> _tabData = [
+    [
+      // Daily data
+      {
+        "orders": [
+          {
+            "orderNumber": "1",
+            "time": "10:00 AM",
+            "onlineMode": "Yes",
+            "earning": "₹ 180"
+          },
+          {
+            "orderNumber": "2",
+            "time": "11:30 AM",
+            "onlineMode": "No",
+            "earning": "₹ 200"
+          },
+          {
+            "orderNumber": "3",
+            "time": "01:00 PM",
+            "onlineMode": "Yes",
+            "earning": "₹ 230"
+          },
+          {
+            "orderNumber": "2",
+            "time": "11:30 AM",
+            "onlineMode": "No",
+            "earning": "₹ 200"
+          },
+        ]
+      }
+    ],
+    [
+      // Weekly data
+      {
+        "orders": [
+          {
+            "orderNumber": "4",
+            "time": "Mon 10:00 AM",
+            "onlineMode": "Yes",
+            "earning": "₹ 230"
+          },
+          {
+            "orderNumber": "5",
+            "time": "Tue 11:30 AM",
+            "onlineMode": "No",
+            "earning": "₹ 220"
+          },
+          {
+            "orderNumber": "6",
+            "time": "Wed 01:00 PM",
+            "onlineMode": "Yes",
+            "earning": "₹ 100"
+          },
+        ]
+      }
+    ],
+    [
+      // Monthly data
+      {
+        "orders": [
+          {
+            "orderNumber": "7",
+            "time": "Jan 10:00 AM",
+            "onlineMode": "Yes",
+            "earning": "₹ 300"
+          },
+          {
+            "orderNumber": "8",
+            "time": "Feb 11:30 AM",
+            "onlineMode": "No",
+            "earning": "₹ 190"
+          },
+          {
+            "orderNumber": "9",
+            "time": "Mar 01:00 PM",
+            "onlineMode": "Yes",
+            "earning": "₹ 200"
+          },
+        ]
+      }
+    ]
   ];
 
   @override
@@ -76,11 +118,14 @@ class _NavigationWithTabsState extends State<NavigationWithTabs> {
                   },
                   child: Container(
                     width: mQuery.size.width * 0.32,
-                    padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 10),
+                    padding: const EdgeInsets.symmetric(
+                        horizontal: 20, vertical: 10),
                     decoration: BoxDecoration(
                       border: Border(
                         bottom: BorderSide(
-                          color: _selectedIndex == index ? Color(0xFF29B2FE) : Colors.transparent,
+                          color: _selectedIndex == index
+                              ? const Color(0xFF29B2FE)
+                              : Colors.transparent,
                           width: 2,
                         ),
                       ),
@@ -91,7 +136,9 @@ class _NavigationWithTabsState extends State<NavigationWithTabs> {
                         style: TextStyle(
                           fontSize: 18,
                           fontWeight: FontWeight.bold,
-                          color: _selectedIndex == index ? Color(0xFF29B2FE) : Colors.grey,
+                          color: _selectedIndex == index
+                              ? const Color(0xFF29B2FE)
+                              : Colors.grey,
                         ),
                       ),
                     ),
@@ -101,8 +148,97 @@ class _NavigationWithTabsState extends State<NavigationWithTabs> {
             ),
           ),
         ),
-        SizedBox(height: 20),
-        _tabBuilders[_selectedIndex](), // Show the selected widget
+        const SizedBox(height: 20),
+        Expanded(
+          child: ListView.builder(
+            itemCount: _tabData[_selectedIndex][0]["orders"]!.length,
+            itemBuilder: (BuildContext context, int index) {
+              var order = _tabData[_selectedIndex][0]["orders"]![index];
+              return Container(
+                height: mQuery.size.height * 0.08,
+                margin: const EdgeInsets.only(bottom: 21.0),
+                decoration: BoxDecoration(
+                  borderRadius: BorderRadius.circular(6),
+                  color: Colors.white,
+                  boxShadow: [
+                    BoxShadow(
+                      color: Colors.grey.withOpacity(0.3),
+                      spreadRadius: 2,
+                      blurRadius: 7,
+                      offset: const Offset(
+                          0, 0), // changes the position of the shadow
+                    ),
+                  ],
+                ),
+                child: Center(
+                  child: Padding(
+                    padding: const EdgeInsets.symmetric(horizontal: 16.0),
+                    child: Row(
+                      crossAxisAlignment: CrossAxisAlignment.center,
+                      mainAxisAlignment: MainAxisAlignment.start,
+                      children: [
+                        if (order["onlineMode"] == "Yes")
+                          SizedBox(
+                              height: 30,
+                              width: 30,
+                              child: SvgPicture.asset(
+                                "assets/earning1.svg",
+                              )),
+                        if (order["onlineMode"] == "No")
+                          SizedBox(
+                              height: 31,
+                              width: 31,
+                              child: SvgPicture.asset(
+                                "assets/earning2.svg",
+                                color: Color(0xFF13A32B)
+                              )),
+                        const SizedBox(
+                          width: 16.0,
+                        ),
+                        Column(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            Text(
+                              'Order: ${order["orderNumber"]}',
+                              style: const TextStyle(
+                                  fontSize: 16.0, fontWeight: FontWeight.w600),
+                            ),
+                            // SizedBox(height: 5.0),
+                            Text(
+                              '${order["time"]}',
+                              style: const TextStyle(
+                                  fontSize: 10.0,
+                                  fontWeight: FontWeight.w600,
+                                  color: Colors.grey),
+                            ),
+                          ],
+                        ),
+                        const Spacer(),
+                        if (order["onlineMode"] == "Yes")
+                          Text(
+                            'Online: ${order["earning"]}',
+                            style: const TextStyle(
+                                fontSize: 15.0,
+                                fontWeight: FontWeight.w600,
+                                color: Color(0xFF29B2FE)),
+                          ),
+                        if (order["onlineMode"] == "No")
+                          Text(
+                            'Cash: ${order["earning"]}',
+                            style: const TextStyle(
+                                fontSize: 15.0,
+                                fontWeight: FontWeight.w600,
+                                color: Color(0xFF13A32B)),
+                          ),
+                      ],
+                    ),
+                  ),
+                ),
+              );
+            },
+          ),
+        ),
       ],
     );
   }

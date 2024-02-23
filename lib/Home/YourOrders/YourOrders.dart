@@ -1,21 +1,23 @@
 import 'dart:io';
-
+ 
+import 'package:cleaneo_vendor/Home/CashCollected/Components/RowofTwoText.dart';
 import 'package:cleaneo_vendor/Home/Earnings/Components/RowofThreeText.dart';
 import 'package:cleaneo_vendor/Home/BotNav.dart';
+import 'package:cleaneo_vendor/Home/YourOrders/Components/Rowof2Text.dart';
 import 'package:cleaneo_vendor/Screens/Vendor_Onboarding/uploadAdhaar.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:image_picker/image_picker.dart';
 
-class MyEarnings extends StatefulWidget {
-  const MyEarnings({Key? key}) : super(key: key);
+class YourOrders extends StatefulWidget {
+  const YourOrders({Key? key}) : super(key: key);
 
   @override
-  State<MyEarnings> createState() => _MyEarningsState();
+  State<YourOrders> createState() => _YourOrdersState();
 }
 
-class _MyEarningsState extends State<MyEarnings> {
+class _YourOrdersState extends State<YourOrders> {
   TextEditingController storeNameController = TextEditingController();
   TextEditingController addressController = TextEditingController();
   TextEditingController gstinController = TextEditingController();
@@ -63,19 +65,23 @@ class _MyEarningsState extends State<MyEarnings> {
                   SizedBox(
                     width: mQuery.size.width * 0.045,
                   ),
-                  Text(
-                    AppLocalizations.of(context)!.myEarnings,
-                    style: const TextStyle(
-                        fontSize: 20,
-                        color: Colors.white,
-                        fontWeight: FontWeight.w700),
+                  const Row( 
+                    children: [
+                      Text(
+                        "Your Orders",
+                        style: TextStyle(
+                            fontSize: 20,
+                            color: Colors.white,
+                            fontWeight: FontWeight.w700),
+                      ),
+                      
+                    ],
                   )
                 ],
               ),
             ),
             Expanded(
-              child: Container(
-                padding: const EdgeInsets.symmetric(horizontal: 16.0),
+              child: Container( 
                 width: double.infinity,
                 decoration: BoxDecoration(
                   color: Colors.white,
@@ -97,9 +103,7 @@ class _MyEarningsState extends State<MyEarnings> {
                     SizedBox(
                       height: 20.0,
                     ),
-
-                    Expanded(child: NavigationWithTabs())
-                   
+                    Expanded(child: YourOrders2Text())
                   ],
                 ),
               ),

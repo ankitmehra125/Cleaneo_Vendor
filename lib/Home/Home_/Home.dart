@@ -1,3 +1,4 @@
+import 'package:cleaneo_vendor/Home/CashCollected/CashCollected.dart';
 import 'package:cleaneo_vendor/Home/Earnings/MyEarnings.dart';
 import 'package:cleaneo_vendor/Home/OrderRequests/OrderRequests.dart';
 import 'package:cleaneo_vendor/Home/OrderRequests/RejectOrder.dart';
@@ -28,7 +29,7 @@ class _HomePageState extends State<HomePage> {
     const OrderReq(),
     const OrderStatus(),
     const MyEarnings(),
-    const RejectOrder(),
+    const CashCollected(),
     const OrderReq(),
     const RejectOrder(),
   ];
@@ -68,14 +69,8 @@ class _HomePageState extends State<HomePage> {
   bool _enable = false;
 
   @override
-  Widget build(BuildContext context) {
-    String orderreq = AppLocalizations.of(context)!.welcomeback;
+  Widget build(BuildContext context) { 
     var mQuery = MediaQuery.of(context);
-
-    List<Widget> dealTexts = [
-      buildDealTextContainer(mQuery),
-      buildDealTextContainer(mQuery),
-    ];
 
     return Scaffold(
       body: Container(
@@ -158,7 +153,7 @@ class _HomePageState extends State<HomePage> {
                               AppLocalizations.of(context)!.welcomeback,
                               style: const TextStyle(
                                 color: Colors.white,
-                                fontSize: 45,
+                                fontSize: 35,
                                 fontWeight: FontWeight.w800,
                               ),
                             ),
@@ -336,82 +331,7 @@ class _HomePageState extends State<HomePage> {
         ),
       ),
       // drawer: const MyDrawer(),
-      bottomNavigationBar: Container(
-        margin: const EdgeInsets.only(top: 6),
-        height: mQuery.size.height * 0.1,
-        child: BottomNavigationBar(
-          iconSize: 30,
-          backgroundColor: Colors.white,
-          type: BottomNavigationBarType.fixed,
-          selectedItemColor: const Color(0xff29befe),
-          currentIndex: _selectedIndex,
-          onTap: (index) {
-            setState(() {
-              _selectedIndex = index;
-            });
-          },
-          items: const [
-            BottomNavigationBarItem(icon: Icon(Icons.home), label: ""),
-            BottomNavigationBarItem(
-                icon: FaIcon(FontAwesomeIcons.shoppingBag), label: ""),
-            BottomNavigationBarItem(icon: Icon(CupertinoIcons.bell), label: ""),
-            BottomNavigationBarItem(
-                icon: FaIcon(FontAwesomeIcons.solidSave), label: ""),
-            BottomNavigationBarItem(
-                icon: FaIcon(FontAwesomeIcons.wallet), label: ""),
-          ],
-        ),
-      ),
-    );
-  }
-
-  Widget buildDealTextContainer(MediaQueryData mQuery) {
-    return Container(
-      width: mQuery.size.width * 0.3,
-      height: mQuery.size.height * 0.04,
-      decoration: BoxDecoration(
-        color: const Color(0xff29befe),
-        borderRadius: BorderRadius.circular(4),
-      ),
-      child: Center(
-        child: Text(
-          "Know More",
-          style: TextStyle(
-              color: Colors.white,
-              fontSize: mQuery.size.height * 0.0175,
-              fontWeight: FontWeight.w800),
-        ),
-      ),
-    );
-  }
-
-  Widget buildCategoryContainer(String title, int index) {
-    var mQuery = MediaQuery.of(context);
-
-    return GestureDetector(
-      onTap: () {
-        setState(() {
-          selectedContainerIndex = index;
-        });
-      },
-      child: Container(
-        width: mQuery.size.width * 0.35,
-        height: mQuery.size.height * 0.04,
-        decoration: BoxDecoration(
-          borderRadius: BorderRadius.circular(16),
-          border: Border.all(
-              color:
-                  selectedContainerIndex == index ? Colors.green : Colors.grey),
-        ),
-        child: Center(
-          child: Text(
-            title,
-            style: TextStyle(
-                fontSize: mQuery.size.height * 0.015,
-                fontWeight: FontWeight.w600),
-          ),
-        ),
-      ),
+       
     );
   }
 }

@@ -1,6 +1,6 @@
 import 'dart:io';
 
-import 'package:cleaneo_vendor/Home/HomePage.dart';
+import 'package:cleaneo_vendor/Home/BotNav.dart';
 import 'package:cleaneo_vendor/Screens/Vendor_Onboarding/uploadAdhaar.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
@@ -112,7 +112,7 @@ class _LocationState extends State<Location> {
                                 //SystemNavigator.pop();
                                 Navigator.push(context,
                                     MaterialPageRoute(builder: (context) {
-                                  return const HomePage();
+                                  return const BotNav();
                                 }));
                               },
                               child: const Text(

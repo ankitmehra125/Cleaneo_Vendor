@@ -59,5 +59,12 @@
     "anyotherReason" : "Any other reason/message?",
     "writeReason" : "Write your reason/message here",
     "orderstatus" : "Order Status",
-    "myEarnings" : "My Earnings"
+    "myEarnings" : "My Earnings",
+    "reportdispute" : "Report Dispute",
+    "checkedandcollected" : "Checked and Collected",
+    "quantitymismatch" : "Qunatity mismatch",
+    "stains": "Stains",
+    "typeofcloth" : "Type of cloth mismatch",
+    "anyotherdispute" :  "Any Other Dispute/message?",
+    "uploadpics" : "Upload Pictures"
 }

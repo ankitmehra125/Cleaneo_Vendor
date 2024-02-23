@@ -1,5 +1,6 @@
 import 'dart:io';
 
+import 'package:cleaneo_vendor/Home/CashCollected/Components/RowofTwoText.dart';
 import 'package:cleaneo_vendor/Home/Earnings/Components/RowofThreeText.dart';
 import 'package:cleaneo_vendor/Home/BotNav.dart';
 import 'package:cleaneo_vendor/Screens/Vendor_Onboarding/uploadAdhaar.dart';
@@ -8,14 +9,14 @@ import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:image_picker/image_picker.dart';
 
-class MyEarnings extends StatefulWidget {
-  const MyEarnings({Key? key}) : super(key: key);
+class CashCollected extends StatefulWidget {
+  const CashCollected({Key? key}) : super(key: key);
 
   @override
-  State<MyEarnings> createState() => _MyEarningsState();
+  State<CashCollected> createState() => _CashCollectedState();
 }
 
-class _MyEarningsState extends State<MyEarnings> {
+class _CashCollectedState extends State<CashCollected> {
   TextEditingController storeNameController = TextEditingController();
   TextEditingController addressController = TextEditingController();
   TextEditingController gstinController = TextEditingController();
@@ -63,12 +64,26 @@ class _MyEarningsState extends State<MyEarnings> {
                   SizedBox(
                     width: mQuery.size.width * 0.045,
                   ),
-                  Text(
-                    AppLocalizations.of(context)!.myEarnings,
-                    style: const TextStyle(
-                        fontSize: 20,
-                        color: Colors.white,
-                        fontWeight: FontWeight.w700),
+                  Row( 
+                    children: [
+                      const Text(
+                        "Cash Collected",
+                        style: TextStyle(
+                            fontSize: 20,
+                            color: Colors.white,
+                            fontWeight: FontWeight.w700),
+                      ),
+                      SizedBox(
+                        width: mQuery.size.width * 0.15,
+                      ),
+                      const Text(
+                        "This Month : 500.00",
+                        style: TextStyle(
+                            fontSize: 14,
+                            color: Colors.white,
+                            fontWeight: FontWeight.w400),
+                      ),
+                    ],
                   )
                 ],
               ),
@@ -97,9 +112,7 @@ class _MyEarningsState extends State<MyEarnings> {
                     SizedBox(
                       height: 20.0,
                     ),
-
-                    Expanded(child: NavigationWithTabs())
-                   
+                    Expanded(child: NavigationWithTabsTwoText())
                   ],
                 ),
               ),
