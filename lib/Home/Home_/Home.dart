@@ -1,15 +1,14 @@
 import 'package:cleaneo_vendor/Home/CashCollected/CashCollected.dart';
+import 'package:cleaneo_vendor/Home/Drawer.dart';
 import 'package:cleaneo_vendor/Home/Earnings/MyEarnings.dart';
+import 'package:cleaneo_vendor/Home/Ledger/Ledger.dart';
 import 'package:cleaneo_vendor/Home/OrderRequests/OrderRequests.dart';
-import 'package:cleaneo_vendor/Home/OrderRequests/RejectOrder.dart';
 import 'package:cleaneo_vendor/Home/OrderStatus/OrderStatus.dart';
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_profile_picture/flutter_profile_picture.dart';
 import 'package:flutter_svg/flutter_svg.dart';
-import 'package:font_awesome_flutter/font_awesome_flutter.dart';
-
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+import 'package:flutter_switch/flutter_switch.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({Key? key}) : super(key: key);
@@ -19,7 +18,6 @@ class HomePage extends StatefulWidget {
 }
 
 class _HomePageState extends State<HomePage> {
-  int _selectedIndex = 0;
   var orderNo = 3;
   int selectedContainerIndex = -1;
 
@@ -31,7 +29,7 @@ class _HomePageState extends State<HomePage> {
     const MyEarnings(),
     const CashCollected(),
     const OrderReq(),
-    const RejectOrder(),
+    const Ledger(),
   ];
   List<Map<String, dynamic>> gridItems = [
     {
@@ -59,7 +57,7 @@ class _HomePageState extends State<HomePage> {
       "text": "Ledger",
     },
   ];
-
+  bool status = false;
   List<String> dealImages = [
     "https://img.freepik.com/premium-vector/super-deal-text-effect-editable-3d-text-style-suitable-banner-promotion_16148-1552.jpg",
     "https://cdn.vectorstock.com/i/preview-1x/10/75/amazing-deals-sign-over-colorful-cut-out-foil-vector-48291075.jpg",
@@ -69,10 +67,11 @@ class _HomePageState extends State<HomePage> {
   bool _enable = false;
 
   @override
-  Widget build(BuildContext context) { 
+  Widget build(BuildContext context) {
     var mQuery = MediaQuery.of(context);
 
     return Scaffold(
+      drawer: MyDrawer(),
       body: Container(
         color: const Color(0xfff3fbff),
         child: Column(
@@ -178,28 +177,35 @@ class _HomePageState extends State<HomePage> {
                         ),
                         Row(
                           children: [
-                            Text(
-                              AppLocalizations.of(context)!.online,
-                              style: TextStyle(
-                                color: Colors.white,
-                                fontSize: mQuery.size.height * 0.019,
-                              ),
-                            ),
-                            const SizedBox(
-                              width: 8.0,
-                            ),
-                            Switch(
-                              value: _enable,
-                              onChanged: (value) => setState(
-                                () => _enable = value,
-                              ),
+                            FlutterSwitch(
+                              activeColor: Colors.green,
+                              inactiveColor: Colors.white,
+                              activeToggleColor: Colors.white,
+                              inactiveToggleColor: Colors.black38,
+                              inactiveText: "Offline",
+                              activeText: "Online",
+                              inactiveTextColor: Colors.black38,
+                              activeTextColor: Colors.white,
+                              width: mQuery.size.height * 0.11,
+                              height: mQuery.size.height * 0.04,
+                              valueFontSize: 12.0,
+                              toggleSize: 30.0,
+                              value: status,
+                              borderRadius: 30.0,
+                              padding: 5.0,
+                              showOnOff: true,
+                              onToggle: (val) {
+                                setState(() {
+                                  status = val;
+                                });
+                              },
                             ),
                           ],
                         )
                       ],
                     ),
                   ),
-                  SizedBox(height: mQuery.size.height * 0.005),
+                  SizedBox(height: mQuery.size.height * 0.02),
                   Container(
                     margin: const EdgeInsets.symmetric(horizontal: 16),
                     height: mQuery.size.height * 0.055,
@@ -331,7 +337,6 @@ class _HomePageState extends State<HomePage> {
         ),
       ),
       // drawer: const MyDrawer(),
-       
     );
   }
 }

@@ -32,41 +32,78 @@ class _SplashScreenState extends State<SplashScreen> {
             right: 0,
             bottom: 20, // Adjust bottom margin as needed
             child: Center(
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                  DropdownButton<String>(
-                    value: _selectedLanguage,
-                    onChanged: (String? newValue) {
-                      setState(() {
-                        _selectedLanguage = newValue!;
-                      });
-                    },
-                    items: <String>['en', 'hi'].map((String value) {
-                      return DropdownMenuItem<String>(
-                        value: value,
-                        child: Text(
-                          value == 'en' ? 'English' : 'हिंदी',
-                          style: const TextStyle(
-                            color: Colors.grey,
+              child: Padding(
+                padding: const EdgeInsets.symmetric(horizontal: 16.0),
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    DropdownButton<String>(
+                      value: _selectedLanguage,
+                      onChanged: (String? newValue) {
+                        setState(() {
+                          _selectedLanguage = newValue!;
+                        });
+                      },
+                      items: <String>['en', 'hi'].map((String value) {
+                        return DropdownMenuItem<String>(
+                          value: value,
+                          child: Container(
+                            padding: const EdgeInsets.symmetric(
+                                horizontal: 10.0, vertical: 8.0),
+                            child: Row(
+                              children: [
+                                Icon(
+                                  value == 'en'
+                                      ? Icons.language
+                                      : Icons.translate,
+                                  color: Colors.white,
+                                ),
+                                const SizedBox(width: 10.0),
+                                Text(
+                                  value == 'en' ? 'English' : 'हिंदी',
+                                  style: const TextStyle(
+                                    color: Colors.white,
+                                  ),
+                                ),
+                              ],
+                            ),
+                          ),
+                        );
+                      }).toList(),
+                    ),
+                    const Text(
+                      "<-{Under Development}->",
+                      style: TextStyle(color: Colors.white),
+                    ),
+                    ElevatedButton(
+                      onPressed: () {
+                        // Set the locale dynamically based on the selected language
+                        MyApp.setLocale(context, _selectedLanguage);
+                        Navigator.of(context).push(
+                          MaterialPageRoute(
+                            builder: (BuildContext context) =>
+                                const WelcomePage(),
+                          ),
+                        );
+                      },
+                      style: ButtonStyle(
+                        backgroundColor: MaterialStateProperty.all<Color>(
+                            Colors.blue), // Set button background color
+                        shape:
+                            MaterialStateProperty.all<RoundedRectangleBorder>(
+                          RoundedRectangleBorder(
+                            borderRadius: BorderRadius.circular(
+                                20.0), // Set border radius
                           ),
                         ),
-                      );
-                    }).toList(),
-                  ),
-                  ElevatedButton(
-                    onPressed: () {
-                      // Set the locale dynamically based on the selected language
-                      MyApp.setLocale(context, _selectedLanguage);
-                      Navigator.of(context).push(
-                        MaterialPageRoute(
-                          builder: (BuildContext context) => const WelcomePage(),
-                        ),
-                      );
-                    },
-                    child: const Text('Next Page'),
-                  ),
-                ],
+                      ),
+                      child: const Text(
+                        'Next',
+                        style: TextStyle(color: Colors.white),
+                      ),
+                    ),
+                  ],
+                ),
               ),
             ),
           ),

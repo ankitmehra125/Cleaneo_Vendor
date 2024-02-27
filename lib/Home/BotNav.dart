@@ -1,13 +1,11 @@
+import 'package:cleaneo_vendor/Home/Donate/Donate.dart';
+import 'package:cleaneo_vendor/Home/Donate/DonateSlider.dart';
 import 'package:cleaneo_vendor/Home/Home_/Home.dart';
 import 'package:cleaneo_vendor/Home/Notifications/Notifications.dart';
 import 'package:cleaneo_vendor/Home/YourOrders/YourOrders.dart';
 import 'package:flutter/material.dart';
 import 'package:cleaneo_vendor/Home/CashCollected/CashCollected.dart';
 import 'package:cleaneo_vendor/Home/Earnings/MyEarnings.dart';
-import 'package:cleaneo_vendor/Home/OrderRequests/OrderRequests.dart';
-import 'package:cleaneo_vendor/Home/OrderRequests/RejectOrder.dart';
-import 'package:cleaneo_vendor/Home/OrderStatus/OrderStatus.dart';
-import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 class BotNav extends StatefulWidget {
   const BotNav({Key? key}) : super(key: key);
@@ -40,7 +38,7 @@ class _BotNavState extends State<BotNav> {
           const HomePage(),
           const YourOrders(),
           const Notifications(),
-          const CashCollected(),
+          Donate(),
           const MyEarnings(),
         ],
       ),
