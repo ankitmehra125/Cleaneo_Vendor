@@ -3,6 +3,7 @@ import 'dart:io';
 import 'package:cleaneo_vendor/Home/BotNav.dart';
 import 'package:cleaneo_vendor/Screens/Vendor_Onboarding/uploadAdhaar.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/widgets.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:image_picker/image_picker.dart';
@@ -19,12 +20,14 @@ class _RejectOrderState extends State<RejectOrder> {
   TextEditingController addressController = TextEditingController();
   TextEditingController gstinController = TextEditingController();
 
+  // Declare bool variables for each checkbox
+  bool reason1 = false;
+  bool reason2 = false;
+  bool reason3 = false;
+  bool reason4 = false;
+
   @override
   Widget build(BuildContext context) {
-    bool _reason1 = false;
-    bool _reason2 = false;
-    bool _reason3 = false;
-    bool _reason4 = false;
     var mQuery = MediaQuery.of(context);
     return Scaffold(
       body: Container(
@@ -40,9 +43,14 @@ class _RejectOrderState extends State<RejectOrder> {
                   top: 45, left: 16, right: 16, bottom: 20),
               child: Row(
                 children: [
-                  const Icon(
-                    Icons.arrow_back,
-                    color: Colors.white,
+                  GestureDetector(
+                    onTap: () {
+                      Navigator.pop(context);
+                    },
+                    child: const Icon(
+                      Icons.arrow_back,
+                      color: Colors.white,
+                    ),
                   ),
                   SizedBox(
                     width: mQuery.size.width * 0.045,
@@ -77,11 +85,8 @@ class _RejectOrderState extends State<RejectOrder> {
                 ),
                 child: Padding(
                     padding: const EdgeInsets.only(left: 16, right: 16),
-                    child: Column(
+                    child: ListView(
                       children: [
-                        SizedBox(
-                          height: mQuery.size.height * 0.032,
-                        ),
                         Row(
                           mainAxisAlignment: MainAxisAlignment.start,
                           children: [
@@ -121,10 +126,12 @@ class _RejectOrderState extends State<RejectOrder> {
                             child: Row(
                               children: [
                                 Checkbox(
-                                  value: _reason1,
-                                  onChanged: (value) {
+                                  activeColor: Colors.white,
+                                  checkColor: const Color(0xff29b2fe),
+                                  value: reason1,
+                                  onChanged: (bool? value) {
                                     setState(() {
-                                      _reason1 = value!;
+                                      reason1 = value!;
                                     });
                                   },
                                 ),
@@ -164,10 +171,12 @@ class _RejectOrderState extends State<RejectOrder> {
                             child: Row(
                               children: [
                                 Checkbox(
-                                  value: _reason1,
+                                  activeColor: Colors.white,
+                                  checkColor: Color(0xff29b2fe),
+                                  value: reason2,
                                   onChanged: (value) {
                                     setState(() {
-                                      _reason1 = value!;
+                                      reason2 = value!;
                                     });
                                   },
                                 ),
@@ -207,10 +216,12 @@ class _RejectOrderState extends State<RejectOrder> {
                             child: Row(
                               children: [
                                 Checkbox(
-                                  value: _reason1,
+                                  activeColor: Colors.white,
+                                  checkColor: Color(0xff29b2fe),
+                                  value: reason3,
                                   onChanged: (value) {
                                     setState(() {
-                                      _reason1 = value!;
+                                      reason3 = value!;
                                     });
                                   },
                                 ),
@@ -250,10 +261,12 @@ class _RejectOrderState extends State<RejectOrder> {
                             child: Row(
                               children: [
                                 Checkbox(
-                                  value: _reason1,
+                                  activeColor: Colors.white,
+                                  checkColor: Color(0xff29b2fe),
+                                  value: reason4,
                                   onChanged: (value) {
                                     setState(() {
-                                      _reason1 = value!;
+                                      reason4 = value!;
                                     });
                                   },
                                 ),
@@ -329,28 +342,32 @@ class _RejectOrderState extends State<RejectOrder> {
                             ),
                           ),
                         ),
-                        const Spacer(),
-                        Container(
-                          width: double.infinity,
-                          height: mQuery.size.height * 0.06,
-                          decoration: BoxDecoration(
-                              color: const Color(0xff29b2fe),
-                              borderRadius: BorderRadius.circular(6)),
-                          child: Center(
-                            child: GestureDetector(
-                              // onTap: () {
-                              //   //SystemNavigator.pop();
-                              //   Navigator.push(context,
-                              //       MaterialPageRoute(builder: (context) {
-                              //     return const HomePage();
-                              //   }));
-                              // },
-                              child: const Text(
-                                "Submit",
-                                style: TextStyle(
-                                    fontSize: 15,
-                                    color: Colors.white,
-                                    fontWeight: FontWeight.w600),
+                        SizedBox(
+                          height: mQuery.size.height * 0.04,
+                        ),
+                        GestureDetector(
+                          onTap: () {
+                            //SystemNavigator.pop();
+                            Navigator.pushReplacement(context,
+                                MaterialPageRoute(builder: (context) {
+                              return const BotNav();
+                            }));
+                          },
+                          child: Container(
+                            width: double.infinity,
+                            height: mQuery.size.height * 0.06,
+                            decoration: BoxDecoration(
+                                color: const Color(0xff29b2fe),
+                                borderRadius: BorderRadius.circular(6)),
+                            child: Center(
+                              child: GestureDetector(
+                                child: const Text(
+                                  "Submit",
+                                  style: TextStyle(
+                                      fontSize: 15,
+                                      color: Colors.white,
+                                      fontWeight: FontWeight.w600),
+                                ),
                               ),
                             ),
                           ),

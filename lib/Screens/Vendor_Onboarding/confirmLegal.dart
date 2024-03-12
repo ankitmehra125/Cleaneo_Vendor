@@ -42,9 +42,14 @@ class _ConfirmLegalState extends State<ConfirmLegal> {
                   top: 45, left: 16, right: 16, bottom: 20),
               child: Row(
                 children: [
-                  const Icon(
-                    Icons.arrow_back,
-                    color: Colors.white,
+                  GestureDetector(
+                    onTap: () {
+                      Navigator.pop(context);
+                    },
+                    child: const Icon(
+                      Icons.arrow_back,
+                      color: Colors.white,
+                    ),
                   ),
                   SizedBox(
                     width: mQuery.size.width * 0.045,
@@ -104,7 +109,7 @@ class _ConfirmLegalState extends State<ConfirmLegal> {
                           children: <Widget>[
                             const Text(
                               'I agree to all the above terms of services',
-                              style: TextStyle(fontSize: 16),
+                              style: TextStyle(fontSize: 14),
                             ),
                             CupertinoSwitch(
                               value: tandc0,
@@ -126,7 +131,7 @@ class _ConfirmLegalState extends State<ConfirmLegal> {
                               width: mQuery.size.width * 0.7,
                               child: const Text(
                                 'I consent to electronic signatures and by checking this i agree to all the above terms of services.',
-                                style: TextStyle(fontSize: 16),
+                                style: TextStyle(fontSize: 14),
                               ),
                             ),
                             CupertinoSwitch(
@@ -149,7 +154,7 @@ class _ConfirmLegalState extends State<ConfirmLegal> {
                               width: mQuery.size.width * 0.7,
                               child: const Text(
                                 'I agree to receive promotional messages based on my location from Cleaneo via email and SMS until I unsubscribed.',
-                                style: TextStyle(fontSize: 16),
+                                style: TextStyle(fontSize: 14),
                               ),
                             ),
                             CupertinoSwitch(
@@ -165,20 +170,20 @@ class _ConfirmLegalState extends State<ConfirmLegal> {
                         const Spacer(),
                         Padding(
                           padding: const EdgeInsets.symmetric(horizontal: 10.0),
-                          child: Container(
-                            width: double.infinity,
-                            height: mQuery.size.height * 0.06,
-                            decoration: BoxDecoration(
-                                color: const Color(0xff29b2fe),
-                                borderRadius: BorderRadius.circular(6)),
-                            child: Center(
-                              child: GestureDetector(
-                                onTap: () {
-                                  Navigator.push(context,
-                                      MaterialPageRoute(builder: (context) {
-                                    return const Verifying();
-                                  }));
-                                },
+                          child: GestureDetector(
+                            onTap: () {
+                              Navigator.push(context,
+                                  MaterialPageRoute(builder: (context) {
+                                return const Verifying();
+                              }));
+                            },
+                            child: Container(
+                              width: double.infinity,
+                              height: mQuery.size.height * 0.06,
+                              decoration: BoxDecoration(
+                                  color: const Color(0xff29b2fe),
+                                  borderRadius: BorderRadius.circular(6)),
+                              child: Center(
                                 child: const Text(
                                   "Finish",
                                   style: TextStyle(

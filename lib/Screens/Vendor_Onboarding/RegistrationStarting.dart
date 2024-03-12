@@ -2,9 +2,9 @@ import 'dart:io';
 
 import 'package:cleaneo_vendor/Screens/Vendor_Onboarding/takeSelfie.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/widgets.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:flutter_svg/svg.dart';
-import 'package:image_picker/image_picker.dart';
 
 class RegStart extends StatefulWidget {
   const RegStart({Key? key}) : super(key: key);
@@ -35,9 +35,14 @@ class _RegStartState extends State<RegStart> {
                   top: 45, left: 16, right: 16, bottom: 20),
               child: Row(
                 children: [
-                  const Icon(
-                    Icons.arrow_back,
-                    color: Colors.white,
+                  GestureDetector(
+                    onTap: () {
+                      Navigator.pop(context);
+                    },
+                    child: const Icon(
+                      Icons.arrow_back,
+                      color: Colors.white,
+                    ),
                   ),
                   SizedBox(
                     width: mQuery.size.width * 0.045,
@@ -97,20 +102,20 @@ class _RegStartState extends State<RegStart> {
                               "assets/onboarding/01.svg",
                             )),
                         const Spacer(),
-                        Container(
-                          width: double.infinity,
-                          height: mQuery.size.height * 0.06,
-                          decoration: BoxDecoration(
-                              color: const Color(0xff29b2fe),
-                              borderRadius: BorderRadius.circular(6)),
-                          child: Center(
-                            child: GestureDetector(
-                              onTap: () {
-                                Navigator.push(context,
-                                    MaterialPageRoute(builder: (context) {
-                                  return const TakeSelfie();
-                                }));
-                              },
+                        GestureDetector(
+                          onTap: () {
+                            Navigator.push(context,
+                                MaterialPageRoute(builder: (context) {
+                              return const TakeSelfie();
+                            }));
+                          },
+                          child: Container(
+                            width: double.infinity,
+                            height: mQuery.size.height * 0.06,
+                            decoration: BoxDecoration(
+                                color: const Color(0xff29b2fe),
+                                borderRadius: BorderRadius.circular(6)),
+                            child: Center(
                               child: const Text(
                                 "Next",
                                 style: TextStyle(

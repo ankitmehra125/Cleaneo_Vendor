@@ -1,3 +1,4 @@
+import 'package:cleaneo_vendor/Home/Drawer.dart';
 import 'package:cleaneo_vendor/Home/Ledger/Components/dropDownLedger.dart';
 import 'package:cleaneo_vendor/Home/OrderStatus/Components/DropDown.dart';
 import 'package:flutter/material.dart';
@@ -15,7 +16,7 @@ class _LedgerState extends State<Ledger> {
   TextEditingController storeNameController = TextEditingController();
   TextEditingController addressController = TextEditingController();
   TextEditingController gstinController = TextEditingController();
-
+  final GlobalKey<ScaffoldState> _scaffoldKey = GlobalKey<ScaffoldState>();
   List<Map<String, dynamic>> orders = [
     {"status": "Accepted", "time": "11:30 AM", "date": "Today"},
     {"status": "In Process", "time": "11:30 AM", "date": "Today"},
@@ -27,6 +28,8 @@ class _LedgerState extends State<Ledger> {
   Widget build(BuildContext context) {
     var mQuery = MediaQuery.of(context);
     return Scaffold(
+      key: _scaffoldKey,
+      drawer: MyDrawer(),
       body: Container(
         width: double.infinity,
         decoration: const BoxDecoration(
@@ -40,9 +43,14 @@ class _LedgerState extends State<Ledger> {
                   top: 45, left: 16, right: 16, bottom: 20),
               child: Row(
                 children: [
-                  const Icon(
-                    Icons.menu,
-                    color: Colors.white,
+                  GestureDetector(
+                    onTap: () {
+                      _scaffoldKey.currentState!.openDrawer();
+                    },
+                    child: const Icon(
+                      Icons.menu,
+                      color: Colors.white,
+                    ),
                   ),
                   SizedBox(
                     width: mQuery.size.width * 0.045,
@@ -108,7 +116,6 @@ class _LedgerState extends State<Ledger> {
                     Container(
                         padding: const EdgeInsets.symmetric(horizontal: 8.0),
                         //main height
-                        height: mQuery.size.height * 0.41,
                         width: double.infinity,
                         margin: const EdgeInsets.only(bottom: 21.0),
                         decoration: BoxDecoration(
@@ -303,6 +310,9 @@ class _LedgerState extends State<Ledger> {
                                         fontWeight: FontWeight.w600),
                                   ),
                                 ],
+                              ),
+                              const SizedBox(
+                                height: 16.0,
                               ),
                             ],
                           ),

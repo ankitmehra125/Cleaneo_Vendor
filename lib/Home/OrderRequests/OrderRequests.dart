@@ -1,7 +1,11 @@
 import 'dart:io';
+import 'package:cleaneo_vendor/Home/BotNav.dart';
+import 'package:cleaneo_vendor/Home/OrderRequests/Components/orderSummary_bottom_modal.dart';
 import 'package:cleaneo_vendor/Home/OrderRequests/OrderReqDemoData.dart';
 import 'package:cleaneo_vendor/Home/OrderRequests/RejectOrder.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/widgets.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:flutter_svg/svg.dart';
 
@@ -30,9 +34,18 @@ class _OrderReqState extends State<OrderReq> {
                   top: 45, left: 16, right: 16, bottom: 20),
               child: Row(
                 children: [
-                  const Icon(
-                    Icons.arrow_back,
-                    color: Colors.white,
+                  GestureDetector(
+                    onTap: () {
+                      Navigator.of(context).pushReplacement(
+                        MaterialPageRoute(
+                          builder: (BuildContext context) => const BotNav(),
+                        ),
+                      );
+                    },
+                    child: const Icon(
+                      Icons.arrow_back,
+                      color: Colors.white,
+                    ),
                   ),
                   SizedBox(
                     width: mQuery.size.width * 0.045,
@@ -307,21 +320,18 @@ class _OrderReqState extends State<OrderReq> {
                                   children: [
                                     GestureDetector(
                                       onTap: () {
-                                        Navigator.push(
-                                          context,
-                                          MaterialPageRoute(
-                                              builder: (context) =>
-                                                  RejectOrder()),
-                                        );
+                                        // Call the function to open the bottom-up modal
+                                        orderSummary(context);
                                       },
                                       child: Container(
-                                        width: mQuery.size.width * 0.45,
+                                        width: mQuery.size.width * 0.9,
                                         height: mQuery.size.height * 0.045,
                                         decoration: const BoxDecoration(
                                             borderRadius: BorderRadius.only(
-                                                bottomLeft:
+                                                bottomLeft: Radius.circular(10),
+                                                bottomRight:
                                                     Radius.circular(10)),
-                                            color: Color(0xff004c90)),
+                                            color: Color(0xff29b2fe)),
                                         child: Center(
                                           child: Text(
                                             AppLocalizations.of(context)!
@@ -334,24 +344,35 @@ class _OrderReqState extends State<OrderReq> {
                                         ),
                                       ),
                                     ),
-                                    Container(
-                                      width: mQuery.size.width * 0.45,
-                                      height: mQuery.size.height * 0.045,
-                                      decoration: const BoxDecoration(
-                                          borderRadius: BorderRadius.only(
-                                              bottomRight: Radius.circular(10)),
-                                          color: Color(0xff29b2fe)),
-                                      child: Center(
-                                        child: Text(
-                                          AppLocalizations.of(context)!
-                                              .rejectorder,
-                                          style: const TextStyle(
-                                              color: Colors.white,
-                                              fontSize: 13,
-                                              fontWeight: FontWeight.w600),
+                                    /*GestureDetector(
+                                      onTap: () {
+                                        Navigator.push(
+                                          context,
+                                          MaterialPageRoute(
+                                              builder: (context) =>
+                                                  RejectOrder()),
+                                        );
+                                      },
+                                      child: Container(
+                                        width: mQuery.size.width * 0.45,
+                                        height: mQuery.size.height * 0.045,
+                                        decoration: const BoxDecoration(
+                                            borderRadius: BorderRadius.only(
+                                                bottomRight:
+                                                    Radius.circular(10)),
+                                            color: Color(0xff29b2fe)),
+                                        child: Center(
+                                          child: Text(
+                                            AppLocalizations.of(context)!
+                                                .rejectorder,
+                                            style: const TextStyle(
+                                                color: Colors.white,
+                                                fontSize: 13,
+                                                fontWeight: FontWeight.w600),
+                                          ),
                                         ),
                                       ),
-                                    ),
+                                    ),*/
                                   ],
                                 ),
                               ],

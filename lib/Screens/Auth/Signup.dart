@@ -1,11 +1,10 @@
 import 'package:cleaneo_vendor/Screens/Auth/Login.dart';
 import 'package:cleaneo_vendor/Screens/Auth/OTP.dart';
-import 'package:cleaneo_vendor/Screens/WelcomePage.dart';
+import 'package:cleaneo_vendor/Screens/Welcome/WelcomePage.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:intl_phone_number_input/intl_phone_number_input.dart';
 import 'package:country_code_picker/country_code_picker.dart';
-import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 class SignUpPage extends StatefulWidget {
   const SignUpPage({Key? key}) : super(key: key);
@@ -33,7 +32,7 @@ class _SignUpPageState extends State<SignUpPage> {
     return Scaffold(
       body: Container(
         width: double.infinity,
-        decoration: BoxDecoration(
+        decoration: const BoxDecoration(
           color: Color(0xff006acb),
         ),
         child: Column(
@@ -48,10 +47,10 @@ class _SignUpPageState extends State<SignUpPage> {
                       onTap: () {
                         Navigator.push(context,
                             MaterialPageRoute(builder: (context) {
-                          return WelcomePage();
+                          return const WelcomePage();
                         }));
                       },
-                      child: Icon(
+                      child: const Icon(
                         Icons.arrow_back,
                         color: Colors.white,
                       )),
@@ -59,11 +58,11 @@ class _SignUpPageState extends State<SignUpPage> {
                     width: mQuery.size.width * 0.045,
                   ),
                   Text(
-                    AppLocalizations.of(context)!.signup,
+                    "Sign Up",
                     style: TextStyle(
                         fontSize: mQuery.size.height * 0.027,
                         color: Colors.white,
-                        fontWeight: FontWeight.w700),
+                        fontFamily: 'PoppinsSemiBold'),
                   )
                 ],
               ),
@@ -71,7 +70,7 @@ class _SignUpPageState extends State<SignUpPage> {
             Expanded(
               child: Container(
                 width: double.infinity,
-                decoration: BoxDecoration(
+                decoration: const BoxDecoration(
                   color: Colors.white,
                   borderRadius: BorderRadius.only(
                       topLeft: Radius.circular(16),
@@ -84,10 +83,10 @@ class _SignUpPageState extends State<SignUpPage> {
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
                         Text(
-                          AppLocalizations.of(context)!.fullname,
+                          "Full Name",
                           style: TextStyle(
-                            fontWeight: FontWeight.w600,
-                            fontSize: mQuery.size.height * 0.02,
+                            fontFamily: 'PoppinsSemiBold',
+                            fontSize: mQuery.size.height * 0.015,
                           ),
                         ),
                         SizedBox(
@@ -101,10 +100,11 @@ class _SignUpPageState extends State<SignUpPage> {
                             color: Colors.white,
                             boxShadow: [
                               BoxShadow(
-                                color: Colors.grey.withOpacity(0.5),
+                                color: const Color.fromARGB(255, 201, 201, 201)
+                                    .withOpacity(0.5),
                                 spreadRadius: 0,
                                 blurRadius: 10,
-                                offset: Offset(
+                                offset: const Offset(
                                     0, 0), // changes the position of the shadow
                               ),
                             ],
@@ -113,29 +113,33 @@ class _SignUpPageState extends State<SignUpPage> {
                             cursorColor: Colors.grey,
                             controller: nameController,
                             decoration: InputDecoration(
-                              prefixIcon: Icon(Icons.person),
+                              prefixIcon: const Icon(
+                                Icons.person,
+                                color: Color.fromARGB(255, 161, 161, 161),
+                              ),
                               focusedBorder: InputBorder.none,
                               enabledBorder: InputBorder.none,
                               hintText: "Enter Full Name",
                               hintStyle: TextStyle(
-                                  fontSize: mQuery.size.height * 0.0215,
-                                  fontWeight: FontWeight.w600,
-                                  color: Color(0xffABAFB1)),
+                                  fontSize: mQuery.size.height * 0.015,
+                                  fontFamily: 'PoppinsMedium',
+                                  color:
+                                      const Color.fromARGB(255, 161, 161, 161)),
                               contentPadding:
-                                  EdgeInsets.symmetric(vertical: 12),
+                                  const EdgeInsets.symmetric(vertical: 12),
                             ),
                           ),
                         ),
 
                         SizedBox(
-                          height: mQuery.size.height * 0.03,
+                          height: mQuery.size.height * 0.022,
                         ),
                         // PHONE NUMBER
                         Text(
-                          AppLocalizations.of(context)!.phonenumber,
+                          "Phone Number",
                           style: TextStyle(
-                            fontWeight: FontWeight.w600,
-                            fontSize: mQuery.size.height * 0.02,
+                            fontFamily: 'PoppinsMedium',
+                            fontSize: mQuery.size.height * 0.015,
                           ),
                         ),
                         SizedBox(
@@ -150,10 +154,11 @@ class _SignUpPageState extends State<SignUpPage> {
                             color: Colors.white,
                             boxShadow: [
                               BoxShadow(
-                                color: Colors.grey.withOpacity(0.5),
+                                color: const Color.fromARGB(255, 201, 201, 201)
+                                    .withOpacity(0.5),
                                 spreadRadius: 0,
                                 blurRadius: 10,
-                                offset: Offset(
+                                offset: const Offset(
                                     0, 0), // changes the position of the shadow
                               ),
                             ],
@@ -161,7 +166,10 @@ class _SignUpPageState extends State<SignUpPage> {
                           child: Row(
                             children: [
                               SizedBox(width: mQuery.size.width * 0.03),
-                              Icon(Icons.phone_outlined),
+                              const Icon(
+                                Icons.phone_outlined,
+                                color: Color.fromARGB(255, 201, 201, 201),
+                              ),
                               CountryCodePicker(
                                 onChanged: (code) {
                                   setState(() {
@@ -169,7 +177,7 @@ class _SignUpPageState extends State<SignUpPage> {
                                   });
                                 },
                                 initialSelection: 'IN',
-                                favorite: ['+91', 'IN'],
+                                favorite: const ['+91', 'IN'],
                                 showCountryOnly: false,
                                 showFlag: true,
                                 showOnlyCountryWhenClosed: false,
@@ -178,9 +186,9 @@ class _SignUpPageState extends State<SignUpPage> {
                               // "|" symbol
                               SizedBox(
                                 height: mQuery.size.height * 0.03,
-                                child: VerticalDivider(
+                                child: const VerticalDivider(
                                   thickness: 1.5,
-                                  color: Colors.grey,
+                                  color: Color.fromARGB(255, 201, 201, 201),
                                 ),
                               ),
                               SizedBox(width: mQuery.size.width * 0.02),
@@ -198,15 +206,15 @@ class _SignUpPageState extends State<SignUpPage> {
                                   decoration: InputDecoration(
                                     hintText: "Enter Phone Number*",
                                     hintStyle: TextStyle(
-                                      fontSize: mQuery.size.height * 0.0215,
-                                      fontWeight: FontWeight.w600,
-                                      color: Color(0xffABAFB1),
+                                      fontSize: mQuery.size.height * 0.015,
+                                      fontFamily: 'PoppinsMedium',
+                                      color: const Color(0xffABAFB1),
                                     ),
                                     contentPadding:
-                                        EdgeInsets.symmetric(vertical: 2),
+                                        const EdgeInsets.symmetric(vertical: 2),
                                     focusedBorder: InputBorder.none,
                                     enabledBorder: InputBorder.none,
-                                    counter: SizedBox.shrink(),
+                                    counter: const SizedBox.shrink(),
                                   ),
                                 ),
                               ),
@@ -215,14 +223,14 @@ class _SignUpPageState extends State<SignUpPage> {
                         ),
 
                         SizedBox(
-                          height: mQuery.size.height * 0.03,
+                          height: mQuery.size.height * 0.022,
                         ),
                         // Email
                         Text(
-                          AppLocalizations.of(context)!.email,
+                          "Email",
                           style: TextStyle(
-                            fontWeight: FontWeight.w600,
-                            fontSize: mQuery.size.height * 0.02,
+                            fontFamily: 'PoppinsMedium',
+                            fontSize: mQuery.size.height * 0.015,
                           ),
                         ),
                         SizedBox(
@@ -236,10 +244,11 @@ class _SignUpPageState extends State<SignUpPage> {
                             color: Colors.white,
                             boxShadow: [
                               BoxShadow(
-                                color: Colors.grey.withOpacity(0.5),
+                                color: const Color.fromARGB(255, 201, 201, 201)
+                                    .withOpacity(0.5),
                                 spreadRadius: 0,
                                 blurRadius: 10,
-                                offset: Offset(
+                                offset: const Offset(
                                     0, 0), // changes the position of the shadow
                               ),
                             ],
@@ -248,82 +257,85 @@ class _SignUpPageState extends State<SignUpPage> {
                             cursorColor: Colors.grey,
                             controller: emailController,
                             decoration: InputDecoration(
-                              prefixIcon: Icon(Icons.email_outlined),
+                              prefixIcon: const Icon(
+                                Icons.email_outlined,
+                                color: Color.fromARGB(255, 201, 201, 201),
+                              ),
                               focusedBorder: InputBorder.none,
                               enabledBorder: InputBorder.none,
                               hintText: "Enter Email",
                               hintStyle: TextStyle(
-                                fontSize: mQuery.size.height * 0.0215,
-                                fontWeight: FontWeight.w600,
-                                color: Color(0xffABAFB1),
+                                fontSize: mQuery.size.height * 0.015,
+                                fontFamily: 'PoppinsMedium',
+                                color: const Color.fromARGB(255, 201, 201, 201),
                               ),
                               contentPadding:
-                                  EdgeInsets.symmetric(vertical: 12),
+                                  const EdgeInsets.symmetric(vertical: 12),
                             ),
                           ),
                         ),
 
                         SizedBox(
-                          height: mQuery.size.height * 0.01,
+                          height: mQuery.size.height * 0.02,
                         ),
                         Text(
-                          AppLocalizations.of(context)!.otpSendAcknowledge,
+                          "*We'll send a one time 4-digit OTP to your phone or email to verify.",
                           style: TextStyle(
-                              fontSize: mQuery.size.height * 0.0175,
-                              fontWeight: FontWeight.w600),
+                              fontSize: mQuery.size.height * 0.012,
+                              fontFamily: 'PoppinsMedium'),
                         ),
 
                         SizedBox(
-                          height: mQuery.size.height * 0.217,
+                          height: mQuery.size.height * 0.035,
                         ),
                         GestureDetector(
                           onTap: () {
                             Navigator.push(context,
                                 MaterialPageRoute(builder: (context) {
-                              return OTPPage();
+                              return const OTPPage();
                             }));
                           },
                           child: Container(
                             width: double.infinity,
                             height: mQuery.size.height * 0.06,
                             decoration: BoxDecoration(
-                                color: Color(0xff29b2fe),
+                                color: const Color(0xff29b2fe),
                                 borderRadius: BorderRadius.circular(6)),
                             child: Center(
                               child: Text(
-                                AppLocalizations.of(context)!.signup,
+                                "Sign Up",
                                 style: TextStyle(
                                     fontSize: mQuery.size.height * 0.022,
                                     color: Colors.white,
-                                    fontWeight: FontWeight.w600),
+                                    fontFamily: 'PoppinsSemiBold'),
                               ),
                             ),
                           ),
                         ),
                         SizedBox(
-                          height: mQuery.size.height * 0.01,
+                          height: mQuery.size.height * 0.005,
                         ),
                         Row(
                           mainAxisAlignment: MainAxisAlignment.center,
                           children: [
                             Text(
-                             AppLocalizations.of(context)!.alreadyaccount,
+                              "Already have an account?",
                               style: TextStyle(
                                   fontSize: mQuery.size.height * 0.015,
-                                  fontWeight: FontWeight.w600),
+                                  fontFamily: 'PoppinsMedium'),
                             ),
                             TextButton(
                               child: Text(
-                                AppLocalizations.of(context)!.login,
+                                "Log In",
                                 style: TextStyle(
                                     fontSize: mQuery.size.height * 0.015,
-                                    fontWeight: FontWeight.w800,
-                                    color: Color(0xff29b2fe)),
+                                    fontFamily: 'PoppinsSemiBold',
+                                    color: const Color(0xff29b2fe)),
                               ),
                               onPressed: () {
                                 Navigator.push(context,
                                     MaterialPageRoute(builder: (context) {
-                                  return LoginPage();
+                                  return const LoginPage();
                                 }));
                               },
                             )

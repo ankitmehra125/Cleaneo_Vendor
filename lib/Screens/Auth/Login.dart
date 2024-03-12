@@ -1,10 +1,10 @@
 import 'package:cleaneo_vendor/Screens/Auth/OTP.dart';
-import 'package:cleaneo_vendor/Screens/WelcomePage.dart';
+import 'package:cleaneo_vendor/Screens/Auth/Signup.dart';
+import 'package:cleaneo_vendor/Screens/Welcome/WelcomePage.dart';
 import 'package:country_code_picker/country_code_picker.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:intl_phone_number_input/intl_phone_number_input.dart';
-import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 class LoginPage extends StatefulWidget {
   const LoginPage({Key? key}) : super(key: key);
@@ -52,11 +52,11 @@ class _LoginPageState extends State<LoginPage> {
                     width: mQuery.size.width * 0.045,
                   ),
                   Text(
-                    AppLocalizations.of(context)!.login,
+                    "Login",
                     style: TextStyle(
                         fontSize: mQuery.size.height * 0.027,
                         color: Colors.white,
-                        fontWeight: FontWeight.w700),
+                        fontFamily: 'PoppinsSemiBold'),
                   ),
                 ],
               ),
@@ -81,10 +81,10 @@ class _LoginPageState extends State<LoginPage> {
                         ),
                         // PHONE NUMBER
                         Text(
-                          AppLocalizations.of(context)!.phonenumber,
+                          "Phone Number",
                           style: TextStyle(
-                            fontWeight: FontWeight.w600,
-                            fontSize: mQuery.size.height * 0.02,
+                            fontFamily: 'PoppinsSemiBold',
+                            fontSize: mQuery.size.height * 0.015,
                           ),
                         ),
                         SizedBox(
@@ -96,12 +96,12 @@ class _LoginPageState extends State<LoginPage> {
                           decoration: BoxDecoration(
                             borderRadius: BorderRadius.circular(6),
                             color: Colors.white,
-                            boxShadow: [
+                            boxShadow: const [
                               BoxShadow(
-                                color: Colors.grey.withOpacity(0.5),
+                                color: Color.fromARGB(255, 201, 201, 201),
                                 spreadRadius: 0,
                                 blurRadius: 10,
-                                offset: const Offset(
+                                offset: Offset(
                                     0, 0), // changes the position of the shadow
                               ),
                             ],
@@ -109,7 +109,10 @@ class _LoginPageState extends State<LoginPage> {
                           child: Row(
                             children: [
                               SizedBox(width: mQuery.size.width * 0.03),
-                              const Icon(Icons.phone_outlined),
+                              const Icon(
+                                Icons.phone_outlined,
+                                color: Color.fromARGB(255, 201, 201, 201),
+                              ),
                               CountryCodePicker(
                                 onChanged: (code) {
                                   setState(() {
@@ -117,7 +120,7 @@ class _LoginPageState extends State<LoginPage> {
                                   });
                                 },
                                 initialSelection: 'IN',
-                                favorite: ['+91', 'IN'],
+                                favorite: const ['+91', 'IN'],
                                 showCountryOnly: false,
                                 showFlag: true,
                                 showOnlyCountryWhenClosed: false,
@@ -128,7 +131,7 @@ class _LoginPageState extends State<LoginPage> {
                                 height: mQuery.size.height * 0.03,
                                 child: const VerticalDivider(
                                   thickness: 1.5,
-                                  color: Colors.grey,
+                                  color: Color.fromARGB(255, 201, 201, 201),
                                 ),
                               ),
                               SizedBox(width: mQuery.size.width * 0.02),
@@ -146,9 +149,10 @@ class _LoginPageState extends State<LoginPage> {
                                   decoration: InputDecoration(
                                       hintText: "Enter Phone Number*",
                                       hintStyle: TextStyle(
-                                        fontSize: mQuery.size.height * 0.02,
-                                        fontWeight: FontWeight.w600,
-                                        color: const Color(0xffABAFB1),
+                                        fontSize: mQuery.size.height * 0.015,
+                                        fontFamily: 'PoppinsMedium',
+                                        color:
+                                            Color.fromARGB(255, 201, 201, 201),
                                       ),
                                       focusedBorder: InputBorder.none,
                                       enabledBorder: InputBorder.none,
@@ -162,29 +166,29 @@ class _LoginPageState extends State<LoginPage> {
                           ),
                         ),
 
-                        Row(
-                          mainAxisAlignment: MainAxisAlignment.end,
-                          children: [
-                            TextButton(
-                              onPressed: () {},
-                              child: Text(
-                                AppLocalizations.of(context)!.forgotpass,
-                                style: TextStyle(
-                                    fontSize: mQuery.size.height * 0.02,
-                                    fontWeight: FontWeight.w600,
-                                    color: const Color(0xff29b2fe)),
-                              ),
-                            ),
-                          ],
-                        ),
+                        // Row(
+                        //   mainAxisAlignment: MainAxisAlignment.end,
+                        //   children: [
+                        //     TextButton(
+                        //       onPressed: () {},
+                        //       child: Text(
+                        //         "Forgot Password?",
+                        //         style: TextStyle(
+                        //             fontSize: mQuery.size.height * 0.015,
+                        //             fontFamily: 'PoppinsSemiBold',
+                        //             color: const Color(0xff29b2fe)),
+                        //       ),
+                        //     ),
+                        //   ],
+                        // ),
 
                         SizedBox(
-                          height: mQuery.size.height * 0.49,
+                          height: mQuery.size.height * 0.03,
                         ),
                         GestureDetector(
-                          onTap: ()
-                          {
-                            Navigator.push(context, MaterialPageRoute(builder: (context){
+                          onTap: () {
+                            Navigator.push(context,
+                                MaterialPageRoute(builder: (context) {
                               return OTPPage();
                             }));
                           },
@@ -196,36 +200,44 @@ class _LoginPageState extends State<LoginPage> {
                                 borderRadius: BorderRadius.circular(6)),
                             child: Center(
                               child: Text(
-                                AppLocalizations.of(context)!.login,
+                                "Log In",
                                 style: TextStyle(
                                     fontSize: mQuery.size.height * 0.022,
                                     color: Colors.white,
-                                    fontWeight: FontWeight.w600),
+                                    fontFamily: 'PoppinsSemiBold'),
                               ),
                             ),
                           ),
                         ),
                         SizedBox(
-                          height: mQuery.size.height * 0.034,
+                          height: mQuery.size.height * 0.02,
                         ),
                         Row(
                           mainAxisAlignment: MainAxisAlignment.center,
                           children: [
                             Text(
-                              AppLocalizations.of(context)!.noaccount,
+                              "Don't have an account?",
                               style: TextStyle(
-                                  fontSize: mQuery.size.height * 0.022,
-                                  fontWeight: FontWeight.w600),
+                                  fontSize: mQuery.size.height * 0.015,
+                                  fontFamily: 'PoppinsMedium'),
                             ),
                             SizedBox(
                               width: mQuery.size.width * 0.02,
                             ),
-                            Text(
-                              AppLocalizations.of(context)!.signup,
-                              style: TextStyle(
-                                  fontSize: mQuery.size.height * 0.022,
-                                  fontWeight: FontWeight.w600,
-                                  color: const Color(0xff29b2fe)),
+                            GestureDetector(
+                              onTap: () {
+                                Navigator.push(context,
+                                    MaterialPageRoute(builder: (context) {
+                                  return SignUpPage();
+                                }));
+                              },
+                              child: Text(
+                                "Sign Up",
+                                style: TextStyle(
+                                    fontSize: mQuery.size.height * 0.015,
+                                    fontFamily: 'PoppinsSemiBold',
+                                    color: const Color(0xff29b2fe)),
+                              ),
                             )
                           ],
                         )

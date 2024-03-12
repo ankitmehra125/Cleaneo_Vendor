@@ -3,6 +3,7 @@ import 'dart:io';
 import 'package:cleaneo_vendor/Screens/Vendor_Onboarding/Verified.dart';
 import 'package:cleaneo_vendor/Screens/Vendor_Onboarding/uploadAdhaar.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/widgets.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:image_picker/image_picker.dart';
@@ -36,9 +37,14 @@ class _VerifyingState extends State<Verifying> {
                   top: 45, left: 16, right: 16, bottom: 20),
               child: Row(
                 children: [
-                  const Icon(
-                    Icons.arrow_back,
-                    color: Colors.white,
+                  GestureDetector(
+                    onTap: () {
+                      Navigator.pop(context);
+                    },
+                    child: const Icon(
+                      Icons.arrow_back,
+                      color: Colors.white,
+                    ),
                   ),
                   SizedBox(
                     width: mQuery.size.width * 0.045,
@@ -98,21 +104,21 @@ class _VerifyingState extends State<Verifying> {
                               "assets/onboarding/verifying.svg",
                             )),
                         const Spacer(),
-                        Container(
-                          width: double.infinity,
-                          height: mQuery.size.height * 0.06,
-                          decoration: BoxDecoration(
-                              color: const Color(0xff29b2fe),
-                              borderRadius: BorderRadius.circular(6)),
-                          child: Center(
-                            child: GestureDetector(
-                              onTap: () {
-                                //SystemNavigator.pop();
-                                Navigator.push(context,
-                                    MaterialPageRoute(builder: (context) {
-                                  return const Verified();
-                                }));
-                              },
+                        GestureDetector(
+                          onTap: () {
+                            //SystemNavigator.pop();
+                            Navigator.push(context,
+                                MaterialPageRoute(builder: (context) {
+                              return const Verified();
+                            }));
+                          },
+                          child: Container(
+                            width: double.infinity,
+                            height: mQuery.size.height * 0.06,
+                            decoration: BoxDecoration(
+                                color: const Color(0xff29b2fe),
+                                borderRadius: BorderRadius.circular(6)),
+                            child: Center(
                               child: const Text(
                                 "Okay",
                                 style: TextStyle(

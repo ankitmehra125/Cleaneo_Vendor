@@ -1,7 +1,9 @@
 import 'dart:io';
 
 import 'package:cleaneo_vendor/Home/BotNav.dart';
+import 'package:cleaneo_vendor/Home/Drawer.dart';
 import 'package:cleaneo_vendor/Home/OrderStatus/Components/DropDown.dart';
+import 'package:cleaneo_vendor/Screens/Vendor_Onboarding/confirmLegal.dart';
 import 'package:cleaneo_vendor/Screens/Vendor_Onboarding/uploadAdhaar.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
@@ -20,17 +22,22 @@ class _OrderStatusState extends State<OrderStatus> {
   TextEditingController addressController = TextEditingController();
   TextEditingController gstinController = TextEditingController();
 
+  final GlobalKey<ScaffoldState> _scaffoldKey = GlobalKey<ScaffoldState>();
+
   List<Map<String, dynamic>> orders = [
     {"status": "Accepted", "time": "11:30 AM", "date": "Today"},
     {"status": "In Process", "time": "11:30 AM", "date": "Today"},
     {"status": "On its way", "time": "11:30 AM", "date": "Yesterday"},
     {"status": "Delivered", "time": "11:30 AM", "date": "23rd Jun, 2023"},
   ];
-
+  bool select = false;
   @override
   Widget build(BuildContext context) {
     var mQuery = MediaQuery.of(context);
+
     return Scaffold(
+      key: _scaffoldKey,
+      drawer: MyDrawer(),
       body: Container(
         width: double.infinity,
         decoration: const BoxDecoration(
@@ -44,9 +51,14 @@ class _OrderStatusState extends State<OrderStatus> {
                   top: 45, left: 16, right: 16, bottom: 20),
               child: Row(
                 children: [
-                  const Icon(
-                    Icons.menu,
-                    color: Colors.white,
+                  GestureDetector(
+                    onTap: () {
+                      _scaffoldKey.currentState!.openDrawer();
+                    },
+                    child: const Icon(
+                      Icons.menu,
+                      color: Colors.white,
+                    ),
                   ),
                   SizedBox(
                     width: mQuery.size.width * 0.045,
@@ -86,8 +98,49 @@ class _OrderStatusState extends State<OrderStatus> {
                       height: 30.0,
                     ),
                     Row(
-                      mainAxisAlignment: MainAxisAlignment.end,
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
+                        Row(
+                          children: [
+                            GestureDetector(
+                              onTap: () {
+                                setState(() {
+                                  select = !select;
+                                });
+                              },
+                              child: Container(
+                                width: 20, // Adjust the size as needed
+                                height: 20, // Adjust the size as needed
+                                decoration: BoxDecoration(
+                                  shape: BoxShape.circle,
+                                  border: Border.all(
+                                    color:
+                                        Colors.grey, // Adjust the border color
+                                  ),
+                                ),
+                                child: select
+                                    ? const Icon(
+                                        Icons.check,
+                                        size:
+                                            16, // Adjust the icon size as needed
+                                        color: Colors
+                                            .blue, // Adjust the check color
+                                      )
+                                    : null,
+                              ),
+                            ),
+                            const SizedBox(
+                              width: 8.0,
+                            ),
+                            const Text(
+                              'Select All',
+                              style: TextStyle(
+                                fontWeight: FontWeight.w500,
+                                fontSize: 14,
+                              ),
+                            ),
+                          ],
+                        ),
                         AnimatedDropdown(),
                       ],
                     ),
@@ -148,12 +201,12 @@ class _OrderStatusState extends State<OrderStatus> {
                                   ),
                                 ],
                               ),
-                              SizedBox(
+                              const SizedBox(
                                 height: 5.0,
                               ),
                               Container(
                                 padding:
-                                    const EdgeInsets.symmetric(horizontal: 8.0),
+                                    const EdgeInsets.symmetric(horizontal: 1.0),
                                 height: mQuery.size.height * 0.08,
                                 margin: const EdgeInsets.only(bottom: 21.0),
                                 decoration: BoxDecoration(
@@ -173,6 +226,42 @@ class _OrderStatusState extends State<OrderStatus> {
                                   padding: const EdgeInsets.all(8.0),
                                   child: Row(
                                     children: [
+                                      Column(
+                                        children: [
+                                          GestureDetector(
+                                            onTap: () {
+                                              setState(() {
+                                                select = !select;
+                                              });
+                                            },
+                                            child: Container(
+                                              width:
+                                                  15, // Adjust the size as needed
+                                              height:
+                                                  15, // Adjust the size as needed
+                                              decoration: BoxDecoration(
+                                                shape: BoxShape.circle,
+                                                border: Border.all(
+                                                  color: Colors
+                                                      .grey, // Adjust the border color
+                                                ),
+                                              ),
+                                              child: select
+                                                  ? const Icon(
+                                                      Icons.check,
+                                                      size:
+                                                          10, // Adjust the icon size as needed
+                                                      color: Colors
+                                                          .blue, // Adjust the check color
+                                                    )
+                                                  : null,
+                                            ),
+                                          ),
+                                        ],
+                                      ),
+                                      SizedBox(
+                                        width: 10.0,
+                                      ),
                                       // SVG icon
                                       SizedBox(
                                         width: 30,
@@ -231,6 +320,40 @@ class _OrderStatusState extends State<OrderStatus> {
                           );
                         },
                       ),
+                    ),
+                    Column(
+                      children: [
+                        Padding(
+                          padding: const EdgeInsets.symmetric(horizontal: 10.0),
+                          child: GestureDetector(
+                            onTap: () {
+                              Navigator.pushReplacement(context,
+                                  MaterialPageRoute(builder: (context) {
+                                return const BotNav();
+                              }));
+                            },
+                            child: Container(
+                              width: double.infinity,
+                              height: mQuery.size.height * 0.06,
+                              decoration: BoxDecoration(
+                                  color: const Color(0xff29b2fe),
+                                  borderRadius: BorderRadius.circular(6)),
+                              child: Center(
+                                child: const Text(
+                                  "Save",
+                                  style: TextStyle(
+                                      fontSize: 15,
+                                      color: Colors.white,
+                                      fontWeight: FontWeight.w600),
+                                ),
+                              ),
+                            ),
+                          ),
+                        ),
+                        SizedBox(
+                          height: 20.0,
+                        )
+                      ],
                     ),
                   ],
                 ),

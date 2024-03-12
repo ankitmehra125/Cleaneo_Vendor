@@ -20,7 +20,6 @@ class _TermsState extends State<Terms> {
   TextEditingController gstinController = TextEditingController();
   bool isChecked = false;
 
- 
   @override
   Widget build(BuildContext context) {
     var mQuery = MediaQuery.of(context);
@@ -38,9 +37,14 @@ class _TermsState extends State<Terms> {
                   top: 45, left: 16, right: 16, bottom: 20),
               child: Row(
                 children: [
-                  const Icon(
-                    Icons.arrow_back,
-                    color: Colors.white,
+                  GestureDetector(
+                    onTap: () {
+                      Navigator.pop(context);
+                    },
+                    child: const Icon(
+                      Icons.arrow_back,
+                      color: Colors.white,
+                    ),
                   ),
                   SizedBox(
                     width: mQuery.size.width * 0.045,
@@ -87,7 +91,7 @@ class _TermsState extends State<Terms> {
                               child: Text(
                                 AppLocalizations.of(context)!.termsmain,
                                 style: const TextStyle(
-                                    fontWeight: FontWeight.w400, fontSize: 15),
+                                    fontWeight: FontWeight.w400, fontSize: 13),
                               ),
                             ),
                           ],
@@ -100,6 +104,8 @@ class _TermsState extends State<Terms> {
                           mainAxisAlignment: MainAxisAlignment.start,
                           children: <Widget>[
                             Checkbox(
+                              activeColor: Colors.white,
+                              checkColor: Color(0xff29b2fe),
                               value: isChecked,
                               onChanged: (bool? value) {
                                 setState(() {
@@ -114,21 +120,21 @@ class _TermsState extends State<Terms> {
                           ],
                         ),
                         Padding(
-                          padding: const EdgeInsets.symmetric(horizontal:10.0),
-                          child: Container(
-                            width: double.infinity,
-                            height: mQuery.size.height * 0.06,
-                            decoration: BoxDecoration(
-                                color: const Color(0xff29b2fe),
-                                borderRadius: BorderRadius.circular(6)),
-                            child: Center(
-                              child: GestureDetector(
-                                onTap: () {
-                                  Navigator.push(context,
-                                      MaterialPageRoute(builder: (context) {
-                                    return const ConfirmLegal();
-                                  }));
-                                },
+                          padding: const EdgeInsets.symmetric(horizontal: 10.0),
+                          child: GestureDetector(
+                            onTap: () {
+                              Navigator.push(context,
+                                  MaterialPageRoute(builder: (context) {
+                                return const ConfirmLegal();
+                              }));
+                            },
+                            child: Container(
+                              width: double.infinity,
+                              height: mQuery.size.height * 0.06,
+                              decoration: BoxDecoration(
+                                  color: const Color(0xff29b2fe),
+                                  borderRadius: BorderRadius.circular(6)),
+                              child: Center(
                                 child: const Text(
                                   "Next",
                                   style: TextStyle(

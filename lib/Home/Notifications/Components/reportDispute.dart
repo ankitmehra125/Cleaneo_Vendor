@@ -3,6 +3,7 @@ import 'dart:io';
 import 'package:cleaneo_vendor/Home/BotNav.dart';
 import 'package:cleaneo_vendor/Screens/Vendor_Onboarding/uploadAdhaar.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/widgets.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:image_picker/image_picker.dart';
@@ -18,13 +19,12 @@ class _ReportDisputeState extends State<ReportDispute> {
   TextEditingController storeNameController = TextEditingController();
   TextEditingController addressController = TextEditingController();
   TextEditingController gstinController = TextEditingController();
-
+  bool _reason1 = false;
+  bool _reason2 = false;
+  bool _reason3 = false;
+  bool _reason4 = false;
   @override
   Widget build(BuildContext context) {
-    bool _reason1 = false;
-    bool _reason2 = false;
-    bool _reason3 = false;
-    bool _reason4 = false;
     var mQuery = MediaQuery.of(context);
     return Scaffold(
       body: Container(
@@ -40,9 +40,14 @@ class _ReportDisputeState extends State<ReportDispute> {
                   top: 45, left: 16, right: 16, bottom: 20),
               child: Row(
                 children: [
-                  const Icon(
-                    Icons.arrow_back,
-                    color: Colors.white,
+                  GestureDetector(
+                    onTap: () {
+                      Navigator.pop(context);
+                    },
+                    child: const Icon(
+                      Icons.arrow_back,
+                      color: Colors.white,
+                    ),
                   ),
                   SizedBox(
                     width: mQuery.size.width * 0.045,
@@ -77,11 +82,8 @@ class _ReportDisputeState extends State<ReportDispute> {
                 ),
                 child: Padding(
                     padding: const EdgeInsets.only(left: 16, right: 16),
-                    child: Column(
+                    child: ListView(
                       children: [
-                        SizedBox(
-                          height: mQuery.size.height * 0.032,
-                        ),
                         Row(
                           mainAxisAlignment: MainAxisAlignment.start,
                           children: [
@@ -123,8 +125,10 @@ class _ReportDisputeState extends State<ReportDispute> {
                             child: Row(
                               children: [
                                 Checkbox(
+                                  activeColor: Colors.white,
+                                  checkColor: const Color(0xff29b2fe),
                                   value: _reason1,
-                                  onChanged: (value) {
+                                  onChanged: (bool? value) {
                                     setState(() {
                                       _reason1 = value!;
                                     });
@@ -167,10 +171,12 @@ class _ReportDisputeState extends State<ReportDispute> {
                             child: Row(
                               children: [
                                 Checkbox(
-                                  value: _reason1,
+                                  activeColor: Colors.white,
+                                  checkColor: const Color(0xff29b2fe),
+                                  value: _reason2,
                                   onChanged: (value) {
                                     setState(() {
-                                      _reason1 = value!;
+                                      _reason2 = value!;
                                     });
                                   },
                                 ),
@@ -210,10 +216,12 @@ class _ReportDisputeState extends State<ReportDispute> {
                             child: Row(
                               children: [
                                 Checkbox(
-                                  value: _reason1,
+                                  activeColor: Colors.white,
+                                  checkColor: const Color(0xff29b2fe),
+                                  value: _reason3,
                                   onChanged: (value) {
                                     setState(() {
-                                      _reason1 = value!;
+                                      _reason3 = value!;
                                     });
                                   },
                                 ),
@@ -315,40 +323,61 @@ class _ReportDisputeState extends State<ReportDispute> {
                               ),
                             ),
                           ],
-                        ), SizedBox(
+                        ),
+                        SizedBox(
                           height: mQuery.size.height * 0.03,
                         ),
                         Row(
                           mainAxisAlignment: MainAxisAlignment.spaceAround,
                           children: [
-                            SvgPicture.asset("assets/imagepicker.svg"),
-                            SvgPicture.asset("assets/imagepicker.svg"),
-                            SvgPicture.asset("assets/imagepicker.svg"),
-                            SvgPicture.asset("assets/imagepicker.svg"),
+                            SvgPicture.asset(
+                              "assets/imagepicker.svg",
+                              height: mQuery.size.height * 0.07,
+                              width: mQuery.size.width * 0.07,
+                            ),
+                            SvgPicture.asset(
+                              "assets/imagepicker.svg",
+                              height: mQuery.size.height * 0.07,
+                              width: mQuery.size.width * 0.07,
+                            ),
+                            SvgPicture.asset(
+                              "assets/imagepicker.svg",
+                              height: mQuery.size.height * 0.07,
+                              width: mQuery.size.width * 0.07,
+                            ),
+                            SvgPicture.asset(
+                              "assets/imagepicker.svg",
+                              height: mQuery.size.height * 0.07,
+                              width: mQuery.size.width * 0.07,
+                            ),
                           ],
                         ),
-                        const Spacer(),
-                        Container(
-                          width: double.infinity,
-                          height: mQuery.size.height * 0.06,
-                          decoration: BoxDecoration(
-                              color: const Color(0xff29b2fe),
-                              borderRadius: BorderRadius.circular(6)),
-                          child: Center(
-                            child: GestureDetector(
-                              onTap: () {
-                                //SystemNavigator.pop();
-                                Navigator.pushReplacement(context,
-                                    MaterialPageRoute(builder: (context) {
-                                  return const BotNav();
-                                }));
-                              },
-                              child: const Text(
-                                "Submit",
-                                style: TextStyle(
-                                    fontSize: 15,
-                                    color: Colors.white,
-                                    fontWeight: FontWeight.w600),
+                        SizedBox(
+                          height: 20.0,
+                        ),
+                        GestureDetector(
+                          onTap: () {
+                            //SystemNavigator.pop();
+                            Navigator.pushReplacement(context,
+                                MaterialPageRoute(builder: (context) {
+                              return const BotNav();
+                            }));
+                          },
+                          child: Container(
+                            width: double.infinity,
+                            height: mQuery.size.height * 0.06,
+                            decoration: BoxDecoration(
+                                color: const Color(0xff29b2fe),
+                                borderRadius: BorderRadius.circular(6)),
+                            child: Center(
+                              child: GestureDetector(
+                                child: const Text(
+                                  "Submit",
+                                  style: TextStyle(
+                                      fontSize: 15,
+                                      color: Colors.white,
+                                      fontWeight: FontWeight.w600),
+                                ),
                               ),
                             ),
                           ),

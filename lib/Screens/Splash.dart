@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
-import 'package:cleaneo_vendor/Screens/WelcomePage.dart';
+import 'package:cleaneo_vendor/Screens/Welcome/WelcomePage.dart';
 import 'package:cleaneo_vendor/main.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 
@@ -37,43 +37,87 @@ class _SplashScreenState extends State<SplashScreen> {
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
-                    DropdownButton<String>(
-                      value: _selectedLanguage,
-                      onChanged: (String? newValue) {
-                        setState(() {
-                          _selectedLanguage = newValue!;
-                        });
-                      },
-                      items: <String>['en', 'hi'].map((String value) {
-                        return DropdownMenuItem<String>(
-                          value: value,
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        GestureDetector(
+                          onTap: () {
+                            setState(() {
+                              _selectedLanguage = 'en';
+                            });
+                          },
                           child: Container(
                             padding: const EdgeInsets.symmetric(
                                 horizontal: 10.0, vertical: 8.0),
+                            decoration: BoxDecoration(
+                              border: Border.all(
+                                color: _selectedLanguage == 'en'
+                                    ? Colors.white
+                                    : Color(0xFF29B2FE),
+                              ),
+                              borderRadius: BorderRadius.circular(5.0),
+                            ),
                             child: Row(
                               children: [
                                 Icon(
-                                  value == 'en'
-                                      ? Icons.language
-                                      : Icons.translate,
-                                  color: Colors.white,
+                                  Icons.language,
+                                  color: _selectedLanguage == 'en'
+                                      ? Colors.white
+                                      : Color(0xFF29B2FE),
                                 ),
-                                const SizedBox(width: 10.0),
+                                SizedBox(width: 10.0),
                                 Text(
-                                  value == 'en' ? 'English' : 'हिंदी',
-                                  style: const TextStyle(
-                                    color: Colors.white,
+                                  'English',
+                                  style: TextStyle(
+                                    color: _selectedLanguage == 'en'
+                                        ? Colors.white
+                                        : Color(0xFF29B2FE),
                                   ),
                                 ),
                               ],
                             ),
                           ),
-                        );
-                      }).toList(),
-                    ),
-                    const Text(
-                      "<-{Under Development}->",
-                      style: TextStyle(color: Colors.white),
+                        ),
+                        SizedBox(width: 10.0),
+                        GestureDetector(
+                          onTap: () {
+                            setState(() {
+                              _selectedLanguage = 'hi';
+                            });
+                          },
+                          child: Container(
+                            padding: const EdgeInsets.symmetric(
+                                horizontal: 10.0, vertical: 8.0),
+                            decoration: BoxDecoration(
+                              border: Border.all(
+                                color: _selectedLanguage == 'hi'
+                                    ? Colors.white
+                                    : Color(0xFF29B2FE),
+                              ),
+                              borderRadius: BorderRadius.circular(5.0),
+                            ),
+                            child: Row(
+                              children: [
+                                Icon(
+                                  Icons.translate,
+                                  color: _selectedLanguage == 'hi'
+                                      ? Colors.white
+                                      : Color(0xFF29B2FE),
+                                ),
+                                SizedBox(width: 10.0),
+                                Text(
+                                  'हिंदी',
+                                  style: TextStyle(
+                                    color: _selectedLanguage == 'hi'
+                                        ? Colors.white
+                                        : Colors.blue,
+                                  ),
+                                ),
+                              ],
+                            ),
+                          ),
+                        ),
+                      ],
                     ),
                     ElevatedButton(
                       onPressed: () {
@@ -88,14 +132,16 @@ class _SplashScreenState extends State<SplashScreen> {
                       },
                       style: ButtonStyle(
                         backgroundColor: MaterialStateProperty.all<Color>(
-                            Colors.blue), // Set button background color
+                            Color(0xFF29B2FE)), // Set button background color
                         shape:
                             MaterialStateProperty.all<RoundedRectangleBorder>(
                           RoundedRectangleBorder(
-                            borderRadius: BorderRadius.circular(
-                                20.0), // Set border radius
+                            borderRadius:
+                                BorderRadius.circular(6.0), // Set border radius
                           ),
                         ),
+                        elevation: MaterialStateProperty.all<double>(
+                            0), // Set elevation
                       ),
                       child: const Text(
                         'Next',

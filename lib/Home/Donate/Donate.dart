@@ -1,4 +1,4 @@
-
+import 'package:cleaneo_vendor/Home/BotNav.dart';
 import 'package:cleaneo_vendor/Home/Donate/DonateSlider.dart';
 import 'package:cleaneo_vendor/Home/Home_/Home.dart';
 import 'package:flutter/material.dart';
@@ -39,15 +39,23 @@ class _DonateState extends State<Donate> {
                 child: Row(
                   children: [
                     InkWell(
-                      onTap: ()
-                      {
-                        Navigator.push(context, MaterialPageRoute(builder: (context){
+                      onTap: () {
+                        Navigator.push(context,
+                            MaterialPageRoute(builder: (context) {
                           return HomePage();
                         }));
                       },
-                      child: Icon(
-                        Icons.arrow_back,
-                        color: Colors.white,
+                      child: GestureDetector(
+                        onTap: () {
+                          Navigator.push(context,
+                              MaterialPageRoute(builder: (context) {
+                            return BotNav();
+                          }));
+                        },
+                        child: const Icon(
+                          Icons.arrow_back,
+                          color: Colors.white,
+                        ),
                       ),
                     ),
                     SizedBox(
@@ -56,7 +64,7 @@ class _DonateState extends State<Donate> {
                     Text(
                       "Donate",
                       style: TextStyle(
-                          fontSize: mQuery.size.height*0.027,
+                          fontSize: mQuery.size.height * 0.027,
                           color: Colors.white,
                           fontWeight: FontWeight.w700),
                     )
@@ -79,62 +87,70 @@ class _DonateState extends State<Donate> {
                       spreadRadius: 0.3,
                       blurRadius: 1,
                       offset:
-                      Offset(3, 3), // changes the position of the shadow
+                          Offset(3, 3), // changes the position of the shadow
                     ),
                   ],
                 ),
                 child: SingleChildScrollView(
-                  child:   Column(
+                  child: Column(
                     children: [
-                      SizedBox(height: mQuery.size.height*0.015,),
+                      SizedBox(
+                        height: mQuery.size.height * 0.015,
+                      ),
                       DonateSlider(),
-                      SizedBox(height: mQuery.size.height*0.014,),
+                      SizedBox(
+                        height: mQuery.size.height * 0.014,
+                      ),
                       Row(
                         children: [
                           Text(
                             "Donate for a better India",
                             style: TextStyle(
-                                fontSize: mQuery.size.height*0.024,
-                                fontWeight: FontWeight.w600
-                            ),
+                                fontSize: mQuery.size.height * 0.024,
+                                fontWeight: FontWeight.w600),
                           ),
                         ],
                       ),
-                      SizedBox(height: mQuery.size.height*0.02,),
+                      SizedBox(
+                        height: mQuery.size.height * 0.02,
+                      ),
                       Row(
                         children: [
                           Container(
-                            width: mQuery.size.width*0.9,
+                            width: mQuery.size.width * 0.9,
                             child: Text(
                               "Welcome to Donete, your gateway to impactful giving! Discover a diverse array of causes, from education to environmental conservation, all within our intuitive and secure platform. Easily track the real-time impact of your donations, connect with like-minded individuals, and engage in dynamic fundraising campaigns. Donete is more than a donation platform; it's a community fostering positive change. Join us today and make a lasting impact on the causes that matter most to you!",
                               textAlign: TextAlign.start,
                               style: TextStyle(
                                 color: Color(0xff6d6e73),
-                                fontSize: mQuery.size.height*0.015,
+                                fontSize: mQuery.size.height * 0.015,
                               ),
                             ),
                           ),
                         ],
                       ),
-                      SizedBox(height: mQuery.size.height*0.018,),
+                      SizedBox(
+                        height: mQuery.size.height * 0.018,
+                      ),
                       ElevatedButton(
-                        onPressed: ()
-                        {
+                        onPressed: () {
                           print('Button Pressed!');
                         },
                         style: ElevatedButton.styleFrom(
-                          primary: Color(0xFF009C1A),
-                          onPrimary: Colors.white,
+                          foregroundColor: Colors.white,
+                          backgroundColor: Color(0xFF009C1A),
                           shape: RoundedRectangleBorder(
                             borderRadius: BorderRadius.circular(8.0),
                           ),
                           elevation: 0,
                           minimumSize: Size(400.0, 50.0),
                         ),
-                        child: Text('Donate',style: TextStyle(
-                            fontSize: mQuery.size.height*0.023,
-                            fontWeight: FontWeight.w600
-                        ),),
+                        child: Text(
+                          'Donate',
+                          style: TextStyle(
+                              fontSize: mQuery.size.height * 0.023,
+                              fontWeight: FontWeight.w600),
+                        ),
                       ),
                     ],
                   ),

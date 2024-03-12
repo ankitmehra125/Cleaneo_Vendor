@@ -185,7 +185,6 @@ class _YourOrders2TextState extends State<YourOrders2Text> {
                         height: 8.0,
                       ),
                       Container(
-                          height: mQuery.size.height * 0.24,
                           margin: const EdgeInsets.only(bottom: 21.0),
                           decoration: BoxDecoration(
                             borderRadius: BorderRadius.circular(6),
@@ -317,7 +316,8 @@ class _YourOrders2TextState extends State<YourOrders2Text> {
                                       height: 5.0,
                                     ),
                                     Row(
-                                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                                      mainAxisAlignment:
+                                          MainAxisAlignment.spaceBetween,
                                       children: [
                                         Container(
                                           height: 25.0,
@@ -358,7 +358,10 @@ class _YourOrders2TextState extends State<YourOrders2Text> {
                                           ],
                                         )
                                       ],
-                                    )
+                                    ),
+                                    const SizedBox(
+                                      height: 16.0,
+                                    ),
                                   ],
                                 ),
                               ),

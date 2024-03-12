@@ -27,10 +27,10 @@ class _CustomerServicePageState extends State<CustomerServicePage> {
             SizedBox(height: mQuery.size.height * 0.034),
             Padding(
               padding: EdgeInsets.only(
-                top: mQuery.size.height*0.058,
-                bottom: mQuery.size.height*0.03,
-                left: mQuery.size.width*0.045,
-                right: mQuery.size.width*0.045,
+                top: mQuery.size.height * 0.058,
+                bottom: mQuery.size.height * 0.03,
+                left: mQuery.size.width * 0.045,
+                right: mQuery.size.width * 0.045,
               ),
               child: Row(
                 children: [
@@ -49,9 +49,10 @@ class _CustomerServicePageState extends State<CustomerServicePage> {
                   Text(
                     "Customer Service",
                     style: TextStyle(
-                        fontSize: mQuery.size.height*0.027,
-                        color: Colors.white,
-                      fontFamily: 'SatoshiBold',),
+                      fontSize: mQuery.size.height * 0.027,
+                      color: Colors.white,
+                      fontFamily: 'SatoshiBold',
+                    ),
                   )
                 ],
               ),
@@ -117,9 +118,10 @@ class _CustomerServicePageState extends State<CustomerServicePage> {
                               Text(
                                 "OR",
                                 style: TextStyle(
-                                    fontSize: mQuery.size.height*0.02,
-                                    color: Colors.grey,
-                                  fontFamily: 'SatoshiMedium',),
+                                  fontSize: mQuery.size.height * 0.02,
+                                  color: Colors.grey,
+                                  fontFamily: 'SatoshiMedium',
+                                ),
                               ),
                               SizedBox(
                                 width: mQuery.size.width * 0.05,
@@ -138,7 +140,7 @@ class _CustomerServicePageState extends State<CustomerServicePage> {
                           "Write to us",
                           style: TextStyle(
                               fontFamily: 'SatoshiMedium',
-                              fontSize: mQuery.size.height*0.02),
+                              fontSize: mQuery.size.height * 0.02),
                         ),
                         SizedBox(height: mQuery.size.height * 0.023),
                         FeedbackContainer(
@@ -159,9 +161,9 @@ class _CustomerServicePageState extends State<CustomerServicePage> {
                             // Handle submission
                           },
                           style: ElevatedButton.styleFrom(
-                            primary: Color(0xff29b2fe),
-                            minimumSize:
-                            Size(double.infinity, mQuery.size.height * 0.06),
+                            backgroundColor: Color(0xff29b2fe),
+                            minimumSize: Size(
+                                double.infinity, mQuery.size.height * 0.06),
                             shape: RoundedRectangleBorder(
                               borderRadius: BorderRadius.circular(6),
                             ),
@@ -169,9 +171,10 @@ class _CustomerServicePageState extends State<CustomerServicePage> {
                           child: Text(
                             "Submit",
                             style: TextStyle(
-                                fontSize: mQuery.size.height*0.023,
-                                color: Colors.white,
-                              fontFamily: 'SatoshiBold',),
+                              fontSize: mQuery.size.height * 0.023,
+                              color: Colors.white,
+                              fontFamily: 'SatoshiBold',
+                            ),
                           ),
                         ),
                       ],
@@ -257,8 +260,6 @@ class ContactInfoWidget extends StatelessWidget {
       );
     }
   }
-
-
 
   Future<void> _launchPhone(BuildContext context, String phoneNumber) async {
     final Uri _phoneLaunchUri = Uri(

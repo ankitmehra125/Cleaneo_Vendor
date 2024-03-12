@@ -1,5 +1,6 @@
 import 'dart:io';
 
+import 'package:cleaneo_vendor/Home/Drawer.dart';
 import 'package:cleaneo_vendor/Home/Earnings/Components/RowofThreeText.dart';
 import 'package:cleaneo_vendor/Home/BotNav.dart';
 import 'package:cleaneo_vendor/Screens/Vendor_Onboarding/uploadAdhaar.dart';
@@ -19,6 +20,8 @@ class _MyEarningsState extends State<MyEarnings> {
   TextEditingController storeNameController = TextEditingController();
   TextEditingController addressController = TextEditingController();
   TextEditingController gstinController = TextEditingController();
+
+  final GlobalKey<ScaffoldState> _scaffoldKey = GlobalKey<ScaffoldState>();
 
   List<Map<String, dynamic>> orders = [
     {
@@ -43,6 +46,8 @@ class _MyEarningsState extends State<MyEarnings> {
   Widget build(BuildContext context) {
     var mQuery = MediaQuery.of(context);
     return Scaffold(
+      key: _scaffoldKey,
+      drawer: MyDrawer(),
       body: Container(
         width: double.infinity,
         decoration: const BoxDecoration(
@@ -56,9 +61,14 @@ class _MyEarningsState extends State<MyEarnings> {
                   top: 45, left: 16, right: 16, bottom: 20),
               child: Row(
                 children: [
-                  const Icon(
-                    Icons.menu,
-                    color: Colors.white,
+                  GestureDetector(
+                    onTap: () {
+                      _scaffoldKey.currentState!.openDrawer();
+                    },
+                    child: const Icon(
+                      Icons.menu,
+                      color: Colors.white,
+                    ),
                   ),
                   SizedBox(
                     width: mQuery.size.width * 0.045,
@@ -97,9 +107,7 @@ class _MyEarningsState extends State<MyEarnings> {
                     SizedBox(
                       height: 20.0,
                     ),
-
                     Expanded(child: NavigationWithTabs())
-                   
                   ],
                 ),
               ),

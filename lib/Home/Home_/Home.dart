@@ -1,6 +1,7 @@
 import 'package:cleaneo_vendor/Home/CashCollected/CashCollected.dart';
 import 'package:cleaneo_vendor/Home/Drawer.dart';
 import 'package:cleaneo_vendor/Home/Earnings/MyEarnings.dart';
+import 'package:cleaneo_vendor/Home/EditProfile/MyProfile.dart';
 import 'package:cleaneo_vendor/Home/Ledger/Ledger.dart';
 import 'package:cleaneo_vendor/Home/OrderRequests/OrderRequests.dart';
 import 'package:cleaneo_vendor/Home/OrderStatus/OrderStatus.dart';
@@ -64,14 +65,12 @@ class _HomePageState extends State<HomePage> {
     // Add more image filenames as needed
   ];
 
-  bool _enable = false;
-
   @override
   Widget build(BuildContext context) {
     var mQuery = MediaQuery.of(context);
 
     return Scaffold(
-      drawer: MyDrawer(),
+      drawer: const MyDrawer(),
       body: Container(
         color: const Color(0xfff3fbff),
         child: Column(
@@ -79,7 +78,7 @@ class _HomePageState extends State<HomePage> {
             Container(
               padding: const EdgeInsets.only(top: 32, bottom: 25),
               width: double.infinity,
-              height: mQuery.size.height * 0.38,
+              height: mQuery.size.height * 0.4,
               decoration: const BoxDecoration(
                 borderRadius: BorderRadius.only(
                   bottomRight: Radius.circular(20),
@@ -117,16 +116,16 @@ class _HomePageState extends State<HomePage> {
                         ),
                         const Expanded(child: SizedBox()),
                         GestureDetector(
-                          // onTap: () {
-                          //   Navigator.push(
-                          //     context,
-                          //     MaterialPageRoute(
-                          //       builder: (context) {
-                          //         return MyProfilePage();
-                          //       },
-                          //     ),
-                          //   );
-                          // },
+                          onTap: () {
+                            Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                builder: (context) {
+                                  return MyProfilePage();
+                                },
+                              ),
+                            );
+                          },
                           child: const ProfilePicture(
                             name: "",
                             radius: 18,
@@ -259,7 +258,7 @@ class _HomePageState extends State<HomePage> {
                         child: Container(
                           margin: const EdgeInsets.symmetric(horizontal: 12),
                           padding:
-                              EdgeInsets.only(top: mQuery.size.height * 0.046),
+                              EdgeInsets.only(top: mQuery.size.height * 0.01),
                           decoration: BoxDecoration(
                             borderRadius: BorderRadius.circular(16),
                             color: Colors.white,

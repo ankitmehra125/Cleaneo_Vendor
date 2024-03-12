@@ -1,10 +1,8 @@
-import 'dart:io';
+import 'package:cleaneo_vendor/Home/Drawer.dart';
 import 'package:cleaneo_vendor/Home/Notifications/Components/notiData.dart';
 import 'package:cleaneo_vendor/Home/Notifications/Components/reportDispute.dart';
-import 'package:cleaneo_vendor/Home/OrderRequests/RejectOrder.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
-import 'package:flutter_svg/svg.dart';
 
 class Notifications extends StatefulWidget {
   const Notifications({Key? key}) : super(key: key);
@@ -14,10 +12,14 @@ class Notifications extends StatefulWidget {
 }
 
 class _NotificationsState extends State<Notifications> {
+  final GlobalKey<ScaffoldState> _scaffoldKey = GlobalKey<ScaffoldState>();
+
   @override
   Widget build(BuildContext context) {
     var mQuery = MediaQuery.of(context);
     return Scaffold(
+      key: _scaffoldKey,
+      drawer: MyDrawer(),
       body: Container(
         width: double.infinity,
         decoration: const BoxDecoration(
@@ -30,25 +32,28 @@ class _NotificationsState extends State<Notifications> {
               padding: const EdgeInsets.only(
                   top: 45, left: 16, right: 16, bottom: 20),
               child: Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
-                  const Icon(
-                    Icons.menu,
-                    color: Colors.white,
+                  GestureDetector(
+                    onTap: () {
+                      _scaffoldKey.currentState!.openDrawer();
+                    },
+                    child: const Icon(
+                      Icons.menu,
+                      color: Colors.white,
+                    ),
                   ),
-                  SizedBox(
-                    width: mQuery.size.width * 0.045,
+                  const Text(
+                    "Notifications",
+                    style: TextStyle(
+                        fontSize: 20,
+                        color: Colors.white,
+                        fontWeight: FontWeight.w700),
                   ),
                   Row(
                     children: [
-                      const Text(
-                        "Notifications",
-                        style: TextStyle(
-                            fontSize: 20,
-                            color: Colors.white,
-                            fontWeight: FontWeight.w700),
-                      ),
                       SizedBox(
-                        width: mQuery.size.width * 0.38,
+                        width: mQuery.size.width * 0.3,
                       ),
                       const Text(
                         "Clear All",
@@ -135,7 +140,6 @@ class _NotificationsState extends State<Notifications> {
                                     color: Colors.white,
                                   ),
                                   width: double.infinity,
-                                  height: mQuery.size.height * 0.06,
                                   padding: EdgeInsets.symmetric(
                                       horizontal: mQuery.size.width * 0.03),
                                   child: Row(
@@ -158,7 +162,7 @@ class _NotificationsState extends State<Notifications> {
                                                 ? Text(
                                                     "Order ${data["ordernumber"]} Received Succesfully",
                                                     style: const TextStyle(
-                                                        fontSize: 11,
+                                                        fontSize: 10,
                                                         fontWeight:
                                                             FontWeight.w400,
                                                         color: Colors.black),
@@ -246,8 +250,8 @@ class _NotificationsState extends State<Notifications> {
                                   height: mQuery.size.height * 0.01,
                                 ),
                                 if (data["notitype"] == 'Order Received')
-                                  GestureDetector( 
-                                    onTap: () { 
+                                  GestureDetector(
+                                    onTap: () {
                                       Navigator.push(context,
                                           MaterialPageRoute(builder: (context) {
                                         return const ReportDispute();

@@ -1,6 +1,7 @@
 import 'dart:io';
 
 import 'package:cleaneo_vendor/Home/CashCollected/Components/RowofTwoText.dart';
+import 'package:cleaneo_vendor/Home/Drawer.dart';
 import 'package:cleaneo_vendor/Home/Earnings/Components/RowofThreeText.dart';
 import 'package:cleaneo_vendor/Home/BotNav.dart';
 import 'package:cleaneo_vendor/Screens/Vendor_Onboarding/uploadAdhaar.dart';
@@ -20,6 +21,8 @@ class _CashCollectedState extends State<CashCollected> {
   TextEditingController storeNameController = TextEditingController();
   TextEditingController addressController = TextEditingController();
   TextEditingController gstinController = TextEditingController();
+
+  final GlobalKey<ScaffoldState> _scaffoldKey = GlobalKey<ScaffoldState>();
 
   List<Map<String, dynamic>> orders = [
     {
@@ -44,6 +47,8 @@ class _CashCollectedState extends State<CashCollected> {
   Widget build(BuildContext context) {
     var mQuery = MediaQuery.of(context);
     return Scaffold(
+      key: _scaffoldKey,
+      drawer: MyDrawer(),
       body: Container(
         width: double.infinity,
         decoration: const BoxDecoration(
@@ -57,14 +62,19 @@ class _CashCollectedState extends State<CashCollected> {
                   top: 45, left: 16, right: 16, bottom: 20),
               child: Row(
                 children: [
-                  const Icon(
-                    Icons.menu,
-                    color: Colors.white,
+                  GestureDetector(
+                    onTap: () {
+                      _scaffoldKey.currentState!.openDrawer();
+                    },
+                    child: const Icon(
+                      Icons.menu,
+                      color: Colors.white,
+                    ),
                   ),
                   SizedBox(
                     width: mQuery.size.width * 0.045,
                   ),
-                  Row( 
+                  Row(
                     children: [
                       const Text(
                         "Cash Collected",
@@ -74,14 +84,7 @@ class _CashCollectedState extends State<CashCollected> {
                             fontWeight: FontWeight.w700),
                       ),
                       SizedBox(
-                        width: mQuery.size.width * 0.15,
-                      ),
-                      const Text(
-                        "This Month : 500.00",
-                        style: TextStyle(
-                            fontSize: 14,
-                            color: Colors.white,
-                            fontWeight: FontWeight.w400),
+                        width: mQuery.size.width * 0.2,
                       ),
                     ],
                   )

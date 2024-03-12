@@ -1,6 +1,7 @@
 import 'package:cleaneo_vendor/Home/BotNav.dart';
 import 'package:cleaneo_vendor/Home/CashCollected/CashCollected.dart';
 import 'package:cleaneo_vendor/Home/Earnings/MyEarnings.dart';
+import 'package:cleaneo_vendor/Home/EditProfile/MyProfile.dart';
 import 'package:cleaneo_vendor/Home/Help/Help.dart';
 import 'package:cleaneo_vendor/Home/Ledger/Ledger.dart';
 import 'package:cleaneo_vendor/Home/Notifications/Notifications.dart';
@@ -8,6 +9,7 @@ import 'package:cleaneo_vendor/Home/OrderRequests/OrderRequests.dart';
 import 'package:cleaneo_vendor/Home/OrderStatus/OrderStatus.dart';
 import 'package:cleaneo_vendor/Home/YourOrders/YourOrders.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/widgets.dart';
 import 'package:flutter_profile_picture/flutter_profile_picture.dart';
 
 class MyDrawer extends StatefulWidget {
@@ -43,12 +45,12 @@ class _MyDrawerState extends State<MyDrawer> {
                           mainAxisAlignment: MainAxisAlignment.start,
                           children: [
                             GestureDetector(
-                              // onTap: ()
-                              // {
-                              //   Navigator.push(context, MaterialPageRoute(builder: (context){
-                              //     return MyProfilePage();
-                              //   }));
-                              // },
+                              onTap: () {
+                                Navigator.push(context,
+                                    MaterialPageRoute(builder: (context) {
+                                  return MyProfilePage();
+                                }));
+                              },
                               child: const ProfilePicture(
                                 name: "",
                                 radius: 20,
@@ -60,78 +62,87 @@ class _MyDrawerState extends State<MyDrawer> {
                             SizedBox(
                               width: mQuery.size.width * 0.024,
                             ),
-                            Column(
-                              crossAxisAlignment: CrossAxisAlignment.start,
-                              children: [
-                                Row(
-                                  children: [
-                                    SizedBox(
-                                      height: mQuery.size.height * 0.02,
-                                    ),
-                                    Text(
-                                      "Shweta Somaiya",
-                                      style: TextStyle(
-                                          fontSize: mQuery.size.height * 0.02,
-                                          fontWeight: FontWeight.w600),
-                                    ),
-                                    SizedBox(
-                                      width: mQuery.size.width * 0.2,
-                                    ),
-                                    GestureDetector(
-                                      // onTap: ()
-                                      // {
-                                      //   Navigator.push(context, MaterialPageRoute(builder: (context){
-                                      //     return MyProfilePage();
-                                      //   }));
-                                      // },
-                                      child: Container(
-                                        padding:
-                                            const EdgeInsets.only(right: 10.0),
-                                        child: Image.asset(
-                                            "assets/images/drawer-images/edit.png",
-                                            color: const Color(0xff29b2fe),
-                                            width: mQuery.size.width * 0.04),
+                            GestureDetector(
+                              onTap: () {
+                                Navigator.push(context,
+                                    MaterialPageRoute(builder: (context) {
+                                  return MyProfilePage();
+                                }));
+                              },
+                              child: Column(
+                                crossAxisAlignment: CrossAxisAlignment.start,
+                                children: [
+                                  Row(
+                                    children: [
+                                      SizedBox(
+                                        height: mQuery.size.height * 0.02,
                                       ),
-                                    )
-                                  ],
-                                ),
-                                Row(
-                                  mainAxisAlignment: MainAxisAlignment.start,
-                                  children: [
-                                    Icon(
-                                      Icons.phone_android,
-                                      size: mQuery.size.width * 0.04,
-                                    ),
-                                    const SizedBox(
-                                      width: 5.0,
-                                    ),
-                                    Text(
-                                      "(+91) 9978997899",
-                                      style: TextStyle(
-                                        fontSize: mQuery.size.height * 0.015,
+                                      Text(
+                                        "Shweta Somaiya",
+                                        style: TextStyle(
+                                            fontSize: mQuery.size.height * 0.02,
+                                            fontWeight: FontWeight.w600),
                                       ),
-                                    ),
-                                    SizedBox(
-                                      width: mQuery.size.width * 0.02,
-                                    ),
-                                    Container(
-                                      width: mQuery.size.width * 0.03,
-                                      height: mQuery.size.height * 0.03,
-                                      decoration: const BoxDecoration(
-                                        color: Colors.green,
-                                        shape: BoxShape.circle,
+                                      SizedBox(
+                                        width: mQuery.size.width * 0.2,
                                       ),
-                                      child: const Center(
-                                        child: Icon(
-                                          Icons.check,
-                                          color: Colors.white,
-                                          size: 10,
+                                      GestureDetector(
+                                        onTap: () {
+                                          Navigator.push(context,
+                                              MaterialPageRoute(
+                                                  builder: (context) {
+                                            return MyProfilePage();
+                                          }));
+                                        },
+                                        child: Container(
+                                          padding: const EdgeInsets.only(
+                                              right: 20.0),
+                                          child: Image.asset(
+                                              "assets/images/drawer-images/edit.png",
+                                              color: const Color(0xff29b2fe),
+                                              width: mQuery.size.width * 0.04),
+                                        ),
+                                      )
+                                    ],
+                                  ),
+                                  Row(
+                                    mainAxisAlignment: MainAxisAlignment.start,
+                                    children: [
+                                      Icon(
+                                        Icons.phone_android,
+                                        size: mQuery.size.width * 0.04,
+                                      ),
+                                      const SizedBox(
+                                        width: 5.0,
+                                      ),
+                                      Text(
+                                        "(+91) 9978997899",
+                                        style: TextStyle(
+                                          fontSize: mQuery.size.height * 0.015,
                                         ),
                                       ),
-                                    )
-                                  ],
-                                )
-                              ],
+                                      SizedBox(
+                                        width: mQuery.size.width * 0.02,
+                                      ),
+                                      Container(
+                                        width: mQuery.size.width * 0.03,
+                                        height: mQuery.size.height * 0.03,
+                                        decoration: const BoxDecoration(
+                                          color: Colors.green,
+                                          shape: BoxShape.circle,
+                                        ),
+                                        child: const Center(
+                                          child: Icon(
+                                            Icons.check,
+                                            color: Colors.white,
+                                            size: 10,
+                                          ),
+                                        ),
+                                      )
+                                    ],
+                                  )
+                                ],
+                              ),
                             ),
                           ],
                         ),
@@ -325,6 +336,27 @@ class _MyDrawerState extends State<MyDrawer> {
                                 width: mQuery.size.width * 0.06),
                             title: Text(
                               "Ledger",
+                              style: TextStyle(
+                                fontWeight: FontWeight.w600,
+                                fontSize: mQuery.size.height * 0.0212,
+                              ),
+                            ),
+                          ),
+                        ),
+                        GestureDetector(
+                          onTap: () {
+                            Navigator.push(context,
+                                MaterialPageRoute(builder: (context) {
+                              return CustomerServicePage();
+                            }));
+                          },
+                          child: ListTile(
+                            leading: Image.asset(
+                                "assets/images/drawer-images/help.png",
+                                color: const Color(0xff29b2fe),
+                                width: mQuery.size.width * 0.06),
+                            title: Text(
+                              "Training Modules",
                               style: TextStyle(
                                 fontWeight: FontWeight.w600,
                                 fontSize: mQuery.size.height * 0.0212,

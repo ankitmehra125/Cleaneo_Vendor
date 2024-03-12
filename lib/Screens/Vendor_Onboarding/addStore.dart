@@ -1,6 +1,6 @@
 import 'package:cleaneo_vendor/Screens/Vendor_Onboarding/storePics.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_svg/flutter_svg.dart';
+import 'package:flutter/widgets.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 class StoreDetailsPage extends StatefulWidget {
@@ -34,9 +34,14 @@ class _StoreDetailsPageState extends State<StoreDetailsPage> {
                   top: 45, left: 16, right: 16, bottom: 20),
               child: Row(
                 children: [
-                  const Icon(
-                    Icons.arrow_back,
-                    color: Colors.white,
+                  GestureDetector(
+                    onTap: () {
+                      Navigator.pop(context);
+                    },
+                    child: const Icon(
+                      Icons.arrow_back,
+                      color: Colors.white,
+                    ),
                   ),
                   SizedBox(
                     width: mQuery.size.width * 0.045,
@@ -111,7 +116,7 @@ class _StoreDetailsPageState extends State<StoreDetailsPage> {
                               enabledBorder: InputBorder.none,
                               hintText: "Name of the Store",
                               hintStyle: TextStyle(
-                                  fontSize: 13,
+                                  fontSize: 14,
                                   fontWeight: FontWeight.w600,
                                   color: Color(0xffABAFB1)),
                             ),
@@ -145,7 +150,7 @@ class _StoreDetailsPageState extends State<StoreDetailsPage> {
                               enabledBorder: InputBorder.none,
                               hintText: "Address",
                               hintStyle: TextStyle(
-                                  fontSize: 13,
+                                  fontSize: 14,
                                   fontWeight: FontWeight.w600,
                                   color: Color(0xffABAFB1)),
                             ),
@@ -179,7 +184,7 @@ class _StoreDetailsPageState extends State<StoreDetailsPage> {
                               enabledBorder: InputBorder.none,
                               hintText: "GSTIN",
                               hintStyle: TextStyle(
-                                  fontSize: 13,
+                                  fontSize: 14,
                                   fontWeight: FontWeight.w600,
                                   color: Color(0xffABAFB1)),
                             ),
@@ -266,20 +271,20 @@ class _StoreDetailsPageState extends State<StoreDetailsPage> {
                         SizedBox(
                           height: mQuery.size.height * 0.087,
                         ),
-                        Container(
-                          width: double.infinity,
-                          height: mQuery.size.height * 0.06,
-                          decoration: BoxDecoration(
-                              color: const Color(0xff29b2fe),
-                              borderRadius: BorderRadius.circular(6)),
-                          child: Center(
-                            child: GestureDetector(
-                              onTap: ()
-                              {
-                                Navigator.push(context, MaterialPageRoute(builder: (context){
-                                  return StorePics();
-                                }));
-                              },
+                        GestureDetector(
+                          onTap: () {
+                            Navigator.push(context,
+                                MaterialPageRoute(builder: (context) {
+                              return StorePics();
+                            }));
+                          },
+                          child: Container(
+                            width: double.infinity,
+                            height: mQuery.size.height * 0.06,
+                            decoration: BoxDecoration(
+                                color: const Color(0xff29b2fe),
+                                borderRadius: BorderRadius.circular(6)),
+                            child: Center(
                               child: const Text(
                                 "Next",
                                 style: TextStyle(
@@ -366,7 +371,7 @@ class _StoreDetailsPageState extends State<StoreDetailsPage> {
                 ? const Icon(
                     Icons.check,
                     color: Colors.white,
-                    size: 20,
+                    size: 14,
                   )
                 : null,
           ),

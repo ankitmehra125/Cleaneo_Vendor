@@ -2,7 +2,6 @@ import 'package:cleaneo_vendor/Screens/Auth/Login.dart';
 import 'package:cleaneo_vendor/Screens/Vendor_Onboarding/addStore.dart';
 import 'package:flutter/material.dart';
 import 'package:pinput/pinput.dart';
-import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 class OTPPage extends StatefulWidget {
   const OTPPage({Key? key}) : super(key: key);
@@ -15,6 +14,7 @@ class _OTPPageState extends State<OTPPage> {
   late List<TextEditingController> controllers;
   late List<FocusNode> focusNodes;
   int focusedIndex = -1;
+  var phoneNo = "+91 9793878788";
 
   @override
   void initState() {
@@ -35,21 +35,22 @@ class _OTPPageState extends State<OTPPage> {
   Widget build(BuildContext context) {
     var mQuery = MediaQuery.of(context);
     final defaultPinTheme = PinTheme(
-      width: mQuery.size.width * 0.23,
-      height: mQuery.size.height * 0.1,
-      decoration: BoxDecoration(
-        color: Colors.white,
-        borderRadius: BorderRadius.circular(8),
-        boxShadow: [
-          BoxShadow(
-            color: Colors.grey.withOpacity(0.45),
-            spreadRadius: 0,
-            blurRadius: 10,
-            offset: const Offset(0, 0), // changes the position of the shadow
-          ),
-        ],
-      ),
-    );
+        width: mQuery.size.width * 0.23,
+        height: mQuery.size.height * 0.1,
+        decoration: BoxDecoration(
+          color: Colors.white,
+          borderRadius: BorderRadius.circular(8),
+          boxShadow: [
+            BoxShadow(
+              color: Colors.grey.withOpacity(0.45),
+              spreadRadius: 0,
+              blurRadius: 10,
+              offset: const Offset(0, 0), // changes the position of the shadow
+            ),
+          ],
+        ),
+        textStyle: TextStyle(
+            fontSize: mQuery.size.height * 0.04, fontWeight: FontWeight.w500));
     return Scaffold(
       body: Container(
         width: double.infinity,
@@ -60,16 +61,20 @@ class _OTPPageState extends State<OTPPage> {
           children: [
             SizedBox(height: mQuery.size.height * 0.034),
             Padding(
-              padding: const EdgeInsets.only(
-                  top: 45, left: 16, right: 16, bottom: 20),
+              padding: EdgeInsets.only(
+                top: mQuery.size.height * 0.058,
+                bottom: mQuery.size.height * 0.03,
+                left: mQuery.size.width * 0.045,
+                right: mQuery.size.width * 0.045,
+              ),
               child: Row(
                 children: [
                   GestureDetector(
                     onTap: () {
                       Navigator.push(context,
                           MaterialPageRoute(builder: (context) {
-                            return const LoginPage();
-                          }));
+                        return const LoginPage();
+                      }));
                     },
                     child: const Icon(
                       Icons.arrow_back,
@@ -80,11 +85,11 @@ class _OTPPageState extends State<OTPPage> {
                     width: mQuery.size.width * 0.045,
                   ),
                   Text(
-                    AppLocalizations.of(context)!.verifyphonenumber,
+                    "Verify Phone Number",
                     style: TextStyle(
-                        fontSize: mQuery.size.height*0.027,
+                        fontSize: mQuery.size.height * 0.027,
                         color: Colors.white,
-                        fontWeight: FontWeight.w700),
+                        fontFamily: 'SatoshiBold'),
                   )
                 ],
               ),
@@ -101,22 +106,22 @@ class _OTPPageState extends State<OTPPage> {
                 child: SingleChildScrollView(
                   child: Padding(
                     padding:
-                    const EdgeInsets.only(left: 16, right: 16, top: 16),
+                        const EdgeInsets.only(left: 16, right: 16, top: 16),
                     child: Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
                         Text(
-                         AppLocalizations.of(context)!.fourdigitcode,
+                          "Enter 4 Digit Code",
                           style: TextStyle(
-                              fontSize: mQuery.size.height*0.0215,
-                              fontWeight: FontWeight.w800),
+                              fontSize: mQuery.size.height * 0.0215,
+                              fontFamily: 'SatoshiBold'),
                         ),
-                        SizedBox(height: mQuery.size.height * 0.01),
+                        SizedBox(height: mQuery.size.height * 0.006),
                         Text(
-                          "Sent to +91 9793878788",
+                          "Sent to $phoneNo",
                           style: TextStyle(
-                              fontSize: mQuery.size.height*0.02,
-                              fontWeight: FontWeight.w600,
+                              fontSize: mQuery.size.height * 0.018,
+                              fontFamily: 'SatoshiRegular',
                               color: Colors.black87),
                         ),
                         SizedBox(height: mQuery.size.height * 0.04),
@@ -126,25 +131,25 @@ class _OTPPageState extends State<OTPPage> {
                         ),
                         SizedBox(height: mQuery.size.height * 0.1),
                         Text(
-                           AppLocalizations.of(context)!.problemreceivingthecode,
+                          "Problems receiving the code?",
                           style: TextStyle(
-                              fontSize: mQuery.size.height*0.02,
-                              fontWeight: FontWeight.w600),
+                              fontSize: mQuery.size.height * 0.018,
+                              fontFamily: 'SatoshiBold'),
                         ),
                         SizedBox(height: mQuery.size.height * 0.008),
                         Row(
                           children: [
                             const Icon(
                               Icons.refresh,
-                              color: Colors.cyan,
+                              color: Color(0xff29b2fe),
                             ),
                             SizedBox(width: mQuery.size.width * 0.015),
                             Text(
-                             AppLocalizations.of(context)!.resendcode,
+                              "RESEND",
                               style: TextStyle(
-                                  color: Colors.cyan,
-                                  fontSize: mQuery.size.height*0.02,
-                                  fontWeight: FontWeight.w600),
+                                  color: const Color(0xff29b2fe),
+                                  fontSize: mQuery.size.height * 0.018,
+                                  fontFamily: 'SatoshiBold'),
                             )
                           ],
                         ),
@@ -153,8 +158,8 @@ class _OTPPageState extends State<OTPPage> {
                           onTap: () {
                             Navigator.push(context,
                                 MaterialPageRoute(builder: (context) {
-                                  return StoreDetailsPage();
-                                }));
+                              return const StoreDetailsPage();
+                            }));
                           },
                           child: Container(
                             width: double.infinity,
@@ -164,11 +169,11 @@ class _OTPPageState extends State<OTPPage> {
                                 borderRadius: BorderRadius.circular(6)),
                             child: Center(
                               child: Text(
-                                AppLocalizations.of(context)!.verify,
+                                "Verify",
                                 style: TextStyle(
-                                    fontSize: mQuery.size.height*0.022,
+                                    fontSize: mQuery.size.height * 0.023,
                                     color: Colors.white,
-                                    fontWeight: FontWeight.w600),
+                                    fontFamily: 'SatoshiBold'),
                               ),
                             ),
                           ),
@@ -191,7 +196,10 @@ class OTPBox extends StatelessWidget {
   final FocusNode focusNode;
   final bool isFocused;
 
-  OTPBox({required this.controller, required this.focusNode, required this.isFocused});
+  OTPBox(
+      {required this.controller,
+      required this.focusNode,
+      required this.isFocused});
 
   @override
   Widget build(BuildContext context) {
@@ -210,8 +218,7 @@ class OTPBox extends StatelessWidget {
           counterText: "",
           border: OutlineInputBorder(
               borderRadius: BorderRadius.circular(8),
-              borderSide: BorderSide.none
-          ),
+              borderSide: BorderSide.none),
         ),
       ),
     );

@@ -1,11 +1,13 @@
 import 'dart:io';
- 
+
 import 'package:cleaneo_vendor/Home/CashCollected/Components/RowofTwoText.dart';
+import 'package:cleaneo_vendor/Home/Drawer.dart';
 import 'package:cleaneo_vendor/Home/Earnings/Components/RowofThreeText.dart';
 import 'package:cleaneo_vendor/Home/BotNav.dart';
 import 'package:cleaneo_vendor/Home/YourOrders/Components/Rowof2Text.dart';
 import 'package:cleaneo_vendor/Screens/Vendor_Onboarding/uploadAdhaar.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/widgets.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:image_picker/image_picker.dart';
@@ -21,6 +23,8 @@ class _YourOrdersState extends State<YourOrders> {
   TextEditingController storeNameController = TextEditingController();
   TextEditingController addressController = TextEditingController();
   TextEditingController gstinController = TextEditingController();
+
+  final GlobalKey<ScaffoldState> _scaffoldKey = GlobalKey<ScaffoldState>();
 
   List<Map<String, dynamic>> orders = [
     {
@@ -45,6 +49,8 @@ class _YourOrdersState extends State<YourOrders> {
   Widget build(BuildContext context) {
     var mQuery = MediaQuery.of(context);
     return Scaffold(
+      key: _scaffoldKey,
+      drawer: MyDrawer(),
       body: Container(
         width: double.infinity,
         decoration: const BoxDecoration(
@@ -58,14 +64,19 @@ class _YourOrdersState extends State<YourOrders> {
                   top: 45, left: 16, right: 16, bottom: 20),
               child: Row(
                 children: [
-                  const Icon(
-                    Icons.menu,
-                    color: Colors.white,
+                  GestureDetector(
+                    onTap: () {
+                      _scaffoldKey.currentState!.openDrawer();
+                    },
+                    child: const Icon(
+                      Icons.menu,
+                      color: Colors.white,
+                    ),
                   ),
                   SizedBox(
                     width: mQuery.size.width * 0.045,
                   ),
-                  const Row( 
+                  const Row(
                     children: [
                       Text(
                         "Your Orders",
@@ -74,14 +85,13 @@ class _YourOrdersState extends State<YourOrders> {
                             color: Colors.white,
                             fontWeight: FontWeight.w700),
                       ),
-                      
                     ],
                   )
                 ],
               ),
             ),
             Expanded(
-              child: Container( 
+              child: Container(
                 width: double.infinity,
                 decoration: BoxDecoration(
                   color: Colors.white,
