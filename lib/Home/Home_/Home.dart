@@ -78,7 +78,7 @@ class _HomePageState extends State<HomePage> {
             Container(
               padding: const EdgeInsets.only(top: 32, bottom: 25),
               width: double.infinity,
-              height: mQuery.size.height * 0.4,
+              height: mQuery.size.height * 0.38,
               decoration: const BoxDecoration(
                 borderRadius: BorderRadius.only(
                   bottomRight: Radius.circular(20),
@@ -151,7 +151,7 @@ class _HomePageState extends State<HomePage> {
                               AppLocalizations.of(context)!.welcomeback,
                               style: const TextStyle(
                                 color: Colors.white,
-                                fontSize: 35,
+                                fontSize: 27,
                                 fontWeight: FontWeight.w800,
                               ),
                             ),
@@ -170,8 +170,8 @@ class _HomePageState extends State<HomePage> {
                           "Shweta",
                           style: TextStyle(
                             color: Colors.white,
-                            fontWeight: FontWeight.bold,
-                            fontSize: mQuery.size.height * 0.03,
+                            fontWeight: FontWeight.w500,
+                            fontSize: mQuery.size.height * 0.02,
                           ),
                         ),
                         Row(
