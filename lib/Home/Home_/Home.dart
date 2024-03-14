@@ -76,9 +76,9 @@ class _HomePageState extends State<HomePage> {
         child: Column(
           children: [
             Container(
-              padding: const EdgeInsets.only(top: 32, bottom: 25),
+              padding: const EdgeInsets.only(top: 16),
               width: double.infinity,
-              height: mQuery.size.height * 0.38,
+              height: mQuery.size.height * 0.34,
               decoration: const BoxDecoration(
                 borderRadius: BorderRadius.only(
                   bottomRight: Radius.circular(20),
@@ -140,7 +140,7 @@ class _HomePageState extends State<HomePage> {
                   Column(
                     children: [
                       SizedBox(
-                        height: mQuery.size.height * 0.035,
+                        height: mQuery.size.height * 0.03,
                       ),
                       Container(
                         margin: const EdgeInsets.symmetric(horizontal: 16),
@@ -151,7 +151,7 @@ class _HomePageState extends State<HomePage> {
                               AppLocalizations.of(context)!.welcomeback,
                               style: const TextStyle(
                                 color: Colors.white,
-                                fontSize: 27,
+                                fontSize: 20,
                                 fontWeight: FontWeight.w800,
                               ),
                             ),
@@ -160,7 +160,6 @@ class _HomePageState extends State<HomePage> {
                       ),
                     ],
                   ),
-                  const Spacer(),
                   Container(
                     padding: const EdgeInsets.only(left: 16, right: 16),
                     child: Row(
@@ -176,35 +175,44 @@ class _HomePageState extends State<HomePage> {
                         ),
                         Row(
                           children: [
-                            FlutterSwitch(
-                              activeColor: Colors.green,
-                              inactiveColor: Colors.white,
-                              activeToggleColor: Colors.white,
-                              inactiveToggleColor: Colors.black38,
-                              inactiveText: "Offline",
-                              activeText: "Online",
-                              inactiveTextColor: Colors.black38,
-                              activeTextColor: Colors.white,
-                              width: mQuery.size.height * 0.11,
-                              height: mQuery.size.height * 0.04,
-                              valueFontSize: 12.0,
-                              toggleSize: 30.0,
-                              value: status,
-                              borderRadius: 30.0,
-                              padding: 5.0,
-                              showOnOff: true,
-                              onToggle: (val) {
-                                setState(() {
-                                  status = val;
-                                });
-                              },
+                            Text(
+                              status ? 'Online' : 'Offline',
+                              style: TextStyle(
+                                  color: Colors.white,
+                                  fontSize: 17
+                              ),
                             ),
+                            SizedBox(width: mQuery.size.width*0.012,),
+                            Transform.scale(
+                              scale: 0.9,
+                              child: Switch(
+                                value: status,
+                                activeTrackColor: Colors.white,
+                                onChanged: (newValue) {
+                                  setState(() {
+                                    status = newValue;
+                                  });
+                                },
+                                thumbColor: MaterialStateProperty.resolveWith<Color?>(
+                                      (Set<MaterialState> states) {
+                                    // Set thumb color to green when switch is active (on)
+                                    if (states.contains(MaterialState.selected)) {
+                                      return Colors.green;
+                                    }
+                                    // Return null to use default color for other states
+                                    return null;
+                                  },
+                                ),
+                              ),
+                            ),
+
                           ],
                         )
                       ],
                     ),
                   ),
-                  SizedBox(height: mQuery.size.height * 0.02),
+                  // SizedBox(height: mQuery.size.height * 0.02),
+                  Expanded(child: SizedBox()),
                   Container(
                     margin: const EdgeInsets.symmetric(horizontal: 16),
                     height: mQuery.size.height * 0.055,
@@ -229,6 +237,7 @@ class _HomePageState extends State<HomePage> {
                       ),
                     ),
                   ),
+                  SizedBox(height: mQuery.size.height*0.026,)
                 ],
               ),
             ),
@@ -285,7 +294,7 @@ class _HomePageState extends State<HomePage> {
                               Text(
                                 item["text"],
                                 style: TextStyle(
-                                  fontSize: mQuery.size.height * 0.022,
+                                  fontSize: mQuery.size.height * 0.02,
                                   fontWeight: FontWeight.w700,
                                 ),
                               ),

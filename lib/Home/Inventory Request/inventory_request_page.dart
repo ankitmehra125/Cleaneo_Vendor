@@ -119,7 +119,7 @@ class _InventoryRequestPageState extends State<InventoryRequestPage> {
                                             offset: Offset(0, 0))
                                       ],
                                       borderRadius: BorderRadius.circular(8)),
-                                  child: Column(
+                                  child: ListView(
                                     children: [
                                       SizedBox(height: mQuery.size.height * 0.02),
                                       Image.network(
@@ -174,7 +174,7 @@ class _InventoryRequestPageState extends State<InventoryRequestPage> {
                                             offset: Offset(0, 0))
                                       ],
                                       borderRadius: BorderRadius.circular(8)),
-                                  child: Column(
+                                  child: ListView(
                                     children: [
                                       SizedBox(height: mQuery.size.height * 0.02),
                                       Image.network(

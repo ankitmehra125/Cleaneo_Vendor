@@ -172,7 +172,7 @@ class _WelcomePageState extends State<WelcomePage> {
                           onTap: () {
                             Navigator.push(context,
                                 MaterialPageRoute(builder: (context) {
-                              return Cp();
+                              return CP();
                             }));
                           },
                           child: Column(

@@ -8,6 +8,7 @@ import 'package:cleaneo_vendor/Home/Notifications/Notifications.dart';
 import 'package:cleaneo_vendor/Home/OrderRequests/OrderRequests.dart';
 import 'package:cleaneo_vendor/Home/OrderStatus/OrderStatus.dart';
 import 'package:cleaneo_vendor/Home/YourOrders/YourOrders.dart';
+import 'package:cleaneo_vendor/Home/Inventory%20Request/inventory_request_page.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import 'package:flutter_profile_picture/flutter_profile_picture.dart';
@@ -29,127 +30,127 @@ class _MyDrawerState extends State<MyDrawer> {
         width: double.infinity,
         child: Column(
           children: [
-            Container(
-              width: double.infinity,
-              color: const Color(0xfff3fbff),
-              height: mQuery.size.height * 0.15,
-              child: Column(
-                children: [
-                  SizedBox(height: mQuery.size.height * 0.058),
-                  GestureDetector(
-                    child: SingleChildScrollView(
-                      scrollDirection: Axis.horizontal,
-                      child: Padding(
-                        padding: const EdgeInsets.symmetric(horizontal: 16.0),
-                        child: Row(
-                          mainAxisAlignment: MainAxisAlignment.start,
-                          children: [
-                            GestureDetector(
-                              onTap: () {
-                                Navigator.push(context,
-                                    MaterialPageRoute(builder: (context) {
-                                  return MyProfilePage();
-                                }));
-                              },
-                              child: const ProfilePicture(
+            GestureDetector(
+              onTap: () {
+                Navigator.push(context,
+                    MaterialPageRoute(builder: (context) {
+                      return MyProfilePage();
+                    }));
+              },
+              child: Container(
+                width: double.infinity,
+                color: const Color(0xfff3fbff),
+                height: mQuery.size.height * 0.15,
+                child: Column(
+                  children: [
+                    SizedBox(height: mQuery.size.height * 0.058),
+                    GestureDetector(
+                      child: SingleChildScrollView(
+                        scrollDirection: Axis.horizontal,
+                        child: Padding(
+                          padding: const EdgeInsets.symmetric(horizontal: 16.0),
+                          child: Row(
+                            mainAxisAlignment: MainAxisAlignment.start,
+                            children: [
+                              const ProfilePicture(
                                 name: "",
                                 radius: 20,
                                 fontsize: 10,
                                 img:
                                     "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSwKKzV4oKveaDEmBr38LXuMWTho1d1-mjOOcjau6XJ1A&s",
                               ),
-                            ),
-                            SizedBox(
-                              width: mQuery.size.width * 0.024,
-                            ),
-                            GestureDetector(
-                              onTap: () {
-                                Navigator.push(context,
-                                    MaterialPageRoute(builder: (context) {
-                                  return MyProfilePage();
-                                }));
-                              },
-                              child: Column(
-                                crossAxisAlignment: CrossAxisAlignment.start,
-                                children: [
-                                  Row(
-                                    children: [
-                                      SizedBox(
-                                        height: mQuery.size.height * 0.02,
-                                      ),
-                                      Text(
-                                        "Shweta Somaiya",
-                                        style: TextStyle(
-                                            fontSize: mQuery.size.height * 0.02,
-                                            fontWeight: FontWeight.w600),
-                                      ),
-                                      SizedBox(
-                                        width: mQuery.size.width * 0.2,
-                                      ),
-                                      GestureDetector(
-                                        onTap: () {
-                                          Navigator.push(context,
-                                              MaterialPageRoute(
-                                                  builder: (context) {
-                                            return MyProfilePage();
-                                          }));
-                                        },
-                                        child: Container(
-                                          padding: const EdgeInsets.only(
-                                              right: 20.0),
-                                          child: Image.asset(
-                                              "assets/images/drawer-images/edit.png",
-                                              color: const Color(0xff29b2fe),
-                                              width: mQuery.size.width * 0.04),
+                              SizedBox(
+                                width: mQuery.size.width * 0.024,
+                              ),
+                              GestureDetector(
+                                onTap: () {
+                                  Navigator.push(context,
+                                      MaterialPageRoute(builder: (context) {
+                                    return MyProfilePage();
+                                  }));
+                                },
+                                child: Column(
+                                  crossAxisAlignment: CrossAxisAlignment.start,
+                                  children: [
+                                    Row(
+                                      children: [
+                                        SizedBox(
+                                          height: mQuery.size.height * 0.02,
                                         ),
-                                      )
-                                    ],
-                                  ),
-                                  Row(
-                                    mainAxisAlignment: MainAxisAlignment.start,
-                                    children: [
-                                      Icon(
-                                        Icons.phone_android,
-                                        size: mQuery.size.width * 0.04,
-                                      ),
-                                      const SizedBox(
-                                        width: 5.0,
-                                      ),
-                                      Text(
-                                        "(+91) 9978997899",
-                                        style: TextStyle(
-                                          fontSize: mQuery.size.height * 0.015,
+                                        Text(
+                                          "Shweta Somaiya",
+                                          style: TextStyle(
+                                              fontSize: mQuery.size.height * 0.02,
+                                              fontWeight: FontWeight.w600),
                                         ),
-                                      ),
-                                      SizedBox(
-                                        width: mQuery.size.width * 0.02,
-                                      ),
-                                      Container(
-                                        width: mQuery.size.width * 0.03,
-                                        height: mQuery.size.height * 0.03,
-                                        decoration: const BoxDecoration(
-                                          color: Colors.green,
-                                          shape: BoxShape.circle,
+                                        SizedBox(
+                                          width: mQuery.size.width * 0.2,
                                         ),
-                                        child: const Center(
-                                          child: Icon(
-                                            Icons.check,
-                                            color: Colors.white,
-                                            size: 10,
+                                        GestureDetector(
+                                          onTap: () {
+                                            Navigator.push(context,
+                                                MaterialPageRoute(
+                                                    builder: (context) {
+                                              return MyProfilePage();
+                                            }));
+                                          },
+                                          child: Container(
+                                            padding: const EdgeInsets.only(
+                                                right: 20.0),
+                                            child: Image.asset(
+                                                "assets/images/drawer-images/edit.png",
+                                                color: const Color(0xff29b2fe),
+                                                width: mQuery.size.width * 0.04),
+                                          ),
+                                        )
+                                      ],
+                                    ),
+                                    Row(
+                                      mainAxisAlignment: MainAxisAlignment.start,
+                                      children: [
+                                        Icon(
+                                          Icons.phone_android,
+                                          size: mQuery.size.width * 0.04,
+                                        ),
+                                        const SizedBox(
+                                          width: 5.0,
+                                        ),
+                                        Text(
+                                          "(+91) 9978997899",
+                                          style: TextStyle(
+                                            fontSize: mQuery.size.height * 0.015,
                                           ),
                                         ),
-                                      )
-                                    ],
-                                  )
-                                ],
+                                        SizedBox(
+                                          width: mQuery.size.width * 0.02,
+                                        ),
+                                        Container(
+                                          width: mQuery.size.width * 0.03,
+                                          height: mQuery.size.height * 0.03,
+                                          decoration: const BoxDecoration(
+                                            color: Colors.green,
+                                            shape: BoxShape.circle,
+                                          ),
+                                          child: const Center(
+                                            child: Icon(
+                                              Icons.check,
+                                              color: Colors.white,
+                                              size: 10,
+                                            ),
+                                          ),
+                                        )
+                                      ],
+                                    )
+                                  ],
+                                ),
                               ),
-                            ),
-                          ],
+                            ],
+                          ),
                         ),
                       ),
                     ),
-                  ),
-                ],
+                  ],
+                ),
               ),
             ),
             Expanded(
@@ -336,6 +337,27 @@ class _MyDrawerState extends State<MyDrawer> {
                                 width: mQuery.size.width * 0.06),
                             title: Text(
                               "Ledger",
+                              style: TextStyle(
+                                fontWeight: FontWeight.w600,
+                                fontSize: mQuery.size.height * 0.0212,
+                              ),
+                            ),
+                          ),
+                        ),
+                        GestureDetector(
+                          onTap: () {
+                            Navigator.push(context,
+                                MaterialPageRoute(builder: (context) {
+                                  return InventoryRequestPage();
+                                }));
+                          },
+                          child: ListTile(
+                            leading: Image.asset(
+                                "assets/images/drawer-images/help.png",
+                                color: const Color(0xff29b2fe),
+                                width: mQuery.size.width * 0.06),
+                            title: Text(
+                              "Inventory Request",
                               style: TextStyle(
                                 fontWeight: FontWeight.w600,
                                 fontSize: mQuery.size.height * 0.0212,
