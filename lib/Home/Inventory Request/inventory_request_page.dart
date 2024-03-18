@@ -79,14 +79,6 @@ class _InventoryRequestPageState extends State<InventoryRequestPage> {
                   borderRadius: BorderRadius.only(
                       topLeft: Radius.circular(16),
                       topRight: Radius.circular(16)),
-                  boxShadow: [
-                    BoxShadow(
-                      color: Colors.grey.withOpacity(0.5),
-                      spreadRadius: 0.3,
-                      blurRadius: 1,
-                      offset: Offset(3, 3),
-                    ),
-                  ],
                 ),
                 child: Padding(
                   padding: const EdgeInsets.only(
@@ -95,115 +87,151 @@ class _InventoryRequestPageState extends State<InventoryRequestPage> {
                     child: Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
-                        Text(
-                          "Choose your favorite Products",
-                          style: TextStyle(fontSize: mQuery.size.height * 0.023),
-                        ),
-                        SizedBox(height: mQuery.size.height * 0.023),
                         SingleChildScrollView(
                           scrollDirection: Axis.horizontal,
                           child: Row(
-                            children: products.map((product) {
-                              return Padding(
-                                padding: EdgeInsets.only(right: mQuery.size.width * 0.08),
-                                child: Container(
-                                  width: mQuery.size.width * 0.4,
-                                  height: mQuery.size.height * 0.24,
-                                  decoration: BoxDecoration(
-                                      color: Colors.white,
-                                      boxShadow: [
-                                        BoxShadow(
-                                            color: Colors.grey.withOpacity(0.5),
-                                            spreadRadius: 0,
-                                            blurRadius: 7,
-                                            offset: Offset(0, 0))
-                                      ],
-                                      borderRadius: BorderRadius.circular(8)),
-                                  child: ListView(
-                                    children: [
-                                      SizedBox(height: mQuery.size.height * 0.02),
-                                      Image.network(
-                                        product['image'],
-                                        height: 90,
-                                      ),
-                                      SizedBox(height: mQuery.size.height * 0.026),
-                                      Text("Price: ${product['price']}"),
-                                      SizedBox(height: mQuery.size.height * 0.018),
-                                      Container(
-                                        width: mQuery.size.width * 0.3,
-                                        height: mQuery.size.height * 0.03,
-                                        decoration: BoxDecoration(
-                                            color: Color(0xff29b2fe),
-                                            borderRadius: BorderRadius.circular(6)),
-                                        child: Center(
-                                          child: Text(
-                                            "Add to Cart",
-                                            style: TextStyle(color: Colors.white),
-                                          ),
-                                        ),
-                                      )
-                                    ],
-                                  ),
+                            children: [
+                              Container(
+                                width: mQuery.size.width*0.32,
+                                height: mQuery.size.height*0.1,
+                                decoration: BoxDecoration(
+                                  color: Colors.white,
+                                  borderRadius: BorderRadius.circular(12),
+                                  border: Border.all(
+                                    color: Colors.grey
+                                  )
                                 ),
-                              );
-                            }).toList(),
+                                child: Column(
+                                  children: [
+                                    Container(
+                                      width: double.infinity,
+                                      height: mQuery.size.height*0.06,
+                                      decoration: BoxDecoration(
+                                        borderRadius: BorderRadius.circular(8),
+                                      ),
+                                      child: Image.network("https://5.imimg.com/data5/SELLER/Default/2021/2/BC/QR/RV/121956279/washing-machine-liquid-base.jpeg",
+                                      fit: BoxFit.fill,),
+                                    ),
+                                    SizedBox(height: mQuery.size.height*0.006,),
+                                    Text("Washing",style: TextStyle(
+                                      fontSize: mQuery.size.height*0.013
+                                    ),)
+                                  ],
+                                ),
+                              ),
+                              SizedBox(width: mQuery.size.width*0.06,),
+                              Container(
+                                width: mQuery.size.width*0.32,
+                                height: mQuery.size.height*0.1,
+                                decoration: BoxDecoration(
+                                    color: Colors.white,
+                                    borderRadius: BorderRadius.circular(12),
+                                    border: Border.all(
+                                      color: Colors.grey
+                                    )
+                                ),
+                                child: Column(
+                                  children: [
+                                    Container(
+                                      width: double.infinity,
+                                      height: mQuery.size.height*0.06,
+                                      decoration: BoxDecoration(
+                                        borderRadius: BorderRadius.circular(8),
+                                      ),
+                                      child: Image.network("https://images.ctfassets.net/ajjw8wywicb3/6F8D7fBER1U2p2ETaiSSmj/d56e9e4d07976099aced52de61221c74/LIQUID_Tide_Laundry_Liquid_370x320.jpg?fm=png",
+                                        fit: BoxFit.fill,),
+                                    ),
+                                    SizedBox(height: mQuery.size.height*0.006,),
+                                    Text("Liquid",style: TextStyle(
+                                        fontSize: mQuery.size.height*0.013
+                                    ),)
+                                  ],
+                                ),
+                              ),
+                              SizedBox(width: mQuery.size.width*0.06,),
+                              Container(
+                                width: mQuery.size.width*0.32,
+                                height: mQuery.size.height*0.1,
+                                decoration: BoxDecoration(
+                                    color: Colors.white,
+                                    borderRadius: BorderRadius.circular(12),
+                                    boxShadow: [
+                                      BoxShadow(
+                                          color: Colors.grey.withOpacity(0.5),
+                                          spreadRadius: 0,
+                                          blurRadius: 7,
+                                          offset: Offset(0,0)
+                                      )
+                                    ]
+                                ),
+                                child: Column(
+                                  children: [
+                                    Container(
+                                      width: double.infinity,
+                                      height: mQuery.size.height*0.06,
+                                      decoration: BoxDecoration(
+                                        borderRadius: BorderRadius.circular(8),
+                                      ),
+                                      child: Image.network("https://sealingwell.usa72.wondercdn.com/uploads/image/60dd225503167.jpg",
+                                        fit: BoxFit.fill,),
+                                    ),
+                                    SizedBox(height: mQuery.size.height*0.006,),
+                                    Text("Packaging Materials",style: TextStyle(
+                                      fontSize: mQuery.size.height*0.013
+                                    ),)
+                                  ],
+                                ),
+                              ),
+                            ],
                           ),
                         ),
-                        SizedBox(height: mQuery.size.height*0.03,),
-                        Text(
-                          "Top Products",
-                          style: TextStyle(fontSize: mQuery.size.height * 0.023),
-                        ),
-                        SizedBox(height: mQuery.size.height*0.02,),
-                        SingleChildScrollView(
-                          scrollDirection: Axis.horizontal,
-                          child: Row(
-                            children: products.map((product) {
-                              return Padding(
-                                padding: EdgeInsets.only(right: mQuery.size.width * 0.08),
-                                child: Container(
-                                  width: mQuery.size.width * 0.4,
-                                  height: mQuery.size.height * 0.24,
-                                  decoration: BoxDecoration(
-                                      color: Colors.white,
-                                      boxShadow: [
-                                        BoxShadow(
-                                            color: Colors.grey.withOpacity(0.5),
-                                            spreadRadius: 0,
-                                            blurRadius: 7,
-                                            offset: Offset(0, 0))
-                                      ],
-                                      borderRadius: BorderRadius.circular(8)),
-                                  child: ListView(
-                                    children: [
-                                      SizedBox(height: mQuery.size.height * 0.02),
-                                      Image.network(
-                                        product['image'],
-                                        height: 90,
-                                      ),
-                                      SizedBox(height: mQuery.size.height * 0.026),
-                                      Text("Price: ${product['price']}"),
-                                      SizedBox(height: mQuery.size.height * 0.018),
-                                      Container(
-                                        width: mQuery.size.width * 0.3,
-                                        height: mQuery.size.height * 0.03,
-                                        decoration: BoxDecoration(
-                                            color: Color(0xff29b2fe),
-                                            borderRadius: BorderRadius.circular(6)),
-                                        child: Center(
-                                          child: Text(
-                                            "Add to Cart",
-                                            style: TextStyle(color: Colors.white),
-                                          ),
-                                        ),
-                                      )
-                                    ],
-                                  ),
-                                ),
-                              );
-                            }).toList(),
+                        SizedBox(height: mQuery.size.height*0.05,),
+                        Container(
+                          width: mQuery.size.width*0.34,
+                          height: mQuery.size.height*0.18,
+                          padding: EdgeInsets.symmetric(
+                              horizontal: mQuery.size.width*0.03
                           ),
-                        ),
+                          decoration: BoxDecoration(
+                            color: Colors.white,
+                            borderRadius: BorderRadius.circular(8),
+                            boxShadow: [
+                              BoxShadow(
+                                color: Colors.grey.withOpacity(0.5),
+                                spreadRadius: 0,
+                                blurRadius: 7,
+                                offset: Offset(0,0)
+                              )
+                            ]
+                          ),
+                          child: Column(
+                            children: [
+                              Row(
+                                children: [
+                                  Container(
+                                    width: mQuery.size.width*0.12,
+                                    height: mQuery.size.height*0.021,
+                                    decoration: BoxDecoration(
+                                      color: Color(0xff29b2fe),
+                                      borderRadius: BorderRadius.circular(4)
+                                    ),
+                                    child: Center(
+                                      child: Text("22% OFF",style: TextStyle(
+                                        color: Colors.white,
+                                        fontSize: mQuery.size.height*0.01
+                                      ),),
+                                    ),
+                                  ),
+                                  Expanded(child: SizedBox()),
+                                  Icon(Icons.favorite_border_outlined,color: Colors.black54,
+                                  size: mQuery.size.height*0.03,)
+                                ],
+                              ),
+                              Image.network("https://rukminim2.flixcart.com/image/850/1000/kqttg280/washing-bar/b/z/m/bar-pack-of-6-250-gm-soap-detergent-bar-soap-6060-6-250-rin-original-imag4qgnjmbmznxd.jpeg?q=90&crop=false",
+                               height: mQuery.size.height*0.06,)
+                            ],
+                          ),
+                        )
                       ],
                     ),
                   ),

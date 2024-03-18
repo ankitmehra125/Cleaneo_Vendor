@@ -1,4 +1,5 @@
 import 'package:cleaneo_vendor/Home/Inventory%20Request/addToCart_page.dart';
+import 'package:cleaneo_vendor/Home/Inventory%20Request/inventory_request_page.dart';
 import 'package:cleaneo_vendor/Screens/Splash.dart';
 import 'package:device_preview/device_preview.dart';
 import 'package:flutter/material.dart';
@@ -46,8 +47,8 @@ class _MyAppState extends State<MyApp> {
         GlobalWidgetsLocalizations.delegate,
       ],
       supportedLocales: const [Locale('en'), Locale('hi')],
-      // home: const SplashScreen(),
-      home: SplashScreen()
+      home: const SplashScreen(),
+      // home: InventoryRequestPage(),
     );
   }
 }

@@ -6,8 +6,8 @@ class DropdownLedger extends StatefulWidget {
 }
 
 class _DropdownLedgerState extends State<DropdownLedger> {
-  String _selectedItem = 'Daily'; // Initially selected item
-  final List<String> _dropdownItems = ['Daily', 'Weekly','Monthly'];
+  String _selectedItem = 'Today'; // Initially selected item
+  final List<String> _dropdownItems = ['Today', 'Yesturday','This Week','This Month'];
 
   @override
   Widget build(BuildContext context) {

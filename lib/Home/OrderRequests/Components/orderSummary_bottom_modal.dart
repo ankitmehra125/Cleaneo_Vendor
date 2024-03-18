@@ -1105,7 +1105,7 @@ void orderSummary(BuildContext context) {
                           ),
                           const Expanded(child: SizedBox()),
                           Text(
-                            "Proceed",
+                            "Accept",
                             style: TextStyle(
                                 color: Colors.white,
                                 fontSize: mQuery.size.height * 0.024,

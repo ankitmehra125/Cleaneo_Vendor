@@ -329,8 +329,7 @@ class _OrderReqState extends State<OrderReq> {
                                         decoration: const BoxDecoration(
                                             borderRadius: BorderRadius.only(
                                                 bottomLeft: Radius.circular(10),
-                                                bottomRight:
-                                                    Radius.circular(10)),
+                                                bottomRight: Radius.circular(10)),
                                             color: Color(0xff29b2fe)),
                                         child: Center(
                                           child: Text(

@@ -76,9 +76,9 @@ class _HomePageState extends State<HomePage> {
         child: Column(
           children: [
             Container(
-              padding: const EdgeInsets.only(top: 16),
+              padding: const EdgeInsets.only(top: 26),
               width: double.infinity,
-              height: mQuery.size.height * 0.34,
+              height: mQuery.size.height * 0.32,
               decoration: const BoxDecoration(
                 borderRadius: BorderRadius.only(
                   bottomRight: Radius.circular(20),
@@ -103,7 +103,7 @@ class _HomePageState extends State<HomePage> {
                               },
                               icon: const Icon(
                                 Icons.menu,
-                                size: 35,
+                                size: 30,
                               ),
                               color: Colors.white,
                             );
@@ -112,7 +112,7 @@ class _HomePageState extends State<HomePage> {
                         SvgPicture.asset(
                           "assets/images/Home/mainlogo.svg",
                           width: 30,
-                          height: 25,
+                          height: 23,
                         ),
                         const Expanded(child: SizedBox()),
                         GestureDetector(
@@ -151,7 +151,7 @@ class _HomePageState extends State<HomePage> {
                               AppLocalizations.of(context)!.welcomeback,
                               style: const TextStyle(
                                 color: Colors.white,
-                                fontSize: 20,
+                                fontSize: 19,
                                 fontWeight: FontWeight.w800,
                               ),
                             ),
@@ -170,7 +170,7 @@ class _HomePageState extends State<HomePage> {
                           style: TextStyle(
                             color: Colors.white,
                             fontWeight: FontWeight.w500,
-                            fontSize: mQuery.size.height * 0.02,
+                            fontSize: mQuery.size.height * 0.018,
                           ),
                         ),
                         Row(
@@ -212,7 +212,7 @@ class _HomePageState extends State<HomePage> {
                     ),
                   ),
                   // SizedBox(height: mQuery.size.height * 0.02),
-                  Expanded(child: SizedBox()),
+
                   Container(
                     margin: const EdgeInsets.symmetric(horizontal: 16),
                     height: mQuery.size.height * 0.055,
@@ -237,7 +237,7 @@ class _HomePageState extends State<HomePage> {
                       ),
                     ),
                   ),
-                  SizedBox(height: mQuery.size.height*0.026,)
+
                 ],
               ),
             ),

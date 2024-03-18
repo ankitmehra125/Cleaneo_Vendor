@@ -248,7 +248,7 @@ class _OrderStatusState extends State<OrderStatus> {
                                     crossAxisAlignment: CrossAxisAlignment.start,
                                     children: [
                                       Text(
-                                        "Order Picked Up",
+                                        "Order Recieved",
                                         style: TextStyle(
                                           fontSize: 17,
                                           fontWeight: FontWeight.w700,
