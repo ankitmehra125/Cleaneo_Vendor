@@ -7,6 +7,7 @@ import 'package:cleaneo_vendor/Home/Ledger/Ledger.dart';
 import 'package:cleaneo_vendor/Home/Notifications/Notifications.dart';
 import 'package:cleaneo_vendor/Home/OrderRequests/OrderRequests.dart';
 import 'package:cleaneo_vendor/Home/OrderStatus/OrderStatus.dart';
+import 'package:cleaneo_vendor/Home/Training%20Modules/training_modules_page.dart';
 import 'package:cleaneo_vendor/Home/YourOrders/YourOrders.dart';
 import 'package:cleaneo_vendor/Home/Inventory%20Request/inventory_request_page.dart';
 import 'package:flutter/material.dart';
@@ -369,7 +370,7 @@ class _MyDrawerState extends State<MyDrawer> {
                           onTap: () {
                             Navigator.push(context,
                                 MaterialPageRoute(builder: (context) {
-                              return CustomerServicePage();
+                              return Trainings();
                             }));
                           },
                           child: ListTile(

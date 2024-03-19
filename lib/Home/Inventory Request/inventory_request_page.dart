@@ -8,24 +8,89 @@ class InventoryRequestPage extends StatefulWidget {
 }
 
 class _InventoryRequestPageState extends State<InventoryRequestPage> {
-  final List<Map<String, dynamic>> products = [
+
+  List<Map<String, dynamic>> activatedFavorites = [];
+
+  final List<Map<String, dynamic>> washingItemList = [
     {
-      'image': 'https://www.jiomart.com/images/product/original/491436153/surf-excel-matic-top-load-liquid-detergent-2-l-product-images-o491436153-p491436153-0-202311021535.jpg?im=Resize=(1000,1000)',
-      'price': '₹351',
+      'name': 'Rin Soap',
+      'weight': '250 gm',
+      'price': '31',
+      'image':
+      'https://rukminim2.flixcart.com/image/850/1000/kqttg280/washing-bar/b/z/m/bar-pack-of-6-250-gm-soap-detergent-bar-soap-6060-6-250-rin-original-imag4qgnjmbmznxd.jpeg?q=90&crop=false',
+      'discount': '22% OFF',
     },
     {
-      'image': 'https://rukminim2.flixcart.com/image/850/1000/kqttg280/washing-bar/b/z/m/bar-pack-of-6-250-gm-soap-detergent-bar-soap-6060-6-250-rin-original-imag4qgnjmbmznxd.jpeg?q=90&crop=false',
-      'price': '₹260',
+      'name': 'Surf Excel',
+      'weight': '250 gm',
+      'price': '126',
+      'image':
+      'https://encrypted-tbn1.gstatic.com/shopping?q=tbn:ANd9GcRVsyftzVoDV4Z1Ruf-Gufufg1uOMC_SLWQk4fs-8d1a5SItu9RRtU3nmpF-x8LpW0eQmbNi8ERVw54FFmD7HXPJZB0DYRu4_4EdIlYnnbbkFrYLtngULttHA',
+      'discount': '20% OFF',
     },
     {
-      'image': 'https://encrypted-tbn1.gstatic.com/shopping?q=tbn:ANd9GcRVsyftzVoDV4Z1Ruf-Gufufg1uOMC_SLWQk4fs-8d1a5SItu9RRtU3nmpF-x8LpW0eQmbNi8ERVw54FFmD7HXPJZB0DYRu4_4EdIlYnnbbkFrYLtngULttHA',
-      'price': '₹222',
-    },
-    {
-      'image': 'https://www.bigbasket.com/media/uploads/p/l/216400_15-ariel-complete-detergent-washing-powder.jpg',
-      'price': '₹222',
+      'name': 'Ariel',
+      'weight': '250 gm',
+      'price': '25',
+      'image':
+      'https://www.bigbasket.com/media/uploads/p/l/216400_15-ariel-complete-detergent-washing-powder.jpg',
+      'discount': '16% OFF',
     },
   ];
+
+  final List<Map<String, dynamic>> liquidItemList = [
+    {
+      'name': 'Fluff Liquid',
+      'description': 'Description 1',
+      'price': '50',
+      'image':
+      'https://images-eu.ssl-images-amazon.com/images/I/61TjFA8eSqL._AC_UL900_SR615,900_.jpg',
+    },
+    {
+      'name': 'Comfort',
+      'description': 'Description 2',
+      'price': '80',
+      'image': 'https://m.media-amazon.com/images/I/61ysR0hSLhL.jpg',
+    },
+    {
+      'name': 'Fabric',
+      'description': 'Description 3',
+      'price': '35',
+      'image':
+      'https://m.media-amazon.com/images/I/51LkFmzImYL._AC_UF1000,1000_QL80_.jpg',
+    },
+  ];
+
+  final List<Map<String, dynamic>> packagingItemList = [
+    {
+      'name': 'Tub',
+      'weight': '200 gm',
+      'price': '20',
+      'image':
+      'https://5.imimg.com/data5/SELLER/Default/2022/6/XH/VS/XD/105584709/round-plastic-tub.jpg',
+    },
+    {
+      'name': 'Detergent Box',
+      'weight': '300 gm',
+      'price': '30',
+      'image': 'https://m.media-amazon.com/images/I/61US9sntWUL.jpg',
+    },
+    {
+      'name': 'Vanish',
+      'weight': '250 gm',
+      'price': '25',
+      'image':
+      'https://cdn.images.fecom-media.com/FE00055877/images/RK55515_01_nR4isnhUu0.jpeg?width=578&height=578&scale=UpscaleCanvas&anchor=MiddleCenter',
+    },
+  ];
+
+  List<int> washingItemCounts = List.filled(3, 1);
+  List<int> liquidItemCounts = List.filled(3, 1);
+  List<int> packagingItemCounts = List.filled(3, 1);
+
+  bool isFavorite = false;   // for Washing Items
+  bool isFavorite1 = false;  // for Liquid Items
+  bool isFavorite2 = false;  // for Packaging Materials
 
   @override
   Widget build(BuildContext context) {
@@ -67,7 +132,21 @@ class _InventoryRequestPageState extends State<InventoryRequestPage> {
                       color: Colors.white,
                       fontFamily: 'SatoshiBold',
                     ),
-                  )
+                  ),
+                  Expanded(child: SizedBox()),
+                  GestureDetector(
+                      onTap: ()
+                      {
+                        favoriteItemsBottomSheet(context);
+                      },
+                      child: Icon(Icons.favorite, color: Colors.white)),
+                  SizedBox(width: mQuery.size.width * 0.053),
+                  GestureDetector(
+                    onTap: ()
+                      {
+                        addToCartBottomSheet(context);
+                      },
+                      child: Icon(Icons.shopping_cart, color: Colors.white)),
                 ],
               ),
             ),
@@ -77,8 +156,9 @@ class _InventoryRequestPageState extends State<InventoryRequestPage> {
                 decoration: BoxDecoration(
                   color: Colors.white,
                   borderRadius: BorderRadius.only(
-                      topLeft: Radius.circular(16),
-                      topRight: Radius.circular(16)),
+                    topLeft: Radius.circular(16),
+                    topRight: Radius.circular(16),
+                  ),
                 ),
                 child: Padding(
                   padding: const EdgeInsets.only(
@@ -87,151 +167,83 @@ class _InventoryRequestPageState extends State<InventoryRequestPage> {
                     child: Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
+                        Text(
+                          "Washing Items",
+                          style: TextStyle(fontWeight: FontWeight.w600),
+                        ),
+                        SizedBox(height: mQuery.size.height * 0.023),
                         SingleChildScrollView(
                           scrollDirection: Axis.horizontal,
                           child: Row(
-                            children: [
-                              Container(
-                                width: mQuery.size.width*0.32,
-                                height: mQuery.size.height*0.1,
-                                decoration: BoxDecoration(
-                                  color: Colors.white,
-                                  borderRadius: BorderRadius.circular(12),
-                                  border: Border.all(
-                                    color: Colors.grey
-                                  )
+                            children: washingItemList.asMap().entries.map((entry) {
+                              return Padding(
+                                padding: EdgeInsets.only(right: 12.0),
+                                child: _buildItemCard(
+                                  entry.value,
+                                  mQuery,
+                                  washingItemCounts[entry.key],
+                                      (newValue) {
+                                    setState(() {
+                                      washingItemCounts[entry.key] = newValue;
+                                    });
+                                  },
                                 ),
-                                child: Column(
-                                  children: [
-                                    Container(
-                                      width: double.infinity,
-                                      height: mQuery.size.height*0.06,
-                                      decoration: BoxDecoration(
-                                        borderRadius: BorderRadius.circular(8),
-                                      ),
-                                      child: Image.network("https://5.imimg.com/data5/SELLER/Default/2021/2/BC/QR/RV/121956279/washing-machine-liquid-base.jpeg",
-                                      fit: BoxFit.fill,),
-                                    ),
-                                    SizedBox(height: mQuery.size.height*0.006,),
-                                    Text("Washing",style: TextStyle(
-                                      fontSize: mQuery.size.height*0.013
-                                    ),)
-                                  ],
-                                ),
-                              ),
-                              SizedBox(width: mQuery.size.width*0.06,),
-                              Container(
-                                width: mQuery.size.width*0.32,
-                                height: mQuery.size.height*0.1,
-                                decoration: BoxDecoration(
-                                    color: Colors.white,
-                                    borderRadius: BorderRadius.circular(12),
-                                    border: Border.all(
-                                      color: Colors.grey
-                                    )
-                                ),
-                                child: Column(
-                                  children: [
-                                    Container(
-                                      width: double.infinity,
-                                      height: mQuery.size.height*0.06,
-                                      decoration: BoxDecoration(
-                                        borderRadius: BorderRadius.circular(8),
-                                      ),
-                                      child: Image.network("https://images.ctfassets.net/ajjw8wywicb3/6F8D7fBER1U2p2ETaiSSmj/d56e9e4d07976099aced52de61221c74/LIQUID_Tide_Laundry_Liquid_370x320.jpg?fm=png",
-                                        fit: BoxFit.fill,),
-                                    ),
-                                    SizedBox(height: mQuery.size.height*0.006,),
-                                    Text("Liquid",style: TextStyle(
-                                        fontSize: mQuery.size.height*0.013
-                                    ),)
-                                  ],
-                                ),
-                              ),
-                              SizedBox(width: mQuery.size.width*0.06,),
-                              Container(
-                                width: mQuery.size.width*0.32,
-                                height: mQuery.size.height*0.1,
-                                decoration: BoxDecoration(
-                                    color: Colors.white,
-                                    borderRadius: BorderRadius.circular(12),
-                                    boxShadow: [
-                                      BoxShadow(
-                                          color: Colors.grey.withOpacity(0.5),
-                                          spreadRadius: 0,
-                                          blurRadius: 7,
-                                          offset: Offset(0,0)
-                                      )
-                                    ]
-                                ),
-                                child: Column(
-                                  children: [
-                                    Container(
-                                      width: double.infinity,
-                                      height: mQuery.size.height*0.06,
-                                      decoration: BoxDecoration(
-                                        borderRadius: BorderRadius.circular(8),
-                                      ),
-                                      child: Image.network("https://sealingwell.usa72.wondercdn.com/uploads/image/60dd225503167.jpg",
-                                        fit: BoxFit.fill,),
-                                    ),
-                                    SizedBox(height: mQuery.size.height*0.006,),
-                                    Text("Packaging Materials",style: TextStyle(
-                                      fontSize: mQuery.size.height*0.013
-                                    ),)
-                                  ],
-                                ),
-                              ),
-                            ],
+                              );
+                            }).toList(),
                           ),
                         ),
-                        SizedBox(height: mQuery.size.height*0.05,),
-                        Container(
-                          width: mQuery.size.width*0.34,
-                          height: mQuery.size.height*0.18,
-                          padding: EdgeInsets.symmetric(
-                              horizontal: mQuery.size.width*0.03
+                        SizedBox(height: mQuery.size.height * 0.05),
+                        Text(
+                          "Liquid Items",
+                          style: TextStyle(fontWeight: FontWeight.w600),
+                        ),
+                        SizedBox(height: mQuery.size.height * 0.023),
+                        SingleChildScrollView(
+                          scrollDirection: Axis.horizontal,
+                          child: Row(
+                            children: liquidItemList.asMap().entries.map((entry) {
+                              return Padding(
+                                padding: EdgeInsets.only(right: 12.0),
+                                child: _buildAdditionalItemCard(
+                                  entry.value,
+                                  mQuery,
+                                  liquidItemCounts[entry.key],
+                                      (newValue) {
+                                    setState(() {
+                                      liquidItemCounts[entry.key] = newValue;
+                                    });
+                                  },
+                                ),
+                              );
+                            }).toList(),
                           ),
-                          decoration: BoxDecoration(
-                            color: Colors.white,
-                            borderRadius: BorderRadius.circular(8),
-                            boxShadow: [
-                              BoxShadow(
-                                color: Colors.grey.withOpacity(0.5),
-                                spreadRadius: 0,
-                                blurRadius: 7,
-                                offset: Offset(0,0)
-                              )
-                            ]
+                        ),
+                        SizedBox(height: mQuery.size.height * 0.05),
+                        Text(
+                          "Packaging Materials",
+                          style: TextStyle(fontWeight: FontWeight.w600),
+                        ),
+                        SizedBox(height: mQuery.size.height * 0.023),
+                        SingleChildScrollView(
+                          scrollDirection: Axis.horizontal,
+                          child: Row(
+                            children: packagingItemList.asMap().entries.map((entry) {
+                              return Padding(
+                                padding: EdgeInsets.only(right: 12.0),
+                                child: _buildPackagingItemCard(
+                                  entry.value,
+                                  mQuery,
+                                  packagingItemCounts[entry.key],
+                                      (newValue) {
+                                    setState(() {
+                                      packagingItemCounts[entry.key] = newValue;
+                                    });
+                                  },
+                                ),
+                              );
+                            }).toList(),
                           ),
-                          child: Column(
-                            children: [
-                              Row(
-                                children: [
-                                  Container(
-                                    width: mQuery.size.width*0.12,
-                                    height: mQuery.size.height*0.021,
-                                    decoration: BoxDecoration(
-                                      color: Color(0xff29b2fe),
-                                      borderRadius: BorderRadius.circular(4)
-                                    ),
-                                    child: Center(
-                                      child: Text("22% OFF",style: TextStyle(
-                                        color: Colors.white,
-                                        fontSize: mQuery.size.height*0.01
-                                      ),),
-                                    ),
-                                  ),
-                                  Expanded(child: SizedBox()),
-                                  Icon(Icons.favorite_border_outlined,color: Colors.black54,
-                                  size: mQuery.size.height*0.03,)
-                                ],
-                              ),
-                              Image.network("https://rukminim2.flixcart.com/image/850/1000/kqttg280/washing-bar/b/z/m/bar-pack-of-6-250-gm-soap-detergent-bar-soap-6060-6-250-rin-original-imag4qgnjmbmznxd.jpeg?q=90&crop=false",
-                               height: mQuery.size.height*0.06,)
-                            ],
-                          ),
-                        )
+                        ),
                       ],
                     ),
                   ),
@@ -243,4 +255,692 @@ class _InventoryRequestPageState extends State<InventoryRequestPage> {
       ),
     );
   }
+
+
+
+
+
+  Widget _buildItemCard(
+      Map<String, dynamic> item,
+      MediaQueryData mQuery,
+      int count,
+      Function(int) onCountChanged,
+      ) {
+    return StatefulBuilder(
+      builder: (context, setState) {
+        return Container(
+          width: mQuery.size.width * 0.34,
+          height: mQuery.size.height * 0.18,
+          padding: EdgeInsets.symmetric(horizontal: mQuery.size.width * 0.03),
+          decoration: BoxDecoration(
+            color: Colors.white,
+            borderRadius: BorderRadius.circular(8),
+            border: Border.all(color: Colors.grey.shade300),
+          ),
+          child: Column(
+            children: [
+              Row(
+                children: [
+                  Container(
+                    width: mQuery.size.width * 0.12,
+                    height: mQuery.size.height * 0.021,
+                    decoration: BoxDecoration(
+                      color: Color(0xff3d8b15),
+                      borderRadius: BorderRadius.circular(4),
+                    ),
+                    child: Center(
+                      child: Text(
+                        item['discount'],
+                        style: TextStyle(
+                          color: Colors.white,
+                          fontSize: mQuery.size.height * 0.01,
+                        ),
+                      ),
+                    ),
+                  ),
+                  Expanded(child: SizedBox()),
+                  GestureDetector(
+                    onTap: () {
+                      setState(() {
+                        isFavorite = !isFavorite;
+                        // If the item is marked as favorite, add it to the activatedFavorites list
+                        if (isFavorite) {
+                          activatedFavorites.add(item);
+                        } else {
+                          // If the item is unmarked as favorite, remove it from the activatedFavorites list
+                          activatedFavorites.removeWhere((element) => element['name'] == item['name']);
+                        }
+                      });
+                    },
+                    child: Icon(
+                      isFavorite ? Icons.favorite : Icons.favorite_outline_outlined,
+                      color: isFavorite ? Colors.red : Colors.black54,
+                      size: mQuery.size.height * 0.03,
+                    ),
+                  ),
+                ],
+              ),
+              SizedBox(height: mQuery.size.height * 0.01),
+              Image.network(
+                item['image'],
+                height: mQuery.size.height * 0.06,
+              ),
+              Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Text(
+                    item['name'],
+                    style: TextStyle(fontSize: mQuery.size.height * 0.015),
+                  ),
+                  Text(
+                    item['weight'],
+                    style: TextStyle(fontSize: mQuery.size.height * 0.012),
+                  ),
+                  Row(
+                    children: [
+                      Text(
+                        '₹${item['price']}',
+                        style: TextStyle(fontSize: mQuery.size.height * 0.015),
+                      ),
+                      Expanded(child: SizedBox()),
+                      ValueListenableBuilder<int>(
+                        valueListenable: ValueNotifier<int>(count),
+                        builder: (context, value, child) {
+                          return Row(
+                            children: [
+                              GestureDetector(
+                                onTap: () {
+                                  if (value > 0) onCountChanged(value - 1);
+                                },
+                                child: Container(
+                                  width: mQuery.size.width * 0.06,
+                                  height: mQuery.size.height * 0.03,
+                                  decoration: BoxDecoration(
+                                      shape: BoxShape.circle,
+                                      color: Color(0xfff0f0f0),
+                                      border: Border.all(color: Color(0xff008000))),
+                                  child: Center(
+                                    child: Icon(
+                                      Icons.remove,
+                                      color: Colors.black,
+                                      size: mQuery.size.width * 0.04,
+                                    ),
+                                  ),
+                                ),
+                              ),
+                              SizedBox(width: mQuery.size.width * 0.02),
+                              Text(
+                                "$value",
+                                style: TextStyle(fontSize: mQuery.size.height * 0.014),
+                              ),
+                              SizedBox(width: mQuery.size.width * 0.02),
+                              GestureDetector(
+                                onTap: () {
+                                  onCountChanged(value + 1);
+                                },
+                                child: Container(
+                                  width: mQuery.size.width * 0.06,
+                                  height: mQuery.size.height * 0.03,
+                                  decoration: BoxDecoration(
+                                      shape: BoxShape.circle,
+                                      color: Color(0xfff0f0f0),
+                                      border: Border.all(color: Color(0xff008000))),
+                                  child: Center(
+                                    child: Icon(
+                                      Icons.add,
+                                      color: Colors.black,
+                                      size: mQuery.size.width * 0.04,
+                                    ),
+                                  ),
+                                ),
+                              ),
+                            ],
+                          );
+                        },
+                      ),
+                    ],
+                  )
+                ],
+              )
+            ],
+          ),
+        );
+      },
+    );
+  }
+
+
+
+
+  Widget _buildAdditionalItemCard(
+      Map<String, dynamic> item,
+      MediaQueryData mQuery,
+      int count,
+      Function(int) onCountChanged,
+      ) {
+    // Initialize ValueNotifier to track favorite status
+    ValueNotifier<bool> isFavoriteNotifier = ValueNotifier<bool>(false);
+
+    return Container(
+      width: mQuery.size.width * 0.34,
+      height: mQuery.size.height * 0.18,
+      padding: EdgeInsets.symmetric(horizontal: mQuery.size.width * 0.03),
+      decoration: BoxDecoration(
+        color: Colors.white,
+        borderRadius: BorderRadius.circular(8),
+        border: Border.all(color: Colors.grey.shade300),
+      ),
+      child: Column(
+        children: [
+          Row(
+            children: [
+              Container(
+                width: mQuery.size.width * 0.12,
+                height: mQuery.size.height * 0.021,
+                decoration: BoxDecoration(
+                  color: Color(0xff3d8b15),
+                  borderRadius: BorderRadius.circular(4),
+                ),
+                child: Center(
+                  child: Text(
+                    "20% OFF",
+                    style: TextStyle(
+                      color: Colors.white,
+                      fontSize: mQuery.size.height * 0.01,
+                    ),
+                  ),
+                ),
+              ),
+              Expanded(child: SizedBox()),
+              // Use ValueListenableBuilder for the favorite icon
+              ValueListenableBuilder<bool>(
+                valueListenable: isFavoriteNotifier,
+                builder: (context, isFavorite, child) {
+                  return GestureDetector(
+                    onTap: ()
+                    {
+                      isFavoriteNotifier.value = !isFavoriteNotifier.value;
+                      // If the item is marked as favorite, add it to the activatedFavorites list
+                      if (!isFavoriteNotifier.value) {
+                        activatedFavorites.add(item);
+                      } else {
+                        // If the item is unmarked as favorite, remove it from the activatedFavorites list
+                        activatedFavorites.removeWhere((element) => element['name'] == item['name']);
+                      }
+                    },
+                    child: Icon(
+                      isFavorite ? Icons.favorite : Icons.favorite_outline_outlined,
+                      color: isFavorite ? Colors.red : Colors.black54,
+                      size: mQuery.size.height * 0.03,
+                    ),
+                  );
+                },
+              ),
+            ],
+          ),
+          SizedBox(height: mQuery.size.height * 0.01),
+          Image.network(
+            item['image'],
+            height: mQuery.size.height * 0.06,
+          ),
+          Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              Text(
+                item['name'],
+                style: TextStyle(fontSize: mQuery.size.height * 0.015),
+              ),
+              Text(
+                item['description'],
+                style: TextStyle(fontSize: mQuery.size.height * 0.012),
+              ),
+              Row(
+                children: [
+                  Text(
+                    '₹${item['price']}',
+                    style: TextStyle(fontSize: mQuery.size.height * 0.015),
+                  ),
+                  Expanded(child: SizedBox()),
+                  ValueListenableBuilder<int>(
+                    valueListenable: ValueNotifier<int>(count),
+                    builder: (context, value, child) {
+                      return Row(
+                        children: [
+                          GestureDetector(
+                            onTap: () {
+                              if (value > 0) onCountChanged(value - 1);
+                            },
+                            child: Container(
+                              width: mQuery.size.width * 0.06,
+                              height: mQuery.size.height * 0.03,
+                              decoration: BoxDecoration(
+                                shape: BoxShape.circle,
+                                color: Color(0xfff0f0f0),
+                                border: Border.all(color: Color(0xff008000)),
+                              ),
+                              child: Center(
+                                child: Icon(
+                                  Icons.remove,
+                                  color: Colors.black,
+                                  size: mQuery.size.width * 0.04,
+                                ),
+                              ),
+                            ),
+                          ),
+                          SizedBox(width: mQuery.size.width * 0.02),
+                          Text(
+                            "$value",
+                            style: TextStyle(fontSize: mQuery.size.height * 0.014),
+                          ),
+                          SizedBox(width: mQuery.size.width * 0.02),
+                          GestureDetector(
+                            onTap: () {
+                              onCountChanged(value + 1);
+                            },
+                            child: Container(
+                              width: mQuery.size.width * 0.06,
+                              height: mQuery.size.height * 0.03,
+                              decoration: BoxDecoration(
+                                shape: BoxShape.circle,
+                                color: Color(0xfff0f0f0),
+                                border: Border.all(color: Color(0xff008000)),
+                              ),
+                              child: Center(
+                                child: Icon(
+                                  Icons.add,
+                                  color: Colors.black,
+                                  size: mQuery.size.width * 0.04,
+                                ),
+                              ),
+                            ),
+                          )
+                        ],
+                      );
+                    },
+                  ),
+                ],
+              )
+            ],
+          )
+        ],
+      ),
+    );
+  }
+
+
+  Widget _buildPackagingItemCard(
+      Map<String, dynamic> item,
+      MediaQueryData mQuery,
+      int count,
+      Function(int) onCountChanged,
+      ) {
+    ValueNotifier<bool> isFavoriteNotifier = ValueNotifier<bool>(false);
+    return Container(
+      width: mQuery.size.width * 0.34,
+      height: mQuery.size.height * 0.18,
+      padding: EdgeInsets.symmetric(horizontal: mQuery.size.width * 0.03),
+      decoration: BoxDecoration(
+        color: Colors.white,
+        borderRadius: BorderRadius.circular(8),
+        border: Border.all(color: Colors.grey.shade300),
+      ),
+      child: Column(
+        children: [
+          Row(
+            children: [
+              Container(
+                width: mQuery.size.width * 0.12,
+                height: mQuery.size.height * 0.021,
+                decoration: BoxDecoration(
+                  color: Color(0xff3d8b15),
+                  borderRadius: BorderRadius.circular(4),
+                ),
+                child: Center(
+                  child: Text(
+                    "20% OFF",
+                    style: TextStyle(
+                      color: Colors.white,
+                      fontSize: mQuery.size.height * 0.01,
+                    ),
+                  ),
+                ),
+              ),
+              Expanded(child: SizedBox()),
+              ValueListenableBuilder<bool>(
+                valueListenable: isFavoriteNotifier,
+                builder: (context, isFavorite, child) {
+                  return GestureDetector(
+                    onTap: ()
+                    {
+                      isFavoriteNotifier.value = !isFavoriteNotifier.value;
+                    },
+                    child: Icon(
+                      isFavorite ? Icons.favorite : Icons.favorite_outline_outlined,
+                      color: isFavorite ? Colors.red : Colors.black54,
+                      size: mQuery.size.height * 0.03,
+                    ),
+                  );
+                },
+              ),
+            ],
+          ),
+          SizedBox(height: mQuery.size.height * 0.01),
+          Image.network(
+            item['image'],
+            height: mQuery.size.height * 0.06,
+          ),
+          Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              Text(
+                item['name'],
+                style: TextStyle(fontSize: mQuery.size.height * 0.015),
+              ),
+              Text(
+                item['weight'],
+                style: TextStyle(fontSize: mQuery.size.height * 0.012),
+              ),
+              Row(
+                children: [
+                  Text(
+                    '₹${item['price']}',
+                    style: TextStyle(fontSize: mQuery.size.height * 0.015),
+                  ),
+                  Expanded(child: SizedBox()),
+                  ValueListenableBuilder<int>(
+                    valueListenable: ValueNotifier<int>(count),
+                    builder: (context, value, child) {
+                      return Row(
+                        children: [
+                          GestureDetector(
+                            onTap: () {
+                              if (value > 0) onCountChanged(value - 1);
+                            },
+                            child: Container(
+                              width: mQuery.size.width * 0.06,
+                              height: mQuery.size.height * 0.03,
+                              decoration: BoxDecoration(
+                                  shape: BoxShape.circle,
+                                  color: Color(0xfff0f0f0),
+                                  border: Border.all(color: Color(0xff008000))),
+                              child: Center(
+                                child: Icon(
+                                  Icons.remove,
+                                  color: Colors.black,
+                                  size: mQuery.size.width * 0.04,
+                                ),
+                              ),
+                            ),
+                          ),
+                          SizedBox(width: mQuery.size.width * 0.02),
+                          Text(
+                            "$value",
+                            style: TextStyle(fontSize: mQuery.size.height * 0.014),
+                          ),
+                          SizedBox(width: mQuery.size.width * 0.02),
+                          GestureDetector(
+                            onTap: () {
+                              onCountChanged(value + 1);
+                            },
+                            child: Container(
+                              width: mQuery.size.width * 0.06,
+                              height: mQuery.size.height * 0.03,
+                              decoration: BoxDecoration(
+                                  shape: BoxShape.circle,
+                                  color: Color(0xfff0f0f0),
+                                  border: Border.all(color: Color(0xff008000))),
+                              child: Center(
+                                child: Icon(
+                                  Icons.add,
+                                  color: Colors.black,
+                                  size: mQuery.size.width * 0.04,
+                                ),
+                              ),
+                            ),
+                          )
+                        ],
+                      );
+                    },
+                  ),
+                ],
+              )
+            ],
+          )
+        ],
+      ),
+    );
+  }
+
+
+
+  void favoriteItemsBottomSheet(BuildContext context) {
+    showModalBottomSheet(
+      context: context,
+      isScrollControlled: true,
+      builder: (BuildContext context) {
+        var mQuery = MediaQuery.of(context);
+
+        if (activatedFavorites.isEmpty) {
+          return Container(
+            height: mQuery.size.height * 0.8,
+            width: double.infinity,
+            padding: EdgeInsets.symmetric(horizontal: mQuery.size.width * 0.04),
+            decoration: BoxDecoration(
+              color: Colors.white,
+              borderRadius: BorderRadius.circular(12),
+            ),
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                Center(
+                  child: Text(
+                    "No Favorite items here",
+                    style: TextStyle(fontSize: mQuery.size.height * 0.023, color: Colors.grey,
+                     fontWeight: FontWeight.w700),
+                  ),
+                ),
+              ],
+            ),
+          );
+        }
+
+        // If there are favorite items, render the ListView.builder
+        return Container(
+          height: mQuery.size.height * 0.8,
+          width: double.infinity,
+          padding: EdgeInsets.symmetric(horizontal: mQuery.size.width * 0.04),
+          decoration: BoxDecoration(
+            color: Colors.white,
+            borderRadius: BorderRadius.circular(12),
+          ),
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              SizedBox(height: mQuery.size.height * 0.03),
+              Text(
+                "Your Favorite Items",
+                style: TextStyle(fontSize: mQuery.size.height * 0.02,
+                 fontWeight: FontWeight.w600),
+              ),
+              SizedBox(height: mQuery.size.height * 0.02),
+              Expanded(
+                child: ListView.builder(
+                  itemCount: activatedFavorites.length,
+                  itemBuilder: (context, index) {
+                    return Container(
+                      margin: EdgeInsets.only(bottom: mQuery.size.height * 0.02),
+                      decoration: BoxDecoration(
+                        borderRadius: BorderRadius.circular(10),
+                        border: Border.all(color: Colors.grey),
+                      ),
+                      child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          ListTile(
+                            leading: Image.network(
+                              activatedFavorites[index]['image'],
+                              width: mQuery.size.width * 0.14,
+                              height: mQuery.size.height * 0.06,
+                              fit: BoxFit.cover,
+                            ),
+                            title: Text(
+                              activatedFavorites[index]['name'],
+                              style: TextStyle(fontSize: mQuery.size.height * 0.017),
+                            ),
+                            subtitle: Text(
+                              activatedFavorites[index]['weight'],
+                              style: TextStyle(fontSize: mQuery.size.height * 0.015),
+                            ),
+                            trailing: Text('₹${activatedFavorites[index]['price']}'),
+                          ),
+                          GestureDetector(
+                            onTap : ()
+                            {
+                              addToCartBottomSheet(context);
+                            },
+                            child: Container(
+                              width: mQuery.size.width * 0.17,
+                              height: mQuery.size.height * 0.024,
+                              decoration: BoxDecoration(
+                                color: Color(0xff3d8b15),
+                                borderRadius: BorderRadius.circular(4),
+                              ),
+                               margin : EdgeInsets.only(
+                                 left: mQuery.size.width*0.045,
+                                 bottom: mQuery.size.height*0.01
+                               ),
+                               child: Center(
+                                 child: Text("Add to Cart",style: TextStyle(
+                                   color: Colors.white,
+                                   fontSize: mQuery.size.height*0.012
+                                 ),),
+                               ),
+                            ),
+                          )
+                        ],
+                      ),
+                    );
+                  },
+                ),
+              ),
+            ],
+          ),
+        );
+      },
+    );
+  }
+
+
+  // AddToCart BottomSheet
+  void addToCartBottomSheet(BuildContext context) {
+    showModalBottomSheet(
+      context: context,
+      isScrollControlled: true,
+      builder: (BuildContext context) {
+        var mQuery = MediaQuery.of(context);
+
+        // Adding itemNo to each item in activatedFavorites
+        for (int i = 0; i < activatedFavorites.length; i++) {
+          activatedFavorites[i]['itemNo'] = i + 1; // Assuming itemNo starts from 1
+        }
+
+        return Container(
+          height: mQuery.size.height * 0.8,
+          width: double.infinity,
+          padding: EdgeInsets.symmetric(horizontal: mQuery.size.width * 0.04),
+          decoration: BoxDecoration(
+            color: Colors.white,
+            borderRadius: BorderRadius.circular(12),
+          ),
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              SizedBox(height: mQuery.size.height * 0.02),
+              activatedFavorites.isNotEmpty
+                  ? Text(
+                "Added items are",
+                style: TextStyle(fontSize: mQuery.size.height * 0.02,
+                 fontWeight: FontWeight.w700),
+              )
+                  : Column(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                    crossAxisAlignment: CrossAxisAlignment.center,
+                    children: [
+                      SizedBox(height: mQuery.size.height*0.32,),
+                      Center(
+                        child: Text(
+                          "No Items Added",
+                          style: TextStyle(
+                        fontSize: mQuery.size.height * 0.023,
+                        color: Colors.grey,
+                        fontWeight: FontWeight.w600,
+                                        ),
+                                      ),
+                      ),
+                    ],
+                  ),
+              SizedBox(height: mQuery.size.height * 0.02),
+              activatedFavorites.isNotEmpty
+                  ? Expanded(
+                child: ListView.builder(
+                  itemCount: activatedFavorites.length,
+                  itemBuilder: (context, index) {
+                    return Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        SizedBox(height: mQuery.size.height * 0.02),
+                        Container(
+                          margin: EdgeInsets.only(bottom: mQuery.size.height * 0.02),
+                          decoration: BoxDecoration(
+                            borderRadius: BorderRadius.circular(10),
+                            border: Border.all(color: Colors.grey),
+                          ),
+                          child: ListTile(
+                            leading: Image.network(
+                              activatedFavorites[index]['image'],
+                              width: mQuery.size.width * 0.14,
+                              height: mQuery.size.height * 0.06,
+                              fit: BoxFit.cover,
+                            ),
+                            title: Column(
+                              crossAxisAlignment: CrossAxisAlignment.start,
+                              children: [
+                                Text(
+                                  activatedFavorites[index]['name'],
+                                  style: TextStyle(fontSize: mQuery.size.height * 0.017),
+                                ),
+                                Text(
+                                  activatedFavorites[index]['weight'],
+                                  style: TextStyle(fontSize: mQuery.size.height * 0.015),
+                                ),
+                                Text(
+                                  'Item No: ${activatedFavorites[index]['itemNo']}',
+                                  style: TextStyle(fontSize: mQuery.size.height * 0.015),
+                                ),
+                              ],
+                            ),
+                            trailing: Text('₹${activatedFavorites[index]['price']}'),
+                          ),
+                        ),
+                      ],
+                    );
+                  },
+                ),
+              )
+                  : SizedBox.shrink(), // Hides the ListView.builder if activatedFavorites is empty
+            ],
+          ),
+        );
+      },
+    );
+  }
+
+
+
+
+
 }
+
+
+
