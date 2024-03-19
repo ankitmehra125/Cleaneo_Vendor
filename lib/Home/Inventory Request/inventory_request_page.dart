@@ -1,3 +1,4 @@
+import 'package:cleaneo_vendor/Home/Inventory%20Request/payment_page.dart';
 import 'package:flutter/material.dart';
 
 class InventoryRequestPage extends StatefulWidget {
@@ -142,7 +143,7 @@ class _InventoryRequestPageState extends State<InventoryRequestPage> {
                       child: Icon(Icons.favorite, color: Colors.white)),
                   SizedBox(width: mQuery.size.width * 0.053),
                   GestureDetector(
-                    onTap: ()
+                      onTap: ()
                       {
                         addToCartBottomSheet(context);
                       },
@@ -737,7 +738,7 @@ class _InventoryRequestPageState extends State<InventoryRequestPage> {
                   child: Text(
                     "No Favorite items here",
                     style: TextStyle(fontSize: mQuery.size.height * 0.023, color: Colors.grey,
-                     fontWeight: FontWeight.w700),
+                        fontWeight: FontWeight.w700),
                   ),
                 ),
               ],
@@ -761,7 +762,7 @@ class _InventoryRequestPageState extends State<InventoryRequestPage> {
               Text(
                 "Your Favorite Items",
                 style: TextStyle(fontSize: mQuery.size.height * 0.02,
-                 fontWeight: FontWeight.w600),
+                    fontWeight: FontWeight.w600),
               ),
               SizedBox(height: mQuery.size.height * 0.02),
               Expanded(
@@ -769,10 +770,10 @@ class _InventoryRequestPageState extends State<InventoryRequestPage> {
                   itemCount: activatedFavorites.length,
                   itemBuilder: (context, index) {
                     return Container(
-                      margin: EdgeInsets.only(bottom: mQuery.size.height * 0.02),
+                      margin: EdgeInsets.only(bottom: mQuery.size.height * 0.01),
                       decoration: BoxDecoration(
                         borderRadius: BorderRadius.circular(10),
-                        border: Border.all(color: Colors.grey),
+                        border: Border.all(color: Colors.grey.shade300),
                       ),
                       child: Column(
                         crossAxisAlignment: CrossAxisAlignment.start,
@@ -806,16 +807,16 @@ class _InventoryRequestPageState extends State<InventoryRequestPage> {
                                 color: Color(0xff3d8b15),
                                 borderRadius: BorderRadius.circular(4),
                               ),
-                               margin : EdgeInsets.only(
-                                 left: mQuery.size.width*0.045,
-                                 bottom: mQuery.size.height*0.01
-                               ),
-                               child: Center(
-                                 child: Text("Add to Cart",style: TextStyle(
-                                   color: Colors.white,
-                                   fontSize: mQuery.size.height*0.012
-                                 ),),
-                               ),
+                              margin : EdgeInsets.only(
+                                  left: mQuery.size.width*0.045,
+                                  bottom: mQuery.size.height*0.01
+                              ),
+                              child: Center(
+                                child: Text("Add to Cart",style: TextStyle(
+                                    color: Colors.white,
+                                    fontSize: mQuery.size.height*0.012
+                                ),),
+                              ),
                             ),
                           )
                         ],
@@ -861,25 +862,25 @@ class _InventoryRequestPageState extends State<InventoryRequestPage> {
                   ? Text(
                 "Added items are",
                 style: TextStyle(fontSize: mQuery.size.height * 0.02,
-                 fontWeight: FontWeight.w700),
+                    fontWeight: FontWeight.w700),
               )
                   : Column(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                    crossAxisAlignment: CrossAxisAlignment.center,
-                    children: [
-                      SizedBox(height: mQuery.size.height*0.32,),
-                      Center(
-                        child: Text(
-                          "No Items Added",
-                          style: TextStyle(
+                mainAxisAlignment: MainAxisAlignment.center,
+                crossAxisAlignment: CrossAxisAlignment.center,
+                children: [
+                  SizedBox(height: mQuery.size.height*0.32,),
+                  Center(
+                    child: Text(
+                      "No Items Added",
+                      style: TextStyle(
                         fontSize: mQuery.size.height * 0.023,
                         color: Colors.grey,
                         fontWeight: FontWeight.w600,
-                                        ),
-                                      ),
                       ),
-                    ],
+                    ),
                   ),
+                ],
+              ),
               SizedBox(height: mQuery.size.height * 0.02),
               activatedFavorites.isNotEmpty
                   ? Expanded(
@@ -894,33 +895,64 @@ class _InventoryRequestPageState extends State<InventoryRequestPage> {
                           margin: EdgeInsets.only(bottom: mQuery.size.height * 0.02),
                           decoration: BoxDecoration(
                             borderRadius: BorderRadius.circular(10),
-                            border: Border.all(color: Colors.grey),
+                            border: Border.all(color: Colors.grey.shade300),
                           ),
-                          child: ListTile(
-                            leading: Image.network(
-                              activatedFavorites[index]['image'],
-                              width: mQuery.size.width * 0.14,
-                              height: mQuery.size.height * 0.06,
-                              fit: BoxFit.cover,
-                            ),
-                            title: Column(
-                              crossAxisAlignment: CrossAxisAlignment.start,
-                              children: [
-                                Text(
-                                  activatedFavorites[index]['name'],
-                                  style: TextStyle(fontSize: mQuery.size.height * 0.017),
+                          child: Column(
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: [
+                              ListTile(
+                                leading: Image.network(
+                                  activatedFavorites[index]['image'],
+                                  width: mQuery.size.width * 0.14,
+                                  height: mQuery.size.height * 0.06,
+                                  fit: BoxFit.cover,
                                 ),
-                                Text(
-                                  activatedFavorites[index]['weight'],
-                                  style: TextStyle(fontSize: mQuery.size.height * 0.015),
+                                title: Column(
+                                  crossAxisAlignment: CrossAxisAlignment.start,
+                                  children: [
+                                    Text(
+                                      activatedFavorites[index]['name'],
+                                      style: TextStyle(fontSize: mQuery.size.height * 0.017),
+                                    ),
+                                    Text(
+                                      activatedFavorites[index]['weight'],
+                                      style: TextStyle(fontSize: mQuery.size.height * 0.015),
+                                    ),
+                                    Text(
+                                      'Item No: ${activatedFavorites[index]['itemNo']}',
+                                      style: TextStyle(fontSize: mQuery.size.height * 0.015),
+                                    ),
+                                  ],
                                 ),
-                                Text(
-                                  'Item No: ${activatedFavorites[index]['itemNo']}',
-                                  style: TextStyle(fontSize: mQuery.size.height * 0.015),
+                                trailing: Text('₹${activatedFavorites[index]['price']}'),
+                              ),
+                              GestureDetector(
+                                onTap : ()
+                                {
+                                  Navigator.pushReplacement(context, MaterialPageRoute(builder: (context){
+                                    return PaymentPage();
+                                  }));
+                                },
+                                child: Container(
+                                  width: mQuery.size.width * 0.17,
+                                  height: mQuery.size.height * 0.024,
+                                  decoration: BoxDecoration(
+                                    color: Color(0xff3d8b15),
+                                    borderRadius: BorderRadius.circular(4),
+                                  ),
+                                  margin : EdgeInsets.only(
+                                      left: mQuery.size.width*0.045,
+                                      bottom: mQuery.size.height*0.01
+                                  ),
+                                  child: Center(
+                                    child: Text("Buy Now",style: TextStyle(
+                                        color: Colors.white,
+                                        fontSize: mQuery.size.height*0.012
+                                    ),),
+                                  ),
                                 ),
-                              ],
-                            ),
-                            trailing: Text('₹${activatedFavorites[index]['price']}'),
+                              ),
+                            ],
                           ),
                         ),
                       ],
@@ -935,11 +967,6 @@ class _InventoryRequestPageState extends State<InventoryRequestPage> {
       },
     );
   }
-
-
-
-
-
 }
 
 

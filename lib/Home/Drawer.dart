@@ -58,7 +58,7 @@ class _MyDrawerState extends State<MyDrawer> {
                                 radius: 20,
                                 fontsize: 10,
                                 img:
-                                    "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSwKKzV4oKveaDEmBr38LXuMWTho1d1-mjOOcjau6XJ1A&s",
+                                    "https://media.licdn.com/dms/image/C4D03AQHHSwZyheu1UQ/profile-displayphoto-shrink_800_800/0/1662703260529?e=2147483647&v=beta&t=Jm4eBGPY71_8duu5EDtQrXPoUY9yMY-QcRh5OiTztEk",
                               ),
                               SizedBox(
                                 width: mQuery.size.width * 0.024,
@@ -79,7 +79,7 @@ class _MyDrawerState extends State<MyDrawer> {
                                           height: mQuery.size.height * 0.02,
                                         ),
                                         Text(
-                                          "Shweta Somaiya",
+                                          "Narendra Modi",
                                           style: TextStyle(
                                               fontSize: mQuery.size.height * 0.02,
                                               fontWeight: FontWeight.w600),

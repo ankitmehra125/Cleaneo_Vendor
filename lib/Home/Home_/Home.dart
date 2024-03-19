@@ -130,8 +130,7 @@ class _HomePageState extends State<HomePage> {
                             name: "",
                             radius: 18,
                             fontsize: 10,
-                            img:
-                                "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSwKKzV4oKveaDEmBr38LXuMWTho1d1-mjOOcjau6XJ1A&s",
+                            img: "https://media.licdn.com/dms/image/C4D03AQHHSwZyheu1UQ/profile-displayphoto-shrink_800_800/0/1662703260529?e=2147483647&v=beta&t=Jm4eBGPY71_8duu5EDtQrXPoUY9yMY-QcRh5OiTztEk",
                           ),
                         )
                       ],
@@ -166,7 +165,7 @@ class _HomePageState extends State<HomePage> {
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
                         Text(
-                          "Shweta",
+                          "Narendra",
                           style: TextStyle(
                             color: Colors.white,
                             fontWeight: FontWeight.w500,

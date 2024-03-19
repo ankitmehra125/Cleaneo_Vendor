@@ -1,5 +1,5 @@
 import 'package:cleaneo_vendor/Home/Home_/Home.dart';
-import 'package:cleaneo_vendor/Home/Inventory%20Request/addToCart_page.dart';
+import 'package:cleaneo_vendor/Home/Inventory%20Request/addToCartBottomSheet.dart';
 import 'package:cleaneo_vendor/Home/Inventory%20Request/inventory_request_page.dart';
 import 'package:cleaneo_vendor/Screens/Splash.dart';
 import 'package:device_preview/device_preview.dart';
@@ -49,8 +49,6 @@ class _MyAppState extends State<MyApp> {
       ],
       supportedLocales: const [Locale('en'), Locale('hi')],
       home: const SplashScreen(),
-      // home: InventoryRequestPage(),
-      // home: HomePage(),
       // home: HomePage(),
     );
   }
