@@ -149,71 +149,71 @@ class _LedgerState extends State<Ledger> {
                                   ),
                                 ],
                               ),
-                              const SizedBox(
-                                height: 12.0,
-                              ),
-                              SvgPicture.asset(
-                                "assets/images/dashedledger.svg",
-                                width: mQuery.size.width * 0.9,
-                              ),
-                              const SizedBox(
-                                height: 12.0,
-                              ),
-                              const Row(
-                                mainAxisAlignment:
-                                    MainAxisAlignment.spaceBetween,
-                                children: [
-                                  Text(
-                                    "Cash Collected",
-                                    style: TextStyle(
-                                        fontSize: 14,
-                                        color: Colors.black54,
-                                        fontWeight: FontWeight.w500),
-                                  ),
-                                  Text(
-                                    "₹ 800",
-                                    style: TextStyle(
-                                        fontSize: 16,
-                                        color: Colors.green,
-                                        fontWeight: FontWeight.w500),
-                                  ),
-                                ],
-                              ),
+                              // const SizedBox(
+                              //   height: 12.0,
+                              // ),
+                              // SvgPicture.asset(
+                              //   "assets/images/dashedledger.svg",
+                              //   width: mQuery.size.width * 0.9,
+                              // ),
+                              // const SizedBox(
+                              //   height: 12.0,
+                              // ),
+                              // const Row(
+                              //   mainAxisAlignment:
+                              //       MainAxisAlignment.spaceBetween,
+                              //   children: [
+                              //     Text(
+                              //       "Cash Collected",
+                              //       style: TextStyle(
+                              //           fontSize: 14,
+                              //           color: Colors.black54,
+                              //           fontWeight: FontWeight.w500),
+                              //     ),
+                              //     Text(
+                              //       "₹ 800",
+                              //       style: TextStyle(
+                              //           fontSize: 16,
+                              //           color: Colors.green,
+                              //           fontWeight: FontWeight.w500),
+                              //     ),
+                              //   ],
+                              // ),
                               //online
+                              // const SizedBox(
+                              //   height: 12.0,
+                              // ),
+                              // SvgPicture.asset(
+                              //   "assets/images/dashedledger.svg",
+                              //   width: mQuery.size.width * 0.9,
+                              // ),
                               const SizedBox(
                                 height: 12.0,
                               ),
-                              SvgPicture.asset(
-                                "assets/images/dashedledger.svg",
-                                width: mQuery.size.width * 0.9,
-                              ),
-                              const SizedBox(
-                                height: 12.0,
-                              ),
-                              const Row(
-                                mainAxisAlignment:
-                                    MainAxisAlignment.spaceBetween,
-                                children: [
-                                  Text(
-                                    "Cleaneo (Online Payment)",
-                                    style: TextStyle(
-                                        fontSize: 14,
-                                        color: Colors.black54,
-                                        fontWeight: FontWeight.w500),
-                                  ),
-                                  Text(
-                                    "₹ 800",
-                                    style: TextStyle(
-                                        fontSize: 16,
-                                        color: Color(0xFF48BDFE),
-                                        fontWeight: FontWeight.w500),
-                                  ),
-                                ],
-                              ),
+                              // const Row(
+                              //   mainAxisAlignment:
+                              //       MainAxisAlignment.spaceBetween,
+                              //   children: [
+                              //     Text(
+                              //       "Cleaneo (Online Payment)",
+                              //       style: TextStyle(
+                              //           fontSize: 14,
+                              //           color: Colors.black54,
+                              //           fontWeight: FontWeight.w500),
+                              //     ),
+                              //     Text(
+                              //       "₹ 800",
+                              //       style: TextStyle(
+                              //           fontSize: 16,
+                              //           color: Color(0xFF48BDFE),
+                              //           fontWeight: FontWeight.w500),
+                              //     ),
+                              //   ],
+                              // ),
                               //commision
-                              const SizedBox(
-                                height: 12.0,
-                              ),
+                              // const SizedBox(
+                              //   height: 12.0,
+                              // ),
                               SvgPicture.asset(
                                 "assets/images/dashedledger.svg",
                                 width: mQuery.size.width * 0.9,
@@ -280,7 +280,7 @@ class _LedgerState extends State<Ledger> {
                                 thickness: 1.5,
                               ),
                               const SizedBox(
-                                height: 16.0,
+                                height: 6.0,
                               ),
                               const Row(
                                 mainAxisAlignment:

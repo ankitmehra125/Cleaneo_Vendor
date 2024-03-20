@@ -2,8 +2,7 @@
 import 'package:cleaneo_vendor/Home/Home_/Home.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
-import 'package:package_info/package_info.dart';
-import 'package:url_launcher/url_launcher.dart';
+
 
 class PaymentPage extends StatefulWidget {
   const PaymentPage({Key? key}) : super(key: key);
@@ -14,18 +13,6 @@ class PaymentPage extends StatefulWidget {
 
 class _PaymentPageState extends State<PaymentPage> {
 
-  void _launchURL() async {
-    const String googlePayPackageName = 'com.google.android.apps.walletnfcrel';
-
-    PackageInfo packageInfo = await PackageInfo.fromPlatform();
-    String packageName = packageInfo.packageName;
-
-    if (await canLaunch('https://pay.google.com') && packageName == googlePayPackageName) {
-      await launch('https://pay.google.com');
-    } else {
-      throw 'Could not launch Google Pay';
-    }
-  }
 
   int selectedPaymentMethod = -1;
 
@@ -515,16 +502,10 @@ class _PaymentPageState extends State<PaymentPage> {
                                   },
                                 );
                               } else {
-                                // Navigate to the next page only if payment option is selected
-                                if (selectedPaymentMethod == 3) {
-                                  // Launch Google Pay
-                                  _launchURL();
-                                } else {
                                   Navigator.pushReplacement(context, MaterialPageRoute(builder: (context){
                                     return HomePage();
                                   }));
                                 }
-                              }
                             },
                             child: Container(
                               width: double.infinity,

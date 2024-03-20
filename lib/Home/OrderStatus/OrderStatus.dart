@@ -1,5 +1,6 @@
 import 'package:cleaneo_vendor/Home/BotNav.dart';
 import 'package:cleaneo_vendor/Home/Drawer.dart';
+import 'package:cleaneo_vendor/Home/Home_/Home.dart';
 import 'package:cleaneo_vendor/Home/OrderStatus/Components/DropDown.dart';
 import 'package:cleaneo_vendor/Screens/Welcome/Components/termsService.dart';
 import 'package:flutter/material.dart';
@@ -77,15 +78,16 @@ class _OrderStatusState extends State<OrderStatus> {
                         SizedBox(height: mQuery.size.height * 0.02),
                         Container(
                           width: double.infinity,
-                          height: mQuery.size.height * 0.12,
+                          height: mQuery.size.height * 0.08,
                           color: const Color(0xffebf7ed),
                           padding: EdgeInsets.symmetric(
                             horizontal: mQuery.size.width * 0.04,
                           ),
                           child: Row(
+                            crossAxisAlignment: CrossAxisAlignment.center,
                             children: [
                               ProfilePicture(
-                                radius: mQuery.size.width * 0.07,
+                                radius: mQuery.size.width * 0.05,
                                 fontsize: 10,
                                 name: "",
                                 img: "https://images.news18.com/ibnkhabar/uploads/2023/09/IFS-Apala-mishra-age-upsc-rank-education-biography-in-hindi-marksheet-salary-1.jpg",
@@ -95,54 +97,25 @@ class _OrderStatusState extends State<OrderStatus> {
                               ),
                               Column(
                                 crossAxisAlignment: CrossAxisAlignment.start,
+                                mainAxisAlignment: MainAxisAlignment.center,
                                 children: [
-                                  SizedBox(
-                                    height: mQuery.size.height * 0.016,
-                                  ),
                                   Row(
                                     children: [
                                       Text(
                                         "$userName",
                                         style: TextStyle(
-                                          fontSize: mQuery.size.height * 0.022,
+                                          fontSize: mQuery.size.height * 0.017,
                                           fontFamily: 'SatoshiBold',
                                         ),
                                       ),
                                       SizedBox(
                                         width: mQuery.size.width * 0.3,
                                       ),
-                                      Row(
-                                        children: [
-                                          Container(
-                                            width: mQuery.size.width * 0.05,
-                                            height: mQuery.size.height * 0.04,
-                                            decoration: const BoxDecoration(
-                                              shape: BoxShape.circle,
-                                              color: Color(0xff29b2fe),
-                                            ),
-                                            child: Center(
-                                              child: Icon(
-                                                Icons.home,
-                                                color: Colors.white,
-                                                size: mQuery.size.width * 0.033,
-                                              ),
-                                            ),
-                                          ),
-                                          SizedBox(width: mQuery.size.width * 0.02),
-                                          Text(
-                                            "$distance km",
-                                            style: TextStyle(
-                                              fontSize: mQuery.size.height * 0.018,
-                                              fontFamily: 'SatoshiBold',
-                                            ),
-                                          ),
-                                        ],
-                                      )
+
                                     ],
                                   ),
                                   Text(
-                                    "B-702, Sarthak the Sarjak, Bhaijipura Chokdi, PDPU \n"
-                                        "Crossroad , Beside Pulse Mall, Seventhn Floor , Kudasan",
+                                    "Clock Tower Dehradun",
                                     style: TextStyle(fontSize: 10),
                                   )
                                 ],
@@ -182,7 +155,7 @@ class _OrderStatusState extends State<OrderStatus> {
                                       Text(
                                         "Order Accepted",
                                         style: TextStyle(
-                                          fontSize: 17,
+                                          fontSize: 15,
                                           fontWeight: FontWeight.w700,
                                         ),
                                       ),
@@ -250,7 +223,7 @@ class _OrderStatusState extends State<OrderStatus> {
                                       Text(
                                         "Order Recieved",
                                         style: TextStyle(
-                                          fontSize: 17,
+                                          fontSize: 15,
                                           fontWeight: FontWeight.w700,
                                         ),
                                       ),
@@ -318,7 +291,7 @@ class _OrderStatusState extends State<OrderStatus> {
                                       Text(
                                         "Order in Process",
                                         style: TextStyle(
-                                          fontSize: 17,
+                                          fontSize: 15,
                                           fontWeight: FontWeight.w700,
                                         ),
                                       ),
@@ -386,7 +359,7 @@ class _OrderStatusState extends State<OrderStatus> {
                                       Text(
                                         "Ready to Pickup",
                                         style: TextStyle(
-                                          fontSize: 17,
+                                          fontSize: 15,
                                           fontWeight: FontWeight.w700,
                                         ),
                                       ),
@@ -454,7 +427,7 @@ class _OrderStatusState extends State<OrderStatus> {
                                       Text(
                                         "Order on its way",
                                         style: TextStyle(
-                                          fontSize: 17,
+                                          fontSize: 15,
                                           fontWeight: FontWeight.w700,
                                         ),
                                       ),
@@ -522,7 +495,7 @@ class _OrderStatusState extends State<OrderStatus> {
                                       Text(
                                         "Order Delivered",
                                         style: TextStyle(
-                                          fontSize: 17,
+                                          fontSize: 15,
                                           fontWeight: FontWeight.w700,
                                         ),
                                       ),
@@ -541,9 +514,9 @@ class _OrderStatusState extends State<OrderStatus> {
                                     },
                                     child: Container(
                                       width:
-                                      MediaQuery.of(context).size.width * 0.065,
+                                      MediaQuery.of(context).size.width * 0.06,
                                       height:
-                                      MediaQuery.of(context).size.height * 0.05,
+                                      MediaQuery.of(context).size.height * 0.045,
                                       decoration: BoxDecoration(
                                         shape: BoxShape.circle,
                                         border: Border.all(
@@ -570,21 +543,29 @@ class _OrderStatusState extends State<OrderStatus> {
                       ],
                     ),
                   ),
-                  Container(
-                    width: double.infinity,
-                    height: mQuery.size.height*0.065,
-                    margin: EdgeInsets.symmetric(
-                      horizontal: mQuery.size.width*.045
-                    ),
-                    decoration: BoxDecoration(
-                        color: Color(0xff29b2fe),
-                        borderRadius: BorderRadius.circular(6)
-                    ),
-                    child: Center(
-                      child: Text("Done",style: TextStyle(
-                          color: Colors.white,
-                          fontSize: mQuery.size.height*0.024
-                      ),),
+                  GestureDetector(
+                    onTap: ()
+                    {
+                      Navigator.push(context, MaterialPageRoute(builder: (context){
+                        return HomePage();
+                      }));
+                    },
+                    child: Container(
+                      width: double.infinity,
+                      height: mQuery.size.height*0.065,
+                      margin: EdgeInsets.symmetric(
+                        horizontal: mQuery.size.width*.045
+                      ),
+                      decoration: BoxDecoration(
+                          color: Color(0xff29b2fe),
+                          borderRadius: BorderRadius.circular(6)
+                      ),
+                      child: Center(
+                        child: Text("Done",style: TextStyle(
+                            color: Colors.white,
+                            fontSize: mQuery.size.height*0.024
+                        ),),
+                      ),
                     ),
                   ),
                   SizedBox(height: mQuery.size.height*0.02,)

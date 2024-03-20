@@ -97,7 +97,7 @@ class _DailyEarningsState extends State<DailyEarnings> {
                             Text(
                               'Order #${index + 1}',
                               style: const TextStyle(
-                                fontSize: 18,
+                                fontSize: 1,
                                 fontWeight: FontWeight.bold,
                               ),
                             ),

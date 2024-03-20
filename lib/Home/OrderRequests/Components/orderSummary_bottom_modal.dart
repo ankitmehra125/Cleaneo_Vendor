@@ -119,13 +119,14 @@ void orderSummary(BuildContext context) {
                             topRight: Radius.circular(12),
                           )),
                       width: double.infinity,
-                      height: mQuery.size.height * 0.12,
+                      height: mQuery.size.height * 0.08,
                       padding: EdgeInsets.symmetric(
                           horizontal: mQuery.size.width * 0.04),
                       child: Row(
+                        crossAxisAlignment: CrossAxisAlignment.center,
                         children: [
                           ProfilePicture(
-                            radius: mQuery.size.width * 0.07,
+                            radius: mQuery.size.width * 0.05,
                             fontsize: 10,
                             name: "",
                             img:
@@ -141,46 +142,46 @@ void orderSummary(BuildContext context) {
                                 height: mQuery.size.height * 0.016,
                               ),
                               Row(
+                                crossAxisAlignment: CrossAxisAlignment.center,
                                 children: [
                                   Text(
                                     "$userName",
                                     style: TextStyle(
-                                        fontSize: mQuery.size.height * 0.022,
+                                        fontSize: mQuery.size.height * 0.018,
                                         fontFamily: 'SatoshiBold'),
                                   ),
                                   SizedBox(
                                     width: mQuery.size.width * 0.36,
                                   ),
-                                  Row(children: [
-                                    Container(
-                                      width: mQuery.size.width * 0.05,
-                                      height: mQuery.size.height * 0.04,
-                                      decoration: const BoxDecoration(
-                                          shape: BoxShape.circle,
-                                          color: Color(0xff29b2fe)),
-                                      child: Center(
-                                        child: Icon(
-                                          Icons.home,
-                                          color: Colors.white,
-                                          size: mQuery.size.width * 0.033,
-                                        ),
-                                      ),
-                                    ),
-                                    SizedBox(
-                                      width: mQuery.size.width * 0.02,
-                                    ),
-                                    Text(
-                                      "$distance km",
-                                      style: TextStyle(
-                                          fontSize: mQuery.size.height * 0.018,
-                                          fontFamily: 'SatoshiBold'),
-                                    ),
-                                  ])
+                                  // Row(children: [
+                                  //   Container(
+                                  //     width: mQuery.size.width * 0.05,
+                                  //     height: mQuery.size.height * 0.04,
+                                  //     decoration: const BoxDecoration(
+                                  //         shape: BoxShape.circle,
+                                  //         color: Color(0xff29b2fe)),
+                                  //     child: Center(
+                                  //       child: Icon(
+                                  //         Icons.home,
+                                  //         color: Colors.white,
+                                  //         size: mQuery.size.width * 0.033,
+                                  //       ),
+                                  //     ),
+                                  //   ),
+                                  //   SizedBox(
+                                  //     width: mQuery.size.width * 0.02,
+                                  //   ),
+                                  //   // Text(
+                                  //   //   "$distance km",
+                                  //   //   style: TextStyle(
+                                  //   //       fontSize: mQuery.size.height * 0.018,
+                                  //   //       fontFamily: 'SatoshiBold'),
+                                  //   // ),
+                                  // ])
                                 ],
                               ),
                               const Text(
-                                "B-702, Sarthak the Sarjak, Bhaijipura Chokdi, PDPU \n"
-                                "Crossroad , Beside Pulse Mall, Seventhn Floor , Kudasan",
+                                "Clock Tower Dehradun",
                                 style: TextStyle(fontSize: 10),
                               )
                             ],
@@ -959,77 +960,75 @@ void orderSummary(BuildContext context) {
                               SizedBox(
                                 height: mQuery.size.height * 0.01,
                               ),
-                              const DottedLine(
-                                direction: Axis.horizontal,
-                                alignment: WrapAlignment.center,
-                                lineLength: double.infinity,
-                                lineThickness: 1.0,
-                                dashLength: 4.0,
-                                dashColor: Colors.black54,
-                                dashRadius: 0.0,
-                                dashGapLength: 4.0,
-                                dashGapRadius: 0.0,
-                              ),
-                              SizedBox(
-                                height: mQuery.size.height * 0.01,
-                              ),
-                              Row(
-                                children: [
-                                  Text(
-                                    "Delivery Charges",
-                                    style: TextStyle(
-                                      fontSize: mQuery.size.height * 0.017,
-                                      color: Colors.black54,
-                                    ),
-                                  ),
-                                  const Expanded(child: SizedBox()),
-                                  Text(
-                                    "₹ ${prices["Delivery Charges"]?.toStringAsFixed(2)}",
-                                    style: TextStyle(
-                                      fontSize: mQuery.size.height * 0.017,
-                                      color: Colors.black54,
-                                    ),
-                                  )
-                                ],
-                              ),
-                              SizedBox(
-                                height: mQuery.size.height * 0.01,
-                              ),
-                              const DottedLine(
-                                direction: Axis.horizontal,
-                                alignment: WrapAlignment.center,
-                                lineLength: double.infinity,
-                                lineThickness: 1.0,
-                                dashLength: 4.0,
-                                dashColor: Colors.black54,
-                                dashRadius: 0.0,
-                                dashGapLength: 4.0,
-                                dashGapRadius: 0.0,
-                              ),
-                              SizedBox(
-                                height: mQuery.size.height * 0.01,
-                              ),
-                              Row(
-                                children: [
-                                  Text(
-                                    "Tax",
-                                    style: TextStyle(
-                                      fontSize: mQuery.size.height * 0.017,
-                                      color: Colors.black54,
-                                    ),
-                                  ),
-                                  const Expanded(
-                                    child: SizedBox(),
-                                  ),
-                                  Text(
-                                    "₹ ${prices["Tax"]?.toStringAsFixed(2)}",
-                                    style: TextStyle(
-                                      fontSize: mQuery.size.height * 0.017,
-                                      color: Colors.black54,
-                                    ),
-                                  )
-                                ],
-                              ),
+                              // const DottedLine(
+                              //   direction: Axis.horizontal,
+                              //   alignment: WrapAlignment.center,
+                              //   lineLength: double.infinity,
+                              //   lineThickness: 1.0,
+                              //   dashLength: 4.0,
+                              //   dashColor: Colors.black54,
+                              //   dashRadius: 0.0,
+                              //   dashGapLength: 4.0,
+                              //   dashGapRadius: 0.0,
+                              // ),
+                              // SizedBox(
+                              //   height: mQuery.size.height * 0.01,
+                              // ),
+                              // Row(
+                              //   children: [
+                              //     Text(
+                              //       "Delivery Charges",
+                              //       style: TextStyle(
+                              //         fontSize: mQuery.size.height * 0.017,
+                              //         color: Colors.black54,
+                              //       ),
+                              //     ),
+                              //     const Expanded(child: SizedBox()),
+                              //     Text(
+                              //       "₹ ${prices["Delivery Charges"]?.toStringAsFixed(2)}",
+                              //       style: TextStyle(
+                              //         fontSize: mQuery.size.height * 0.017,
+                              //         color: Colors.black54,
+                              //       ),
+                              //     )
+                              //   ],
+                              // ),
+                              // SizedBox(
+                              //   height: mQuery.size.height * 0.01,
+                              // ),
+                              // const DottedLine(
+                              //   direction: Axis.horizontal,
+                              //   alignment: WrapAlignment.center,
+                              //   lineLength: double.infinity,
+                              //   lineThickness: 1.0,
+                              //   dashLength: 4.0,
+                              //   dashColor: Colors.black54,
+                              //   dashRadius: 0.0,
+                              //   dashGapLength: 4.0,
+                              //   dashGapRadius: 0.0,
+                              // ),
+
+                              // Row(
+                              //   children: [
+                              //     Text(
+                              //       "Tax",
+                              //       style: TextStyle(
+                              //         fontSize: mQuery.size.height * 0.017,
+                              //         color: Colors.black54,
+                              //       ),
+                              //     ),
+                              //     const Expanded(
+                              //       child: SizedBox(),
+                              //     ),
+                              //     Text(
+                              //       "₹ ${prices["Tax"]?.toStringAsFixed(2)}",
+                              //       style: TextStyle(
+                              //         fontSize: mQuery.size.height * 0.017,
+                              //         color: Colors.black54,
+                              //       ),
+                              //     )
+                              //   ],
+                              // ),
                               const Divider(),
                               Row(
                                 children: [

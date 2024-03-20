@@ -7,6 +7,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+import 'package:flutter_profile_picture/flutter_profile_picture.dart';
 import 'package:flutter_svg/svg.dart';
 
 class OrderReq extends StatefulWidget {
@@ -137,18 +138,19 @@ class _OrderReqState extends State<OrderReq> {
                                       horizontal: mQuery.size.width * 0.03),
                                   child: Row(
                                     children: [
-                                      const CircleAvatar(
-                                        radius: 18.0,
-                                        backgroundImage: NetworkImage(
-                                            "https://images.news18.com/ibnkhabar/uploads/2023/09/IFS-Apala-mishra-age-upsc-rank-education-biography-in-hindi-marksheet-salary-1.jpg"),
-                                      ),
+                                     ProfilePicture(
+                                       name: "",
+                                       fontsize: 10,
+                                       radius: 12,
+                                       img: "https://images.news18.com/ibnkhabar/uploads/2023/09/IFS-Apala-mishra-age-upsc-rank-education-biography-in-hindi-marksheet-salary-1.jpg",
+                                     ),
                                       SizedBox(
                                         width: mQuery.size.width * 0.02,
                                       ),
                                       Text(
                                         data['name'],
                                         style: const TextStyle(
-                                            fontSize: 16,
+                                            fontSize: 14,
                                             fontWeight: FontWeight.w700),
                                       ),
                                       const Expanded(child: SizedBox()),

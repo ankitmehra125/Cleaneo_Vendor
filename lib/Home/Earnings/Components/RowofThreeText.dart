@@ -21,25 +21,29 @@ class _NavigationWithTabsState extends State<NavigationWithTabs> {
             "orderNumber": "1",
             "time": "10:00 AM",
             "onlineMode": "Yes",
-            "earning": "₹ 180"
+            "earning": "₹ 180",
+            "date" : "22/02/2024"
           },
           {
             "orderNumber": "2",
             "time": "11:30 AM",
             "onlineMode": "No",
-            "earning": "₹ 200"
+            "earning": "₹ 200",
+            "date" : "24/02/2024"
           },
           {
             "orderNumber": "3",
             "time": "01:00 PM",
             "onlineMode": "Yes",
-            "earning": "₹ 230"
+            "earning": "₹ 230",
+            "date" : "27/02/2024"
           },
           {
             "orderNumber": "2",
             "time": "11:30 AM",
             "onlineMode": "No",
-            "earning": "₹ 200"
+            "earning": "₹ 200",
+            "date" : "02/03/2024"
           },
         ]
       }
@@ -52,19 +56,22 @@ class _NavigationWithTabsState extends State<NavigationWithTabs> {
             "orderNumber": "4",
             "time": "Mon 10:00 AM",
             "onlineMode": "Yes",
-            "earning": "₹ 230"
+            "earning": "₹ 230",
+            "date" : "12/04/2024"
           },
           {
             "orderNumber": "5",
             "time": "Tue 11:30 AM",
             "onlineMode": "No",
-            "earning": "₹ 220"
+            "earning": "₹ 220",
+            "date" : "07/02/2024"
           },
           {
             "orderNumber": "6",
             "time": "Wed 01:00 PM",
             "onlineMode": "Yes",
-            "earning": "₹ 100"
+            "earning": "₹ 100",
+            "date" : "16/02/2024"
           },
         ]
       }
@@ -77,19 +84,22 @@ class _NavigationWithTabsState extends State<NavigationWithTabs> {
             "orderNumber": "7",
             "time": "Jan 10:00 AM",
             "onlineMode": "Yes",
-            "earning": "₹ 300"
+            "earning": "₹ 300",
+            "date" : "28/02/2024"
           },
           {
             "orderNumber": "8",
             "time": "Feb 11:30 AM",
             "onlineMode": "No",
-            "earning": "₹ 190"
+            "earning": "₹ 190",
+            "date" : "10/02/2024"
           },
           {
             "orderNumber": "9",
             "time": "Mar 01:00 PM",
             "onlineMode": "Yes",
-            "earning": "₹ 200"
+            "earning": "₹ 200",
+            "date" : "24/02/2024"
           },
         ]
       }
@@ -202,7 +212,7 @@ class _NavigationWithTabsState extends State<NavigationWithTabs> {
                             Text(
                               'Order: ${order["orderNumber"]}',
                               style: const TextStyle(
-                                  fontSize: 16.0, fontWeight: FontWeight.w600),
+                                   fontWeight: FontWeight.w600),
                             ),
                             // SizedBox(height: 5.0),
                             Text(
@@ -212,22 +222,24 @@ class _NavigationWithTabsState extends State<NavigationWithTabs> {
                                   fontWeight: FontWeight.w600,
                                   color: Colors.grey),
                             ),
+                            Text("29/04/2026",style: TextStyle(
+                              fontSize: mQuery.size.height*0.016
+                            ),)
+
                           ],
                         ),
                         const Spacer(),
                         if (order["onlineMode"] == "Yes")
                           Text(
-                            'Online: ${order["earning"]}',
+                            '${order["earning"]}',
                             style: const TextStyle(
-                                fontSize: 15.0,
                                 fontWeight: FontWeight.w600,
                                 color: Color(0xFF29B2FE)),
                           ),
                         if (order["onlineMode"] == "No")
                           Text(
-                            'Cash: ${order["earning"]}',
+                            '${order["earning"]}',
                             style: const TextStyle(
-                                fontSize: 15.0,
                                 fontWeight: FontWeight.w600,
                                 color: Color(0xFF13A32B)),
                           ),

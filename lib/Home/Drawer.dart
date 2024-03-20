@@ -303,27 +303,27 @@ class _MyDrawerState extends State<MyDrawer> {
                             ),
                           ),
                         ),
-                        GestureDetector(
-                          onTap: () {
-                            Navigator.push(context,
-                                MaterialPageRoute(builder: (context) {
-                              return CashCollected();
-                            }));
-                          },
-                          child: ListTile(
-                            leading: Image.asset(
-                                "assets/images/drawer-images/offers.png",
-                                color: const Color(0xff29b2fe),
-                                width: mQuery.size.width * 0.06),
-                            title: Text(
-                              "Cash Collected",
-                              style: TextStyle(
-                                fontWeight: FontWeight.w600,
-                                fontSize: mQuery.size.height * 0.0212,
-                              ),
-                            ),
-                          ),
-                        ),
+                        // GestureDetector(
+                        //   onTap: () {
+                        //     Navigator.push(context,
+                        //         MaterialPageRoute(builder: (context) {
+                        //       return CashCollected();
+                        //     }));
+                        //   },
+                        //   child: ListTile(
+                        //     leading: Image.asset(
+                        //         "assets/images/drawer-images/offers.png",
+                        //         color: const Color(0xff29b2fe),
+                        //         width: mQuery.size.width * 0.06),
+                        //     title: Text(
+                        //       "Cash Collected",
+                        //       style: TextStyle(
+                        //         fontWeight: FontWeight.w600,
+                        //         fontSize: mQuery.size.height * 0.0212,
+                        //       ),
+                        //     ),
+                        //   ),
+                        // ),
                         GestureDetector(
                           onTap: () {
                             Navigator.push(context,

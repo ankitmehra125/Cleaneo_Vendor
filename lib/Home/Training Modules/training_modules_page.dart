@@ -75,14 +75,6 @@ class _TrainingsState extends State<Trainings> {
                   borderRadius: BorderRadius.only(
                       topLeft: Radius.circular(16),
                       topRight: Radius.circular(16)),
-                  boxShadow: [
-                    BoxShadow(
-                      color: Colors.grey.withOpacity(0.5),
-                      spreadRadius: 0.3,
-                      blurRadius: 1,
-                      offset: Offset(3, 3),
-                    ),
-                  ],
                 ),
                 child: ListView.builder(
                   itemCount: videoUrls.length,
@@ -111,53 +103,67 @@ class VideoListItem extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return ListTile(
-      title: Row(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: [
-          Stack(
-            children: [
-              Container(
-                  decoration: BoxDecoration(
-                      borderRadius: BorderRadius.all(Radius.circular(10.0))),
+      title: Container(
+        decoration: BoxDecoration(
+          color: Colors.white,
+          borderRadius: BorderRadius.circular(12),
+          boxShadow: [
+            BoxShadow(
+              color: Colors.grey.withOpacity(0.5),
+              spreadRadius: 0,
+              blurRadius: 7,
+              offset: Offset(0,0)
+            )
+          ]
+        ),
+        child: Row(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            Stack(
+              children: [
+                Container(
+                    decoration: BoxDecoration(
+                        borderRadius: BorderRadius.all(Radius.circular(10.0))),
+                    width: 200,
+                    height: 100,
+                    child: Image.network(
+                      videoUrl,
+                      fit: BoxFit.contain,
+                    )),
+                Container(
                   width: 200,
                   height: 100,
-                  child: Image.network(
-                    videoUrl,
-                    fit: BoxFit.contain,
-                  )),
-              Container(
-                width: 200,
-                height: 100,
-                decoration: BoxDecoration(
-                    color: Colors.black.withOpacity(0.5),
-                    borderRadius: BorderRadius.all(Radius.circular(10.0))),
-              ),
-              Positioned.fill(
-                child: Align(
-                  alignment: Alignment.center,
-                  child: Icon(
-                    Icons.play_circle_fill,
-                    size: 50,
-                    color: Colors.white,
+                  decoration: BoxDecoration(
+                      color: Colors.black.withOpacity(0.5),
+                      borderRadius: BorderRadius.all(Radius.circular(10.0))),
+                ),
+                Positioned.fill(
+                  child: Align(
+                    alignment: Alignment.center,
+                    child: Icon(
+                      Icons.play_circle_fill,
+                      size: 50,
+                      color: Colors.white,
+                    ),
+                  ),
+                ),
+              ],
+            ),
+            SizedBox(height: 10),
+            Padding(
+              padding: const EdgeInsets.only(left: 8.0),
+              child: Container(
+                width: 100,
+                child: Center(
+                  child: Text(
+                    videoTitle,
+                    style: TextStyle(fontWeight: FontWeight.bold),
                   ),
                 ),
               ),
-            ],
-          ),
-          SizedBox(height: 10),
-          Padding(
-            padding: const EdgeInsets.only(left: 8.0),
-            child: Container(
-              width: 100,
-              child: Center(
-                child: Text(
-                  videoTitle,
-                  style: TextStyle(fontWeight: FontWeight.bold),
-                ),
-              ),
             ),
-          ),
-        ],
+          ],
+        ),
       ),
     );
   }

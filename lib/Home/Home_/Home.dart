@@ -243,100 +243,251 @@ class _HomePageState extends State<HomePage> {
             Expanded(
               child: ListView(
                 children: [
-                  GridView.builder(
-                    shrinkWrap: true,
-                    physics: const NeverScrollableScrollPhysics(),
-                    gridDelegate:
-                        const SliverGridDelegateWithFixedCrossAxisCount(
-                      crossAxisCount: 2,
-                      crossAxisSpacing: 1,
-                      mainAxisSpacing: 20,
+                  Padding(
+                    padding: const EdgeInsets.symmetric(
+                      horizontal: 16
                     ),
-                    itemBuilder: (BuildContext context, int index) {
-                      var item = gridItems[index];
-                      // var pages = _pages[index];
-                      return GestureDetector(
-                        onTap: () {
-                          Navigator.push(
-                            context,
-                            MaterialPageRoute(
-                                builder: (context) => _pages[index]),
-                          );
-                        },
-                        child: Container(
-                          margin: const EdgeInsets.symmetric(horizontal: 12),
-                          padding:
-                              EdgeInsets.only(top: mQuery.size.height * 0.01),
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: [
+                       GestureDetector(
+                         onTap : ()
+                         {
+                           Navigator.push(context, MaterialPageRoute(builder: (context){
+                             return OrderReq();
+                           }));
+                         },
+                         child: Container(
+                           width: mQuery.size.width*0.4,
+                           height: mQuery.size.height*0.14,
+                           decoration: BoxDecoration(
+                             color: Colors.white,
+                             borderRadius: BorderRadius.circular(12),
+                             boxShadow: [
+                               BoxShadow(
+                                 color: Colors.grey.withOpacity(0.5),
+                                 spreadRadius: 0,
+                                 blurRadius: 7,
+                                 offset: Offset(0,0)
+                               )
+                             ]
+                           ),
+                           child: Column(
+                             mainAxisAlignment: MainAxisAlignment.center,
+                             children: [
+                               Image.asset("assets/images/Home/Order Requests.png",
+                                width: mQuery.size.width*0.16,),
+                               SizedBox(height: mQuery.size.height*0.006),
+                               Text("Order Request",style: TextStyle(
+                                 fontSize: mQuery.size.height*0.015
+                               ),)
+                             ],
+                           ),
+                         ),
+                       ),
+                       GestureDetector(
+                         onTap : ()
+                         {
+                           Navigator.push(context, MaterialPageRoute(builder: (context){
+                             return OrderStatus();
+                           }));
+                         },
+                         child: Container(
+                           width: mQuery.size.width*0.4,
+                           height: mQuery.size.height*0.14,
+                           decoration: BoxDecoration(
+                             color: Colors.white,
+                             borderRadius: BorderRadius.circular(12),
+                             boxShadow: [
+                               BoxShadow(
+                                 color: Colors.grey.withOpacity(0.5),
+                                 spreadRadius: 0,
+                                 blurRadius: 7,
+                                 offset: Offset(0,0)
+                               )
+                             ]
+                           ),
+                           child: Column(
+                             mainAxisAlignment: MainAxisAlignment.center,
+                             children: [
+                               Image.asset("assets/images/Home/Order Status.png",
+                                width: mQuery.size.width*0.1,
+                                ),
+                               SizedBox(height: mQuery.size.height*0.006),
+                               Text("Order Status",style: TextStyle(
+                                 fontSize: mQuery.size.height*0.015
+                               ),)
+                             ],
+                           ),
+                         ),
+                       ),
+                      ],
+                    ),
+                  ),
+                  SizedBox(height: mQuery.size.height*0.038,),
+
+                  Padding(
+                    padding: const EdgeInsets.symmetric(
+                        horizontal: 16
+                    ),
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: [
+                        GestureDetector(
+                          onTap : ()
+                          {
+                            Navigator.push(context, MaterialPageRoute(builder: (context){
+                              return MyEarnings();
+                            }));
+                          },
+                          child: Container(
+                            width: mQuery.size.width*0.4,
+                            height: mQuery.size.height*0.14,
+                            decoration: BoxDecoration(
+                                color: Colors.white,
+                                borderRadius: BorderRadius.circular(12),
+                                boxShadow: [
+                                  BoxShadow(
+                                      color: Colors.grey.withOpacity(0.5),
+                                      spreadRadius: 0,
+                                      blurRadius: 7,
+                                      offset: Offset(0,0)
+                                  )
+                                ]
+                            ),
+                            child: Column(
+                              mainAxisAlignment: MainAxisAlignment.center,
+                              children: [
+                                Image.asset("assets/images/Home/My Earnings.png",
+                                  width: mQuery.size.width*0.11,),
+                                SizedBox(height: mQuery.size.height*0.006),
+                                Text("My Earnings",style: TextStyle(
+                                    fontSize: mQuery.size.height*0.015
+                                ),)
+                              ],
+                            ),
+                          ),
+                        ),
+                        GestureDetector(
+                          onTap : ()
+                          {
+                            Navigator.push(context, MaterialPageRoute(builder: (context){
+                              return CashCollected();
+                            }));
+                          },
+                          child: Container(
+                            width: mQuery.size.width*0.4,
+                            height: mQuery.size.height*0.14,
+                            decoration: BoxDecoration(
+                                color: Colors.white,
+                                borderRadius: BorderRadius.circular(12),
+                                boxShadow: [
+                                  BoxShadow(
+                                      color: Colors.grey.withOpacity(0.5),
+                                      spreadRadius: 0,
+                                      blurRadius: 7,
+                                      offset: Offset(0,0)
+                                  )
+                                ]
+                            ),
+                            child: Column(
+                              mainAxisAlignment: MainAxisAlignment.center,
+                              children: [
+                                Image.asset("assets/images/Home/Cash Collected.png",
+                                  width: mQuery.size.width*0.12,
+                                ),
+                                SizedBox(height: mQuery.size.height*0.006),
+                                Text("Cash Collected",style: TextStyle(
+                                    fontSize: mQuery.size.height*0.015
+                                ),)
+                              ],
+                            ),
+                          ),
+                        ),
+                      ],
+                    ),
+                  ),
+                  SizedBox(height: mQuery.size.height*0.038,),
+
+
+                  Padding(
+                    padding: const EdgeInsets.symmetric(
+                        horizontal: 16
+                    ),
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: [
+                        Container(
+                          width: mQuery.size.width*0.4,
+                          height: mQuery.size.height*0.14,
                           decoration: BoxDecoration(
-                            borderRadius: BorderRadius.circular(16),
-                            color: Colors.white,
-                            boxShadow: [
-                              BoxShadow(
-                                color: Colors.grey.withOpacity(0.5),
-                                spreadRadius: 2,
-                                blurRadius: 10,
-                                offset: const Offset(0, 0),
-                              ),
-                            ],
+                              color: Colors.white,
+                              borderRadius: BorderRadius.circular(12),
+                              boxShadow: [
+                                BoxShadow(
+                                    color: Colors.grey.withOpacity(0.5),
+                                    spreadRadius: 0,
+                                    blurRadius: 7,
+                                    offset: Offset(0,0)
+                                )
+                              ]
                           ),
                           child: Column(
                             mainAxisAlignment: MainAxisAlignment.center,
                             children: [
-                              SizedBox(
-                                width: 70,
-                                height: 70,
-                                child: Image.asset(
-                                  item["image"],
-                                ),
-                              ),
-                              SizedBox(height: mQuery.size.height * 0.017),
-                              Text(
-                                item["text"],
-                                style: TextStyle(
-                                  fontSize: mQuery.size.height * 0.02,
-                                  fontWeight: FontWeight.w700,
-                                ),
-                              ),
+                              Image.asset("assets/images/Home/Delivery Partner Management.png",
+                                width: mQuery.size.width*0.12,),
+                              SizedBox(height: mQuery.size.height*0.006),
+                              Row(
+                                mainAxisAlignment: MainAxisAlignment.center,
+                                children: [
+                                  Text("Delivery partner\n Management",style: TextStyle(
+                                      fontSize: mQuery.size.height*0.015
+                                  ),),
+                                ],
+                              )
                             ],
                           ),
                         ),
-                      );
-                    },
-                    itemCount: gridItems.length,
+                        GestureDetector(
+                          onTap : ()
+                          {
+                            Navigator.push(context, MaterialPageRoute(builder: (context){
+                              return Ledger();
+                            }));
+                          },
+                          child: Container(
+                            width: mQuery.size.width*0.4,
+                            height: mQuery.size.height*0.14,
+                            decoration: BoxDecoration(
+                                color: Colors.white,
+                                borderRadius: BorderRadius.circular(12),
+                                boxShadow: [
+                                  BoxShadow(
+                                      color: Colors.grey.withOpacity(0.5),
+                                      spreadRadius: 0,
+                                      blurRadius: 7,
+                                      offset: Offset(0,0)
+                                  )
+                                ]
+                            ),
+                            child: Column(
+                              mainAxisAlignment: MainAxisAlignment.center,
+                              children: [
+                                Image.asset("assets/images/Home/Cash Collected.png",
+                                  width: mQuery.size.width*0.12,
+                                ),
+                                SizedBox(height: mQuery.size.height*0.006),
+                                Text("Leger",style: TextStyle(
+                                    fontSize: mQuery.size.height*0.015
+                                ),)
+                              ],
+                            ),
+                          ),
+                        ),
+                      ],
+                    ),
                   ),
-                  SizedBox(height: mQuery.size.height * 0.032),
-                  // SingleChildScrollView(
-                  //   scrollDirection: Axis.horizontal,
-                  //   child: Row(
-                  //     children: dealImages.asMap().entries.map((entry) {
-                  //       int index = entry.key;
-                  //       String imageName = entry.value;
-                  //       Widget container = dealTexts[index];
-                  //       return Stack(
-                  //         children: [
-                  //           Container(
-                  //             margin: EdgeInsets.only(left: 16),
-                  //             width: mQuery.size.width * 1,
-                  //             height: mQuery.size.height * 0.2,
-                  //             decoration: BoxDecoration(
-                  //               borderRadius: BorderRadius.circular(16),
-                  //               image: DecorationImage(
-                  //                 image: NetworkImage(imageName),
-                  //                 fit: BoxFit.fill,
-                  //               ),
-                  //             ),
-                  //           ),
-                  //           Positioned(
-                  //             right: mQuery.size.width * 0.1,
-                  //             bottom: mQuery.size.height * 0.02,
-                  //             child: container,
-                  //           ),
-                  //         ],
-                  //       );
-                  //     }).toList(),
-                  //   ),
-                  // ),
-                  SizedBox(height: mQuery.size.height * 0.03),
                 ],
               ),
             ),
