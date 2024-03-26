@@ -49,13 +49,13 @@ class _MyAppState extends State<MyApp> {
       ],
       supportedLocales: const [Locale('en'), Locale('hi')],
       home: const SplashScreen(),
-      // home: HomePage(),
     );
   }
 }
 
 
 void main() {
+  runApp(const MyApp());
   runApp(DevicePreview(
     enabled: true,
     builder: (context) => const MyApp(),

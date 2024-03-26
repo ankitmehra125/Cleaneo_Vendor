@@ -137,33 +137,40 @@ class _UploadAdhaarState extends State<UploadAdhaar> {
                           SizedBox(
                             height: mQuery.size.height * 0.06,
                           ),
-                          GestureDetector(
-                            onTap: () {
-                              Navigator.push(context,
-                                  MaterialPageRoute(builder: (context) {
-                                return UploadPan();
-                              }));
-                            },
-                            child: Container(
-                              width: double.infinity,
-                              height: mQuery.size.height * 0.06,
-                              decoration: BoxDecoration(
-                                  color: const Color(0xff29b2fe),
-                                  borderRadius: BorderRadius.circular(6)),
-                              child: Center(
-                                child: const Text(
-                                  "Next",
-                                  style: TextStyle(
-                                      fontSize: 15,
-                                      color: Colors.white,
-                                      fontWeight: FontWeight.w600),
+
+                          Container(
+                            color: Colors.white,
+                            child: Column(
+                              children: [
+                                GestureDetector(
+                                  onTap: () {
+                                    Navigator.push(context,
+                                        MaterialPageRoute(builder: (context) {
+                                      return UploadPan();
+                                    }));
+                                  },
+                                  child: Container(
+                                    width: double.infinity,
+                                    height: mQuery.size.height * 0.06,
+                                    decoration: BoxDecoration(
+                                        color: const Color(0xff29b2fe),
+                                        borderRadius: BorderRadius.circular(6)),
+                                    child: Center(
+                                      child: const Text(
+                                        "Next",
+                                        style: TextStyle(
+                                            fontSize: 15,
+                                            color: Colors.white,
+                                            fontWeight: FontWeight.w600),
+                                      ),
+                                    ),
+                                  ),
                                 ),
-                              ),
+                                SizedBox(height: mQuery.size.height*0.13,)
+                              ],
                             ),
                           ),
-                          SizedBox(
-                            height: mQuery.size.height * 0.15,
-                          )
+                          
                         ],
                       )),
                 ),

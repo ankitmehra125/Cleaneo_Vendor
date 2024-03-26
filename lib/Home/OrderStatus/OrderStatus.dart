@@ -546,9 +546,7 @@ class _OrderStatusState extends State<OrderStatus> {
                   GestureDetector(
                     onTap: ()
                     {
-                      Navigator.push(context, MaterialPageRoute(builder: (context){
-                        return HomePage();
-                      }));
+                      Navigator.of(context).pop();
                     },
                     child: Container(
                       width: double.infinity,

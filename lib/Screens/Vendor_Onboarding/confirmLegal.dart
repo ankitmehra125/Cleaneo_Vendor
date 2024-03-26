@@ -111,13 +111,16 @@ class _ConfirmLegalState extends State<ConfirmLegal> {
                               'I agree to all the above terms of services',
                               style: TextStyle(fontSize: 14),
                             ),
-                            CupertinoSwitch(
-                              value: tandc0,
-                              onChanged: (bool value) {
-                                setState(() {
-                                  tandc0 = value;
-                                });
-                              },
+                            Transform.scale(
+                              scale: 0.7,
+                              child: CupertinoSwitch(
+                                value: tandc0,
+                                onChanged: (bool value) {
+                                  setState(() {
+                                    tandc0 = value;
+                                  });
+                                },
+                              ),
                             ),
                           ],
                         ),
@@ -134,13 +137,16 @@ class _ConfirmLegalState extends State<ConfirmLegal> {
                                 style: TextStyle(fontSize: 14),
                               ),
                             ),
-                            CupertinoSwitch(
-                              value: tandc1,
-                              onChanged: (bool value) {
-                                setState(() {
-                                  tandc1 = value;
-                                });
-                              },
+                            Transform.scale(
+                              scale: 0.7,
+                              child: CupertinoSwitch(
+                                value: tandc1,
+                                onChanged: (bool value) {
+                                  setState(() {
+                                    tandc1 = value;
+                                  });
+                                },
+                              ),
                             ),
                           ],
                         ),
@@ -157,13 +163,16 @@ class _ConfirmLegalState extends State<ConfirmLegal> {
                                 style: TextStyle(fontSize: 14),
                               ),
                             ),
-                            CupertinoSwitch(
-                              value: tandc2,
-                              onChanged: (bool value) {
-                                setState(() {
-                                  tandc2 = value;
-                                });
-                              },
+                            Transform.scale(
+                              scale: 0.7,
+                              child: CupertinoSwitch(
+                                value: tandc2,
+                                onChanged: (bool value) {
+                                  setState(() {
+                                    tandc2 = value;
+                                  });
+                                },
+                              ),
                             ),
                           ],
                         ),

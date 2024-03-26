@@ -9,6 +9,8 @@ class InventoryRequestPage extends StatefulWidget {
 }
 
 class _InventoryRequestPageState extends State<InventoryRequestPage> {
+  bool showCounter = false;
+
 
   List<Map<String, dynamic>> activatedFavorites = [];
 
@@ -179,11 +181,7 @@ class _InventoryRequestPageState extends State<InventoryRequestPage> {
                             children: washingItemList.asMap().entries.map((entry) {
                               return Padding(
                                 padding: EdgeInsets.only(right: 12.0),
-                                child: _buildItemCard(
-                                  entry.value,
-                                  mQuery,
-                                  washingItemCounts[entry.key],
-                                      (newValue) {
+                                child: _buildItemCard(entry.value, mQuery, washingItemCounts[entry.key], (newValue) {
                                     setState(() {
                                       washingItemCounts[entry.key] = newValue;
                                     });
@@ -194,6 +192,8 @@ class _InventoryRequestPageState extends State<InventoryRequestPage> {
                           ),
                         ),
                         SizedBox(height: mQuery.size.height * 0.05),
+
+
                         Text(
                           "Liquid Items",
                           style: TextStyle(fontWeight: FontWeight.w600),
@@ -220,6 +220,8 @@ class _InventoryRequestPageState extends State<InventoryRequestPage> {
                           ),
                         ),
                         SizedBox(height: mQuery.size.height * 0.05),
+
+
                         Text(
                           "Packaging Materials",
                           style: TextStyle(fontWeight: FontWeight.w600),
@@ -256,9 +258,6 @@ class _InventoryRequestPageState extends State<InventoryRequestPage> {
       ),
     );
   }
-
-
-
 
 
   Widget _buildItemCard(
@@ -304,14 +303,24 @@ class _InventoryRequestPageState extends State<InventoryRequestPage> {
                     onTap: () {
                       setState(() {
                         isFavorite = !isFavorite;
-                        // If the item is marked as favorite, add it to the activatedFavorites list
                         if (isFavorite) {
                           activatedFavorites.add(item);
                         } else {
-                          // If the item is unmarked as favorite, remove it from the activatedFavorites list
                           activatedFavorites.removeWhere((element) => element['name'] == item['name']);
                         }
                       });
+                      // Show Snackbar when the favorite icon is clicked
+                      ScaffoldMessenger.of(context).showSnackBar(
+                        SnackBar(
+                          backgroundColor: Color(0xffa1f3a1),
+                          content: Center(
+                              child: Text(isFavorite ? 'Added to favorites' : 'Removed from favorites',style: TextStyle(
+                                color: Color(0xff3d8b15),
+                                fontWeight: FontWeight.w700
+                              ),)),
+                          duration: Duration(seconds: 3),
+                        ),
+                      );
                     },
                     child: Icon(
                       isFavorite ? Icons.favorite : Icons.favorite_outline_outlined,
@@ -347,56 +356,86 @@ class _InventoryRequestPageState extends State<InventoryRequestPage> {
                       ValueListenableBuilder<int>(
                         valueListenable: ValueNotifier<int>(count),
                         builder: (context, value, child) {
-                          return Row(
-                            children: [
-                              GestureDetector(
-                                onTap: () {
-                                  if (value > 0) onCountChanged(value - 1);
-                                },
-                                child: Container(
-                                  width: mQuery.size.width * 0.06,
-                                  height: mQuery.size.height * 0.03,
-                                  decoration: BoxDecoration(
+                          if (showCounter) {
+                            return Row(
+                              children: [
+                                GestureDetector(
+                                  onTap: () {
+                                    if (value > 1) onCountChanged(value - 1);
+                                  },
+                                  child: Container(
+                                    width: mQuery.size.width * 0.06,
+                                    height: mQuery.size.height * 0.03,
+                                    decoration: BoxDecoration(
                                       shape: BoxShape.circle,
                                       color: Color(0xfff0f0f0),
-                                      border: Border.all(color: Color(0xff008000))),
-                                  child: Center(
-                                    child: Icon(
-                                      Icons.remove,
-                                      color: Colors.black,
-                                      size: mQuery.size.width * 0.04,
+                                      border: Border.all(color: Color(0xff008000)),
+                                    ),
+                                    child: Center(
+                                      child: Icon(
+                                        Icons.remove,
+                                        color: Colors.black,
+                                        size: mQuery.size.width * 0.04,
+                                      ),
                                     ),
                                   ),
                                 ),
-                              ),
-                              SizedBox(width: mQuery.size.width * 0.02),
-                              Text(
-                                "$value",
-                                style: TextStyle(fontSize: mQuery.size.height * 0.014),
-                              ),
-                              SizedBox(width: mQuery.size.width * 0.02),
-                              GestureDetector(
-                                onTap: () {
-                                  onCountChanged(value + 1);
-                                },
-                                child: Container(
-                                  width: mQuery.size.width * 0.06,
-                                  height: mQuery.size.height * 0.03,
-                                  decoration: BoxDecoration(
+                                SizedBox(width: mQuery.size.width * 0.02),
+                                Text(
+                                  "${value - 1}",
+                                  style: TextStyle(fontSize: mQuery.size.height * 0.014),
+                                ),
+                                SizedBox(width: mQuery.size.width * 0.02),
+                                GestureDetector(
+                                  onTap: () {
+                                    onCountChanged(value + 1);
+                                  },
+                                  child: Container(
+                                    width: mQuery.size.width * 0.06,
+                                    height: mQuery.size.height * 0.03,
+                                    decoration: BoxDecoration(
                                       shape: BoxShape.circle,
                                       color: Color(0xfff0f0f0),
-                                      border: Border.all(color: Color(0xff008000))),
-                                  child: Center(
-                                    child: Icon(
-                                      Icons.add,
-                                      color: Colors.black,
-                                      size: mQuery.size.width * 0.04,
+                                      border: Border.all(color: Color(0xff008000)),
+                                    ),
+                                    child: Center(
+                                      child: Icon(
+                                        Icons.add,
+                                        color: Colors.black,
+                                        size: mQuery.size.width * 0.04,
+                                      ),
                                     ),
                                   ),
                                 ),
-                              ),
-                            ],
-                          );
+                              ],
+                            );
+                          } else {
+                            return GestureDetector(
+                                onTap: () {
+                                  setState(() {
+                                    showCounter = !showCounter; // Toggle the visibility
+                                  });
+                                },
+                                child: Container(
+                                  width: mQuery.size.width*0.13,
+                                  height: mQuery.size.height*0.028,
+                                  decoration: BoxDecoration(
+                                      borderRadius: BorderRadius.circular(6),
+                                      color: Color(0xfff7fff9),
+                                      border: Border.all(
+                                          color: Color(0xff348719)
+                                      )
+                                  ),
+                                  child: Center(
+                                    child: Text("ADD",style: TextStyle(
+                                        color: Color(0xff318616),
+                                        fontSize: mQuery.size.height*0.012,
+                                        fontWeight: FontWeight.w700
+                                    ),),
+                                  ),
+                                )
+                            );
+                          }
                         },
                       ),
                     ],
@@ -409,8 +448,6 @@ class _InventoryRequestPageState extends State<InventoryRequestPage> {
       },
     );
   }
-
-
 
 
   Widget _buildAdditionalItemCard(
@@ -461,11 +498,9 @@ class _InventoryRequestPageState extends State<InventoryRequestPage> {
                     onTap: ()
                     {
                       isFavoriteNotifier.value = !isFavoriteNotifier.value;
-                      // If the item is marked as favorite, add it to the activatedFavorites list
                       if (!isFavoriteNotifier.value) {
                         activatedFavorites.add(item);
                       } else {
-                        // If the item is unmarked as favorite, remove it from the activatedFavorites list
                         activatedFavorites.removeWhere((element) => element['name'] == item['name']);
                       }
                     },
@@ -509,7 +544,7 @@ class _InventoryRequestPageState extends State<InventoryRequestPage> {
                         children: [
                           GestureDetector(
                             onTap: () {
-                              if (value > 0) onCountChanged(value - 1);
+                              if (value > 1) onCountChanged(value - 1);
                             },
                             child: Container(
                               width: mQuery.size.width * 0.06,
@@ -530,9 +565,10 @@ class _InventoryRequestPageState extends State<InventoryRequestPage> {
                           ),
                           SizedBox(width: mQuery.size.width * 0.02),
                           Text(
-                            "$value",
+                            "${value - 1}",
                             style: TextStyle(fontSize: mQuery.size.height * 0.014),
                           ),
+
                           SizedBox(width: mQuery.size.width * 0.02),
                           GestureDetector(
                             onTap: () {
@@ -655,7 +691,7 @@ class _InventoryRequestPageState extends State<InventoryRequestPage> {
                         children: [
                           GestureDetector(
                             onTap: () {
-                              if (value > 0) onCountChanged(value - 1);
+                              if (value > 1) onCountChanged(value - 1);
                             },
                             child: Container(
                               width: mQuery.size.width * 0.06,
@@ -675,9 +711,10 @@ class _InventoryRequestPageState extends State<InventoryRequestPage> {
                           ),
                           SizedBox(width: mQuery.size.width * 0.02),
                           Text(
-                            "$value",
+                            "${value - 1}",
                             style: TextStyle(fontSize: mQuery.size.height * 0.014),
                           ),
+
                           SizedBox(width: mQuery.size.width * 0.02),
                           GestureDetector(
                             onTap: () {
@@ -711,7 +748,6 @@ class _InventoryRequestPageState extends State<InventoryRequestPage> {
       ),
     );
   }
-
 
 
   void favoriteItemsBottomSheet(BuildContext context) {
@@ -843,126 +879,143 @@ class _InventoryRequestPageState extends State<InventoryRequestPage> {
 
         // Adding itemNo to each item in activatedFavorites
         for (int i = 0; i < activatedFavorites.length; i++) {
-          activatedFavorites[i]['itemNo'] = i + 1; // Assuming itemNo starts from 1
+          activatedFavorites[i]['itemNo'] = i + 1;
         }
 
-        return Container(
-          height: mQuery.size.height * 0.8,
-          width: double.infinity,
-          padding: EdgeInsets.symmetric(horizontal: mQuery.size.width * 0.04),
-          decoration: BoxDecoration(
-            color: Colors.white,
-            borderRadius: BorderRadius.circular(12),
-          ),
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              SizedBox(height: mQuery.size.height * 0.02),
-              activatedFavorites.isNotEmpty
-                  ? Text(
-                "Added items are",
-                style: TextStyle(fontSize: mQuery.size.height * 0.02,
-                    fontWeight: FontWeight.w700),
-              )
-                  : Column(
-                mainAxisAlignment: MainAxisAlignment.center,
-                crossAxisAlignment: CrossAxisAlignment.center,
-                children: [
-                  SizedBox(height: mQuery.size.height*0.32,),
-                  Center(
-                    child: Text(
-                      "No Items Added",
-                      style: TextStyle(
-                        fontSize: mQuery.size.height * 0.023,
-                        color: Colors.grey,
-                        fontWeight: FontWeight.w600,
-                      ),
-                    ),
-                  ),
-                ],
+        return StatefulBuilder(
+          builder: (BuildContext context, StateSetter setState) {
+            return Container(
+              height: mQuery.size.height * 0.8,
+              width: double.infinity,
+              padding: EdgeInsets.symmetric(horizontal: mQuery.size.width * 0.04),
+              decoration: BoxDecoration(
+                color: Colors.white,
+                borderRadius: BorderRadius.circular(12),
               ),
-              SizedBox(height: mQuery.size.height * 0.02),
-              activatedFavorites.isNotEmpty
-                  ? Expanded(
-                child: ListView.builder(
-                  itemCount: activatedFavorites.length,
-                  itemBuilder: (context, index) {
-                    return Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        SizedBox(height: mQuery.size.height * 0.02),
-                        Container(
-                          margin: EdgeInsets.only(bottom: mQuery.size.height * 0.02),
-                          decoration: BoxDecoration(
-                            borderRadius: BorderRadius.circular(10),
-                            border: Border.all(color: Colors.grey.shade300),
-                          ),
-                          child: Column(
-                            crossAxisAlignment: CrossAxisAlignment.start,
-                            children: [
-                              ListTile(
-                                leading: Image.network(
-                                  activatedFavorites[index]['image'],
-                                  width: mQuery.size.width * 0.14,
-                                  height: mQuery.size.height * 0.06,
-                                  fit: BoxFit.cover,
-                                ),
-                                title: Column(
-                                  crossAxisAlignment: CrossAxisAlignment.start,
-                                  children: [
-                                    Text(
-                                      activatedFavorites[index]['name'],
-                                      style: TextStyle(fontSize: mQuery.size.height * 0.017),
-                                    ),
-                                    Text(
-                                      activatedFavorites[index]['weight'],
-                                      style: TextStyle(fontSize: mQuery.size.height * 0.015),
-                                    ),
-                                    Text(
-                                      'Item No: ${activatedFavorites[index]['itemNo']}',
-                                      style: TextStyle(fontSize: mQuery.size.height * 0.015),
-                                    ),
-                                  ],
-                                ),
-                                trailing: Text('₹${activatedFavorites[index]['price']}'),
-                              ),
-                              GestureDetector(
-                                onTap : ()
-                                {
-                                  Navigator.pushReplacement(context, MaterialPageRoute(builder: (context){
-                                    return PaymentPage();
-                                  }));
-                                },
-                                child: Container(
-                                  width: mQuery.size.width * 0.17,
-                                  height: mQuery.size.height * 0.024,
-                                  decoration: BoxDecoration(
-                                    color: Color(0xff3d8b15),
-                                    borderRadius: BorderRadius.circular(4),
-                                  ),
-                                  margin : EdgeInsets.only(
-                                      left: mQuery.size.width*0.045,
-                                      bottom: mQuery.size.height*0.01
-                                  ),
-                                  child: Center(
-                                    child: Text("Buy Now",style: TextStyle(
-                                        color: Colors.white,
-                                        fontSize: mQuery.size.height*0.012
-                                    ),),
-                                  ),
-                                ),
-                              ),
-                            ],
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  SizedBox(height: mQuery.size.height * 0.02),
+                  activatedFavorites.isNotEmpty
+                      ? Text(
+                    "Added items are",
+                    style: TextStyle(fontSize: mQuery.size.height * 0.02, fontWeight: FontWeight.w700),
+                  )
+                      : Column(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    crossAxisAlignment: CrossAxisAlignment.center,
+                    children: [
+                      SizedBox(height: mQuery.size.height * 0.32),
+                      Center(
+                        child: Text(
+                          "No Items Added",
+                          style: TextStyle(
+                            fontSize: mQuery.size.height * 0.023,
+                            color: Colors.grey,
+                            fontWeight: FontWeight.w600,
                           ),
                         ),
-                      ],
-                    );
-                  },
-                ),
-              )
-                  : SizedBox.shrink(), // Hides the ListView.builder if activatedFavorites is empty
-            ],
-          ),
+                      ),
+                    ],
+                  ),
+                  SizedBox(height: mQuery.size.height * 0.02),
+                  activatedFavorites.isNotEmpty
+                      ? Expanded(
+                    child: ListView.builder(
+                      itemCount: activatedFavorites.length,
+                      itemBuilder: (context, index) {
+                        return Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            SizedBox(height: mQuery.size.height * 0.02),
+                            Container(
+                              margin: EdgeInsets.only(bottom: mQuery.size.height * 0.02),
+                              decoration: BoxDecoration(
+                                borderRadius: BorderRadius.circular(10),
+                                border: Border.all(color: Colors.grey.shade300),
+                              ),
+                              child: Column(
+                                crossAxisAlignment: CrossAxisAlignment.start,
+                                children: [
+                                  ListTile(
+                                    leading: Image.network(
+                                      activatedFavorites[index]['image'],
+                                      width: mQuery.size.width * 0.14,
+                                      height: mQuery.size.height * 0.06,
+                                      fit: BoxFit.cover,
+                                    ),
+                                    title: Column(
+                                      crossAxisAlignment: CrossAxisAlignment.start,
+                                      children: [
+                                        Text(
+                                          activatedFavorites[index]['name'],
+                                          style: TextStyle(fontSize: mQuery.size.height * 0.017),
+                                        ),
+                                        Text(
+                                          activatedFavorites[index]['weight'],
+                                          style: TextStyle(fontSize: mQuery.size.height * 0.015),
+                                        ),
+                                        Text(
+                                          'Item No: ${activatedFavorites[index]['itemNo']}',
+                                          style: TextStyle(fontSize: mQuery.size.height * 0.015),
+                                        ),
+                                      ],
+                                    ),
+                                    trailing: GestureDetector(
+                                      onTap: () {
+                                        setState(() {
+                                          activatedFavorites.removeAt(index);
+                                        });
+                                      },
+                                      child: Icon(Icons.delete, color: Colors.grey),
+                                    ),
+                                  ),
+                                ],
+                              ),
+                            ),
+                          ],
+                        );
+                      },
+                    ),
+                  )
+                      : SizedBox.shrink(), // Hides the ListView.builder if activatedFavorites is empty
+                  SizedBox(height: mQuery.size.height * 0.02),
+                  // Add space below the list
+                  activatedFavorites.isNotEmpty ?
+                  Column(
+                    children: [
+                      GestureDetector(
+                        onTap: ()
+                        {
+                          Navigator.push(context, MaterialPageRoute(builder: (context){
+                            return PaymentPage();
+                          }));
+                        },
+                        child: Container(
+                          padding: EdgeInsets.all(mQuery.size.height * 0.02),
+                          decoration: BoxDecoration(
+                            color: Color(0xff29b2fe),
+                            borderRadius: BorderRadius.circular(10),
+                          ),
+                          child: Center(
+                            child: Text(
+                              "Buy Now",
+                              style: TextStyle(
+                                fontSize: mQuery.size.height * 0.02,
+                                color: Colors.white,
+                                fontWeight: FontWeight.bold,
+                              ),
+                            ),
+                          ),
+                        ),
+                      ),
+                      SizedBox(height: 30,)
+                    ],
+                  ) : SizedBox.shrink()
+                ],
+              ),
+            );
+          },
         );
       },
     );

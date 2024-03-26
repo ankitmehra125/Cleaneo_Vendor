@@ -335,8 +335,8 @@ class _OrderReqState extends State<OrderReq> {
                                             color: Color(0xff29b2fe)),
                                         child: Center(
                                           child: Text(
-                                            AppLocalizations.of(context)!
-                                                .acceptorder,
+                                            // AppLocalizations.of(context)!.acceptorder,
+                                            "VIEW ORDER",
                                             style: const TextStyle(
                                                 color: Colors.white,
                                                 fontSize: 13,

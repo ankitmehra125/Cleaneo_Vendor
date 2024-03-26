@@ -2,9 +2,11 @@ import 'package:cleaneo_vendor/Home/CashCollected/CashCollected.dart';
 import 'package:cleaneo_vendor/Home/Drawer.dart';
 import 'package:cleaneo_vendor/Home/Earnings/MyEarnings.dart';
 import 'package:cleaneo_vendor/Home/EditProfile/MyProfile.dart';
+import 'package:cleaneo_vendor/Home/Inventory%20Request/inventory_request_page.dart';
 import 'package:cleaneo_vendor/Home/Ledger/Ledger.dart';
 import 'package:cleaneo_vendor/Home/OrderRequests/OrderRequests.dart';
 import 'package:cleaneo_vendor/Home/OrderStatus/OrderStatus.dart';
+import 'package:cleaneo_vendor/Home/Training%20Modules/training_modules_page.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_profile_picture/flutter_profile_picture.dart';
 import 'package:flutter_svg/flutter_svg.dart';
@@ -150,7 +152,7 @@ class _HomePageState extends State<HomePage> {
                               AppLocalizations.of(context)!.welcomeback,
                               style: const TextStyle(
                                 color: Colors.white,
-                                fontSize: 19,
+                                fontSize: 17,
                                 fontWeight: FontWeight.w800,
                               ),
                             ),
@@ -178,12 +180,12 @@ class _HomePageState extends State<HomePage> {
                               status ? 'Online' : 'Offline',
                               style: TextStyle(
                                   color: Colors.white,
-                                  fontSize: 17
+                                  fontSize: 15
                               ),
                             ),
                             SizedBox(width: mQuery.size.width*0.012,),
                             Transform.scale(
-                              scale: 0.9,
+                              scale: 0.75,
                               child: Switch(
                                 value: status,
                                 activeTrackColor: Colors.white,
@@ -372,87 +374,6 @@ class _HomePageState extends State<HomePage> {
                           onTap : ()
                           {
                             Navigator.push(context, MaterialPageRoute(builder: (context){
-                              return CashCollected();
-                            }));
-                          },
-                          child: Container(
-                            width: mQuery.size.width*0.4,
-                            height: mQuery.size.height*0.14,
-                            decoration: BoxDecoration(
-                                color: Colors.white,
-                                borderRadius: BorderRadius.circular(12),
-                                boxShadow: [
-                                  BoxShadow(
-                                      color: Colors.grey.withOpacity(0.5),
-                                      spreadRadius: 0,
-                                      blurRadius: 7,
-                                      offset: Offset(0,0)
-                                  )
-                                ]
-                            ),
-                            child: Column(
-                              mainAxisAlignment: MainAxisAlignment.center,
-                              children: [
-                                Image.asset("assets/images/Home/Cash Collected.png",
-                                  width: mQuery.size.width*0.12,
-                                ),
-                                SizedBox(height: mQuery.size.height*0.006),
-                                Text("Cash Collected",style: TextStyle(
-                                    fontSize: mQuery.size.height*0.015
-                                ),)
-                              ],
-                            ),
-                          ),
-                        ),
-                      ],
-                    ),
-                  ),
-                  SizedBox(height: mQuery.size.height*0.038,),
-
-
-                  Padding(
-                    padding: const EdgeInsets.symmetric(
-                        horizontal: 16
-                    ),
-                    child: Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                      children: [
-                        Container(
-                          width: mQuery.size.width*0.4,
-                          height: mQuery.size.height*0.14,
-                          decoration: BoxDecoration(
-                              color: Colors.white,
-                              borderRadius: BorderRadius.circular(12),
-                              boxShadow: [
-                                BoxShadow(
-                                    color: Colors.grey.withOpacity(0.5),
-                                    spreadRadius: 0,
-                                    blurRadius: 7,
-                                    offset: Offset(0,0)
-                                )
-                              ]
-                          ),
-                          child: Column(
-                            mainAxisAlignment: MainAxisAlignment.center,
-                            children: [
-                              Image.asset("assets/images/Home/Delivery Partner Management.png",
-                                width: mQuery.size.width*0.12,),
-                              SizedBox(height: mQuery.size.height*0.006),
-                              Row(
-                                mainAxisAlignment: MainAxisAlignment.center,
-                                children: [
-                                  Text("Delivery partner\n Management",style: TextStyle(
-                                      fontSize: mQuery.size.height*0.015
-                                  ),),
-                                ],
-                              )
-                            ],
-                          ),
-                        ),
-                        GestureDetector(
-                          onTap : ()
-                          {
-                            Navigator.push(context, MaterialPageRoute(builder: (context){
                               return Ledger();
                             }));
                           },
@@ -478,7 +399,96 @@ class _HomePageState extends State<HomePage> {
                                   width: mQuery.size.width*0.12,
                                 ),
                                 SizedBox(height: mQuery.size.height*0.006),
-                                Text("Leger",style: TextStyle(
+                                Text("Ledger",style: TextStyle(
+                                    fontSize: mQuery.size.height*0.015
+                                ),)
+                              ],
+                            ),
+                          ),
+                        ),
+                      ],
+                    ),
+                  ),
+                  SizedBox(height: mQuery.size.height*0.038,),
+
+
+                  Padding(
+                    padding: const EdgeInsets.symmetric(
+                        horizontal: 16
+                    ),
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: [
+                        GestureDetector(
+                          onTap : ()
+                          {
+                            Navigator.push(context, MaterialPageRoute(builder: (context){
+                              return const InventoryRequestPage();
+                            }));
+                          },
+                          child: Container(
+                            width: mQuery.size.width*0.4,
+                            height: mQuery.size.height*0.14,
+                            decoration: BoxDecoration(
+                                color: Colors.white,
+                                borderRadius: BorderRadius.circular(12),
+                                boxShadow: [
+                                  BoxShadow(
+                                      color: Colors.grey.withOpacity(0.5),
+                                      spreadRadius: 0,
+                                      blurRadius: 7,
+                                      offset: Offset(0,0)
+                                  )
+                                ]
+                            ),
+                            child: Column(
+                              mainAxisAlignment: MainAxisAlignment.center,
+                              children: [
+                                Image.asset("assets/images/Home/Delivery Partner Management.png",
+                                  width: mQuery.size.width*0.12,),
+                                SizedBox(height: mQuery.size.height*0.006),
+                                Row(
+                                  mainAxisAlignment: MainAxisAlignment.center,
+                                  children: [
+                                    Text("Inventory\n Request",style: TextStyle(
+                                        fontSize: mQuery.size.height*0.015
+                                    ),),
+                                  ],
+                                )
+                              ],
+                            ),
+                          ),
+                        ),
+                        GestureDetector(
+                          onTap : ()
+                          {
+                            Navigator.push(context, MaterialPageRoute(builder: (context){
+                              return Trainings();
+                            }));
+                          },
+                          child: Container(
+                            width: mQuery.size.width*0.4,
+                            height: mQuery.size.height*0.14,
+                            decoration: BoxDecoration(
+                                color: Colors.white,
+                                borderRadius: BorderRadius.circular(12),
+                                boxShadow: [
+                                  BoxShadow(
+                                      color: Colors.grey.withOpacity(0.5),
+                                      spreadRadius: 0,
+                                      blurRadius: 7,
+                                      offset: Offset(0,0)
+                                  )
+                                ]
+                            ),
+                            child: Column(
+                              mainAxisAlignment: MainAxisAlignment.center,
+                              children: [
+                                Image.asset("assets/images/Home/Cash Collected.png",
+                                  width: mQuery.size.width*0.12,
+                                ),
+                                SizedBox(height: mQuery.size.height*0.006),
+                                Text("Training Modules",style: TextStyle(
                                     fontSize: mQuery.size.height*0.015
                                 ),)
                               ],

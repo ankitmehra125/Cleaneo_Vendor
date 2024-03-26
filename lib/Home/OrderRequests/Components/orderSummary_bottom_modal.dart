@@ -1132,8 +1132,13 @@ void _showMessage(BuildContext context) {
       var mQuery = MediaQuery.of(context);
       return AlertDialog(
         backgroundColor: Colors.white,
-        title: const Center(child: Text('Congratulations')),
-        content: const Text('The order has been successfully picked'),
+        title: const Center(child: Text('Congratulations',style: TextStyle(
+         fontSize: 17,
+          fontWeight: FontWeight.w700
+        ),)),
+        content: const Text('The order has been successfully picked',style: TextStyle(
+          fontSize: 12
+        ),),
         actions: <Widget>[
           GestureDetector(
             onTap: () {

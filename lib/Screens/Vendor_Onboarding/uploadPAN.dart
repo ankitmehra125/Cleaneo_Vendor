@@ -162,9 +162,10 @@ class _UploadPanState extends State<UploadPan> {
                               ),
                             ),
                           ),
-                          SizedBox(
-                            height: mQuery.size.height * 0.15,
-                          )
+                        Container(
+                          color: Colors.white,
+                          height: 40,
+                        )
                         ],
                       )),
                 ),
