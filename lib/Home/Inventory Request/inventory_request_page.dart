@@ -361,7 +361,7 @@ class _InventoryRequestPageState extends State<InventoryRequestPage> {
                               children: [
                                 GestureDetector(
                                   onTap: () {
-                                    if (value > 1) onCountChanged(value - 1);
+                                    if (value > 0) onCountChanged(value - 1);
                                   },
                                   child: Container(
                                     width: mQuery.size.width * 0.06,
@@ -382,7 +382,7 @@ class _InventoryRequestPageState extends State<InventoryRequestPage> {
                                 ),
                                 SizedBox(width: mQuery.size.width * 0.02),
                                 Text(
-                                  "${value - 1}",
+                                  "$value",
                                   style: TextStyle(fontSize: mQuery.size.height * 0.014),
                                 ),
                                 SizedBox(width: mQuery.size.width * 0.02),
@@ -409,7 +409,8 @@ class _InventoryRequestPageState extends State<InventoryRequestPage> {
                                 ),
                               ],
                             );
-                          } else {
+                          }
+                          else {
                             return GestureDetector(
                                 onTap: () {
                                   setState(() {
