@@ -128,7 +128,7 @@ class _YourOrders2TextState extends State<YourOrders2Text> {
                         _tabNames[index],
                         style: TextStyle(
                           fontSize: 18,
-                          fontWeight: FontWeight.bold,
+                          fontFamily: 'SatoshiBold',
                           color: _selectedIndex == index
                               ? const Color(0xFF29B2FE)
                               : Colors.grey,
@@ -176,7 +176,7 @@ class _YourOrders2TextState extends State<YourOrders2Text> {
                             '${order['time']}',
                             style: const TextStyle(
                                 color: Color.fromARGB(255, 181, 181, 181),
-                                fontWeight: FontWeight.w600,
+                                fontFamily: 'SatoshiMedium',
                                 fontSize: 12.0),
                           ),
                         ],
@@ -192,7 +192,7 @@ class _YourOrders2TextState extends State<YourOrders2Text> {
                             boxShadow: [
                               BoxShadow(
                                 color: Colors.grey.withOpacity(0.3),
-                                spreadRadius: 2,
+                                spreadRadius: 0,
                                 blurRadius: 7,
                                 offset: const Offset(
                                   0,
@@ -227,8 +227,8 @@ class _YourOrders2TextState extends State<YourOrders2Text> {
                                             'Order ${order['orderNumber']}',
                                             style: const TextStyle(
                                                 color: Colors.black,
-                                                fontWeight: FontWeight.w500,
-                                                fontSize: 14.0),
+                                                fontFamily: 'SatoshiBold',
+                                                ),
                                           ),
                                         ],
                                       ),
@@ -236,8 +236,8 @@ class _YourOrders2TextState extends State<YourOrders2Text> {
                                         '${order['earning']}',
                                         style: const TextStyle(
                                             color: Colors.black,
-                                            fontWeight: FontWeight.w500,
-                                            fontSize: 16.0),
+                                            fontFamily: 'SatoshiBold',
+                                            ),
                                       ),
                                     ],
                                   ),
@@ -258,7 +258,7 @@ class _YourOrders2TextState extends State<YourOrders2Text> {
                                           style: TextStyle(
                                               color: Color.fromARGB(
                                                   255, 152, 152, 152),
-                                              fontWeight: FontWeight.w500,
+                                              fontFamily: 'SatoshiMedium',
                                               fontSize: 12.0),
                                         ),
                                       ],
@@ -272,7 +272,7 @@ class _YourOrders2TextState extends State<YourOrders2Text> {
                                           '${order['items1']}',
                                           style: const TextStyle(
                                               color: Colors.black87,
-                                              fontWeight: FontWeight.w400,
+                                              fontFamily: 'SatoshiRegular',
                                               fontSize: 10.0),
                                         ),
                                       ],
@@ -286,7 +286,7 @@ class _YourOrders2TextState extends State<YourOrders2Text> {
                                           '${order['items2']}',
                                           style: const TextStyle(
                                               color: Colors.black87,
-                                              fontWeight: FontWeight.w400,
+                                              fontFamily: 'SatoshiRegular',
                                               fontSize: 10.0),
                                         ),
                                       ],
@@ -300,7 +300,7 @@ class _YourOrders2TextState extends State<YourOrders2Text> {
                                           '${order['items3']}',
                                           style: const TextStyle(
                                               color: Colors.black87,
-                                              fontWeight: FontWeight.w400,
+                                              fontFamily: 'SatoshiRegular',
                                               fontSize: 10.0),
                                         ),
                                       ],
@@ -335,7 +335,7 @@ class _YourOrders2TextState extends State<YourOrders2Text> {
                                               'Delivered',
                                               style: TextStyle(
                                                   color: Colors.green,
-                                                  fontWeight: FontWeight.w600,
+                                                  fontFamily: 'SatoshiMedium',
                                                   fontSize: 10.0),
                                             ),
                                           ),
@@ -353,7 +353,7 @@ class _YourOrders2TextState extends State<YourOrders2Text> {
                                             Text(
                                               "${order["rating"]}",
                                               style: const TextStyle(
-                                                  fontWeight: FontWeight.w600),
+                                                  fontFamily: 'SatoshiBold'),
                                             )
                                           ],
                                         )

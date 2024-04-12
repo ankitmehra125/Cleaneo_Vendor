@@ -1,11 +1,12 @@
 import 'dart:io';
 
-import 'package:cleaneo_vendor/Screens/Vendor_Onboarding/RegistrationStarting.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:image_picker/image_picker.dart';
+
+import 'RegistrationStarting.dart';
 
 class StorePics extends StatefulWidget {
   const StorePics({Key? key}) : super(key: key);
@@ -15,20 +16,99 @@ class StorePics extends StatefulWidget {
 }
 
 class _StorePicsState extends State<StorePics> {
-  TextEditingController storeNameController = TextEditingController();
-  TextEditingController addressController = TextEditingController();
-  TextEditingController gstinController = TextEditingController();
+  List<XFile?> _storeImages = List.filled(4, null);
+  List<XFile?> _documentImages = List.filled(4, null);
+  final ImagePicker _imagePicker = ImagePicker();
 
-  List<String> selectedServices = [];
-  List<File> _images = [];
+  Future<void> _pickStoreImage(int index) async {
+    final imageSource = await showModalBottomSheet<ImageSource>(
+      backgroundColor: Colors.white,
+      context: context,
+      builder: (BuildContext context) {
+        return SafeArea(
+          child: Column(
+            mainAxisSize: MainAxisSize.min,
+            children: <Widget>[
+              ListTile(
+                leading: Icon(Icons.camera_alt),
+                title: Text(
+                  'Camera',
+                  style: TextStyle(
+                    fontFamily: 'SatoshiMedium',
+                  ),
+                ),
+                onTap: () => Navigator.of(context).pop(ImageSource.camera),
+              ),
+              ListTile(
+                leading: Icon(Icons.photo_library),
+                title: Text(
+                  'Gallery',
+                  style: TextStyle(
+                    fontFamily: 'SatoshiMedium',
+                  ),
+                ),
+                onTap: () => Navigator.of(context).pop(ImageSource.gallery),
+              ),
+            ],
+          ),
+        );
+      },
+    );
 
-  Future<void> _pickImage() async {
-    final picker = ImagePicker();
-    final pickedImage = await picker.pickImage(source: ImageSource.gallery);
-    if (pickedImage != null) {
-      setState(() {
-        _images.add(File(pickedImage.path));
-      });
+    if (imageSource != null) {
+      final XFile? pickedImage = await _imagePicker.pickImage(source: imageSource);
+
+      if (pickedImage != null) {
+        setState(() {
+          _storeImages[index] = pickedImage;
+        });
+      }
+    }
+  }
+
+  Future<void> _pickDocumentImage(int index) async {
+    final imageSource = await showModalBottomSheet<ImageSource>(
+      backgroundColor: Colors.white,
+      context: context,
+      builder: (BuildContext context) {
+        return SafeArea(
+          child: Column(
+            mainAxisSize: MainAxisSize.min,
+            children: <Widget>[
+              ListTile(
+                leading: Icon(Icons.camera_alt),
+                title: Text(
+                  'Camera',
+                  style: TextStyle(
+                    fontFamily: 'SatoshiMedium',
+                  ),
+                ),
+                onTap: () => Navigator.of(context).pop(ImageSource.camera),
+              ),
+              ListTile(
+                leading: Icon(Icons.photo_library),
+                title: Text(
+                  'Gallery',
+                  style: TextStyle(
+                    fontFamily: 'SatoshiMedium',
+                  ),
+                ),
+                onTap: () => Navigator.of(context).pop(ImageSource.gallery),
+              ),
+            ],
+          ),
+        );
+      },
+    );
+
+    if (imageSource != null) {
+      final XFile? pickedImage = await _imagePicker.pickImage(source: imageSource);
+
+      if (pickedImage != null) {
+        setState(() {
+          _documentImages[index] = pickedImage;
+        });
+      }
     }
   }
 
@@ -46,7 +126,11 @@ class _StorePicsState extends State<StorePics> {
             SizedBox(height: mQuery.size.height * 0.034),
             Padding(
               padding: const EdgeInsets.only(
-                  top: 45, left: 16, right: 16, bottom: 20),
+                top: 45,
+                left: 16,
+                right: 16,
+                bottom: 20,
+              ),
               child: Row(
                 children: [
                   GestureDetector(
@@ -64,9 +148,10 @@ class _StorePicsState extends State<StorePics> {
                   Text(
                     AppLocalizations.of(context)!.uploadstorepics,
                     style: const TextStyle(
-                        fontSize: 20,
-                        color: Colors.white,
-                        fontWeight: FontWeight.w700),
+                      fontSize: 20,
+                      fontFamily: 'SatoshiBold',
+                      color: Colors.white,
+                    ),
                   )
                 ],
               ),
@@ -77,220 +162,126 @@ class _StorePicsState extends State<StorePics> {
                 decoration: BoxDecoration(
                   color: Colors.white,
                   borderRadius: const BorderRadius.only(
-                      topLeft: Radius.circular(16),
-                      topRight: Radius.circular(16)),
-                  boxShadow: [
-                    BoxShadow(
-                      color: Colors.grey.withOpacity(0.5),
-                      spreadRadius: 0.3,
-                      blurRadius: 1,
-                      offset: const Offset(
-                          3, 3), // changes the position of the shadow
-                    ),
-                  ],
+                    topLeft: Radius.circular(16),
+                    topRight: Radius.circular(16),
+                  ),
                 ),
                 child: Padding(
-                    padding: const EdgeInsets.only(left: 16, right: 16),
-                    child: Column(
-                      children: [
-                        SizedBox(
-                          height: mQuery.size.height * 0.032,
-                        ),
-                        Row(
-                          children: [
-                            Text(
-                              AppLocalizations.of(context)!.uploadstorepics,
-                              style: const TextStyle(
-                                  fontWeight: FontWeight.w600, fontSize: 15),
-                            ),
-                          ],
-                        ),
-                        SizedBox(
-                          height: mQuery.size.height * 0.02,
-                        ),
-                        Row(
-                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                          children: [
-                            SvgPicture.asset(
+                  padding: const EdgeInsets.only(left: 16, right: 16),
+                  child: Column(
+                    children: [
+                      SizedBox(
+                        height: mQuery.size.height * 0.032,
+                      ),
+                      Row(
+                        children: [
+                          Text(
+                            AppLocalizations.of(context)!.uploadstorepics,
+                            style: const TextStyle(
+                                fontSize: 15, fontFamily: 'SatoshiBold'),
+                          ),
+                        ],
+                      ),
+                      SizedBox(
+                        height: mQuery.size.height * 0.02,
+                      ),
+                      Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                        children: List.generate(
+                          4,
+                              (index) => GestureDetector(
+                            onTap: () => _pickStoreImage(index),
+                            child: _storeImages[index] != null
+                                ? Image.file(
+                              File(_storeImages[index]!.path),
+                              width: 70,
+                              height: 70,
+                              fit: BoxFit.cover,
+                            )
+                                : SvgPicture.asset(
                               "assets/imagepicker.svg",
                               width: 70,
                               height: 70,
                             ),
-                            SvgPicture.asset(
-                              "assets/imagepicker.svg",
-                              width: 70,
-                              height: 70,
-                            ),
-                            SvgPicture.asset(
-                              "assets/imagepicker.svg",
-                              width: 70,
-                              height: 70,
-                            ),
-                            SvgPicture.asset(
-                              "assets/imagepicker.svg",
-                              width: 70,
-                              height: 70,
-                            ),
-                          ],
+                          ),
                         ),
-                        SizedBox(
-                          height: mQuery.size.height * 0.032,
-                        ),
-                        Row(
-                          children: [
-                            Text(
-                              AppLocalizations.of(context)!.uploadstoredocs,
-                              style: const TextStyle(
-                                  fontWeight: FontWeight.w600, fontSize: 15),
+                      ),
+                      SizedBox(
+                        height: mQuery.size.height * 0.032,
+                      ),
+                      Row(
+                        children: [
+                          Text(
+                            AppLocalizations.of(context)!.uploadstoredocs,
+                            style: const TextStyle(
+                              fontFamily: 'SatoshiBold',
+                              fontSize: 15,
                             ),
-                          ],
-                        ),
-                        SizedBox(
-                          height: mQuery.size.height * 0.02,
-                        ),
-                        Row(
-                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                          children: [
-                            SvgPicture.asset(
+                          ),
+                        ],
+                      ),
+                      SizedBox(
+                        height: mQuery.size.height * 0.02,
+                      ),
+                      Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                        children: List.generate(
+                          4,
+                              (index) => GestureDetector(
+                            onTap: () => _pickDocumentImage(index),
+                            child: _documentImages[index] != null
+                                ? Image.file(
+                              File(_documentImages[index]!.path),
+                              width: 70,
+                              height: 70,
+                              fit: BoxFit.cover,
+                            )
+                                : SvgPicture.asset(
                               "assets/imagepicker.svg",
                               width: 70,
                               height: 70,
                             ),
-                            SvgPicture.asset(
-                              "assets/imagepicker.svg",
-                              width: 70,
-                              height: 70,
-                            ),
-                            SvgPicture.asset(
-                              "assets/imagepicker.svg",
-                              width: 70,
-                              height: 70,
-                            ),
-                            SvgPicture.asset(
-                              "assets/imagepicker.svg",
-                              width: 70,
-                              height: 70,
-                            ),
-                          ],
+                          ),
                         ),
-                        Spacer(),
-                        GestureDetector(
-                          onTap: () {
-                            Navigator.push(context,
-                                MaterialPageRoute(builder: (context) {
-                              return RegStart();
-                            }));
-                          },
-                          child: Container(
-                            width: double.infinity,
-                            height: mQuery.size.height * 0.06,
-                            decoration: BoxDecoration(
-                                color: const Color(0xff29b2fe),
-                                borderRadius: BorderRadius.circular(6)),
-                            child: Center(
-                              child: const Text(
-                                "Next",
-                                style: TextStyle(
-                                    fontSize: 15,
-                                    color: Colors.white,
-                                    fontWeight: FontWeight.w600),
+                      ),
+                      Spacer(),
+                      GestureDetector(
+                        onTap: () {
+                          Navigator.push(context,
+                              MaterialPageRoute(builder: (context) {
+                                return RegStart();
+                              }));
+                        },
+                        child: Container(
+                          width: double.infinity,
+                          height: mQuery.size.height * 0.06,
+                          decoration: BoxDecoration(
+                            color: const Color(0xff29b2fe),
+                            borderRadius: BorderRadius.circular(6),
+                          ),
+                          child: Center(
+                            child: const Text(
+                              "Next",
+                              style: TextStyle(
+                                fontSize: 15,
+                                color: Colors.white,
+                                fontFamily: 'SatoshiBold',
                               ),
                             ),
                           ),
                         ),
-                        SizedBox(
-                          height: mQuery.size.height * 0.04,
-                        )
-                      ],
-                    )),
+                      ),
+                      SizedBox(
+                        height: mQuery.size.height * 0.04,
+                      )
+                    ],
+                  ),
+                ),
               ),
             )
           ],
         ),
       ),
     );
-  }
-
-  Widget buildServiceContainer(String imagePath, String serviceName) {
-    var mQuery = MediaQuery.of(context);
-    bool isSelected = selectedServices.contains(serviceName);
-
-    return Stack(
-      children: [
-        Container(
-          height: mQuery.size.height * 0.11,
-          width: mQuery.size.width * 0.27,
-          decoration: BoxDecoration(
-            color: selectedServices.contains(serviceName)
-                ? const Color(0xfff3fbff) // Change the color if selected
-                : Colors.white,
-            borderRadius: BorderRadius.circular(12),
-            boxShadow: [
-              BoxShadow(
-                color: Colors.grey.withOpacity(0.5),
-                spreadRadius: 2,
-                blurRadius: 10,
-                offset:
-                    const Offset(0, 0), // changes the position of the shadow
-              ),
-            ],
-          ),
-          child: Column(
-            children: [
-              SizedBox(
-                height: mQuery.size.height * 0.038,
-              ),
-              Container(
-                height: mQuery.size.height * 0.04,
-                width: mQuery.size.width * 0.09,
-                child: Image.asset(
-                  imagePath,
-                  width: 32,
-                ),
-              ),
-              Text(
-                serviceName,
-                style: const TextStyle(
-                  fontWeight: FontWeight.w600,
-                  fontSize: 11.8,
-                ),
-              )
-            ],
-          ),
-        ),
-        Positioned(
-          right: mQuery.size.width * 0.025,
-          top: mQuery.size.height * 0.006,
-          child: Container(
-            height: mQuery.size.height * 0.03,
-            width: mQuery.size.width * 0.05,
-            decoration: BoxDecoration(
-              shape: BoxShape.circle,
-              color: isSelected ? Colors.blue : Colors.transparent,
-              border: Border.all(
-                color: isSelected ? Colors.transparent : Colors.grey,
-              ),
-            ),
-            child: isSelected
-                ? const Icon(
-                    Icons.check,
-                    color: Colors.white,
-                    size: 20,
-                  )
-                : null,
-          ),
-        ),
-      ],
-    );
-  }
-
-  void toggleServiceSelection(String serviceName) {
-    setState(() {
-      if (selectedServices.contains(serviceName)) {
-        selectedServices.remove(serviceName);
-      } else {
-        selectedServices.add(serviceName);
-      }
-    });
   }
 }

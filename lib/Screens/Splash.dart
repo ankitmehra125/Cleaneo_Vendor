@@ -69,6 +69,7 @@ class _SplashScreenState extends State<SplashScreen> {
                                 Text(
                                   'English',
                                   style: TextStyle(
+                                    fontFamily: 'SatoshiBold',
                                     color: _selectedLanguage == 'en'
                                         ? Colors.white
                                         : Color(0xFF29B2FE),
@@ -108,6 +109,7 @@ class _SplashScreenState extends State<SplashScreen> {
                                 Text(
                                   'हिंदी',
                                   style: TextStyle(
+                                    fontFamily: 'SatoshiBold',
                                     color: _selectedLanguage == 'hi'
                                         ? Colors.white
                                         : Colors.blue,

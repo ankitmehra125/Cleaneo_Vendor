@@ -3,6 +3,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:flutter_svg/svg.dart';
+import 'package:image_picker/image_picker.dart';
+import 'dart:io';
 
 class TakeSelfie extends StatefulWidget {
   const TakeSelfie({Key? key}) : super(key: key);
@@ -12,9 +14,8 @@ class TakeSelfie extends StatefulWidget {
 }
 
 class _TakeSelfieState extends State<TakeSelfie> {
-  TextEditingController storeNameController = TextEditingController();
-  TextEditingController addressController = TextEditingController();
-  TextEditingController gstinController = TextEditingController();
+  XFile? _selfie;
+  final ImagePicker _imagePicker = ImagePicker();
 
   @override
   Widget build(BuildContext context) {
@@ -30,7 +31,11 @@ class _TakeSelfieState extends State<TakeSelfie> {
             SizedBox(height: mQuery.size.height * 0.034),
             Padding(
               padding: const EdgeInsets.only(
-                  top: 45, left: 16, right: 16, bottom: 20),
+                top: 45,
+                left: 16,
+                right: 16,
+                bottom: 20,
+              ),
               child: Row(
                 children: [
                   GestureDetector(
@@ -48,9 +53,10 @@ class _TakeSelfieState extends State<TakeSelfie> {
                   Text(
                     AppLocalizations.of(context)!.takeselfie,
                     style: const TextStyle(
-                        fontSize: 20,
-                        color: Colors.white,
-                        fontWeight: FontWeight.w700),
+                      fontSize: 20,
+                      color: Colors.white,
+                      fontFamily: 'SatoshiBold',
+                    ),
                   )
                 ],
               ),
@@ -61,74 +67,116 @@ class _TakeSelfieState extends State<TakeSelfie> {
                 decoration: BoxDecoration(
                   color: Colors.white,
                   borderRadius: const BorderRadius.only(
-                      topLeft: Radius.circular(16),
-                      topRight: Radius.circular(16)),
-                  boxShadow: [
-                    BoxShadow(
-                      color: Colors.grey.withOpacity(0.5),
-                      spreadRadius: 0.3,
-                      blurRadius: 1,
-                      offset: const Offset(
-                          3, 3), // changes the position of the shadow
-                    ),
-                  ],
+                    topLeft: Radius.circular(16),
+                    topRight: Radius.circular(16),
+                  ),
                 ),
                 child: Padding(
-                    padding: const EdgeInsets.only(left: 16, right: 16),
-                    child: Column(
-                      children: [
-                        SizedBox(
-                          height: mQuery.size.height * 0.032,
-                        ),
-                        Row(
-                          children: [
-                            Container(
-                              width: mQuery.size.width * 0.9,
-                              child: Text(
-                                AppLocalizations.of(context)!.takeselfiedesc,
-                                style: const TextStyle(
-                                    fontWeight: FontWeight.w400, fontSize: 15),
+                  padding: const EdgeInsets.only(left: 16, right: 16),
+                  child: Column(
+                    children: [
+                      SizedBox(
+                        height: mQuery.size.height * 0.032,
+                      ),
+                      Row(
+                        children: [
+                          Container(
+                            width: mQuery.size.width * 0.9,
+                            child: Text(
+                              AppLocalizations.of(context)!.takeselfiedesc,
+                              style: const TextStyle(
+                                fontFamily: 'SatoshiMedium',
+                                fontSize: 15,
                               ),
                             ),
-                          ],
+                          ),
+                        ],
+                      ),
+                      const Spacer(),
+                      Container(
+                        width: mQuery.size.width * 0.6,
+                        height: mQuery.size.height * 0.3,
+                        decoration: BoxDecoration(
+                          borderRadius: BorderRadius.circular(10),
+                          image: _selfie != null
+                              ? DecorationImage(
+                            image: FileImage(File(_selfie!.path)),
+                            fit: BoxFit.cover,
+                          )
+                              : null, // Null if _selfie is null
                         ),
-                        const Spacer(),
-                        SizedBox(
-                            width: mQuery.size.width * 0.6,
-                            height: mQuery.size.height * 0.3,
-                            child: SvgPicture.asset(
-                              "assets/onboarding/selfie.svg",
-                            )),
-                        const Spacer(),
-                        GestureDetector(
-                          onTap: () {
-                            Navigator.push(context,
-                                MaterialPageRoute(builder: (context) {
-                              return const UploadAdhaar();
-                            }));
-                          },
-                          child: Container(
-                            width: double.infinity,
-                            height: mQuery.size.height * 0.06,
-                            decoration: BoxDecoration(
-                                color: const Color(0xff29b2fe),
-                                borderRadius: BorderRadius.circular(6)),
-                            child: Center(
-                              child: const Text(
-                                "Take a Selfie",
-                                style: TextStyle(
-                                    fontSize: 15,
-                                    color: Colors.white,
-                                    fontWeight: FontWeight.w600),
+                        child: _selfie == null
+                            ? Container(
+                          width: mQuery.size.width * 0.6,
+                          height: mQuery.size.height * 0.3,
+                          child: SvgPicture.asset(
+                            "assets/onboarding/selfie.svg",
+                          ),
+                        )
+                            : null, // No child if _selfie is not null
+                      ),
+
+                      const Spacer(),
+                      _selfie != null ? GestureDetector(
+                        onTap: ()
+                        {
+                           Navigator.push(context, MaterialPageRoute(builder: (context){
+                             return UploadAdhaar();
+                           }));
+                        },
+                        child: Container(
+                          width: double.infinity,
+                          height: mQuery.size.height * 0.06,
+                          decoration: BoxDecoration(
+                            color: const Color(0xff29b2fe),
+                            borderRadius: BorderRadius.circular(6),
+                          ),
+                          child: Center(
+                            child: const Text(
+                              "Next",
+                              style: TextStyle(
+                                fontSize: 15,
+                                color: Colors.white,
+                                fontFamily: 'SatoshiBold',
                               ),
                             ),
                           ),
                         ),
-                        SizedBox(
-                          height: mQuery.size.height * 0.04,
-                        )
-                      ],
-                    )),
+                      ) :
+                      GestureDetector(
+                        onTap: () async {
+                          XFile? pickedImage =
+                          await _imagePicker.pickImage(source: ImageSource.camera);
+
+                          setState(() {
+                            _selfie = pickedImage;
+                          });
+                        },
+                        child: Container(
+                          width: double.infinity,
+                          height: mQuery.size.height * 0.06,
+                          decoration: BoxDecoration(
+                            color: const Color(0xff29b2fe),
+                            borderRadius: BorderRadius.circular(6),
+                          ),
+                          child: Center(
+                            child: const Text(
+                              "Take a Selfie",
+                              style: TextStyle(
+                                fontSize: 15,
+                                color: Colors.white,
+                                fontFamily: 'SatoshiBold',
+                              ),
+                            ),
+                          ),
+                        ),
+                      ),
+                      SizedBox(
+                        height: mQuery.size.height * 0.04,
+                      )
+                    ],
+                  ),
+                ),
               ),
             )
           ],

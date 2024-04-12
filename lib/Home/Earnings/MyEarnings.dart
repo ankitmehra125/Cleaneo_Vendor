@@ -78,7 +78,8 @@ class _MyEarningsState extends State<MyEarnings> {
                     style: const TextStyle(
                         fontSize: 20,
                         color: Colors.white,
-                        fontWeight: FontWeight.w700),
+                      fontFamily: 'SatoshiBold'
+                        ),
                   )
                 ],
               ),
@@ -92,15 +93,6 @@ class _MyEarningsState extends State<MyEarnings> {
                   borderRadius: const BorderRadius.only(
                       topLeft: Radius.circular(16),
                       topRight: Radius.circular(16)),
-                  boxShadow: [
-                    BoxShadow(
-                      color: Colors.grey.withOpacity(0.5),
-                      spreadRadius: 0.3,
-                      blurRadius: 1,
-                      offset: const Offset(
-                          3, 3), // changes the position of the shadow
-                    ),
-                  ],
                 ),
                 child: const Column(
                   children: [

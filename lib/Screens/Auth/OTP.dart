@@ -1,7 +1,11 @@
+import 'package:cleaneo_vendor/Home/BotNav.dart';
+import 'package:cleaneo_vendor/Home/Home_/Home.dart';
 import 'package:cleaneo_vendor/Screens/Auth/Login.dart';
+import 'package:cleaneo_vendor/Screens/Auth/Signup.dart';
 import 'package:cleaneo_vendor/Screens/Vendor_Onboarding/addStore.dart';
 import 'package:flutter/material.dart';
 import 'package:pinput/pinput.dart';
+
 
 class OTPPage extends StatefulWidget {
   const OTPPage({Key? key}) : super(key: key);
@@ -44,13 +48,14 @@ class _OTPPageState extends State<OTPPage> {
             BoxShadow(
               color: Colors.grey.withOpacity(0.45),
               spreadRadius: 0,
-              blurRadius: 10,
+              blurRadius: 7,
               offset: const Offset(0, 0), // changes the position of the shadow
             ),
           ],
         ),
         textStyle: TextStyle(
-            fontSize: mQuery.size.height * 0.04, fontWeight: FontWeight.w500));
+            fontSize: mQuery.size.height * 0.04,
+            fontFamily: 'SatoshiBold'));
     return Scaffold(
       body: Container(
         width: double.infinity,
@@ -73,7 +78,7 @@ class _OTPPageState extends State<OTPPage> {
                     onTap: () {
                       Navigator.push(context,
                           MaterialPageRoute(builder: (context) {
-                        return const LoginPage();
+                        return Otp == "Login" ? LoginPage() : SignUpPage();
                       }));
                     },
                     child: const Icon(
@@ -152,13 +157,13 @@ class _OTPPageState extends State<OTPPage> {
                                   fontFamily: 'SatoshiBold'),
                             )
                           ],
-                        ),
+                        ), 
                         SizedBox(height: mQuery.size.height * 0.35),
                         GestureDetector(
                           onTap: () {
                             Navigator.push(context,
                                 MaterialPageRoute(builder: (context) {
-                              return const StoreDetailsPage();
+                              return logedIn == "Login" ? BotNav() :  StoreDetailsPage();
                             }));
                           },
                           child: Container(
@@ -171,7 +176,7 @@ class _OTPPageState extends State<OTPPage> {
                               child: Text(
                                 "Verify",
                                 style: TextStyle(
-                                    fontSize: mQuery.size.height * 0.023,
+                                    fontSize: mQuery.size.height * 0.02,
                                     color: Colors.white,
                                     fontFamily: 'SatoshiBold'),
                               ),

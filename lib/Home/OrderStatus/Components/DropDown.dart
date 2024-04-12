@@ -26,7 +26,8 @@ class _AnimatedDropdownState extends State<AnimatedDropdown> {
           icon: Icon(Icons.arrow_drop_down),
           iconSize: 24,
           elevation: 16,
-          style: TextStyle(color: Colors.black),
+          style: TextStyle(color: Colors.black,
+           fontFamily: 'SatoshiMedium'),
           onChanged: (String? newValue) {
             setState(() {
               _selectedItem = newValue!;

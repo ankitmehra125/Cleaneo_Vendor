@@ -103,7 +103,8 @@ void orderSummary(BuildContext context) {
                           Text(
                             "Pickup Order Summary",
                             style: TextStyle(
-                                fontSize: 18.0, fontWeight: FontWeight.w500),
+                              fontFamily: 'SatoshiBold',
+                                fontSize: 18.0, ),
                           ),
                         ],
                       ),
@@ -182,7 +183,8 @@ void orderSummary(BuildContext context) {
                               ),
                               const Text(
                                 "Clock Tower Dehradun",
-                                style: TextStyle(fontSize: 10),
+                                style: TextStyle(fontSize: 10,
+                                fontFamily: 'SatoshiMedium'),
                               )
                             ],
                           )
@@ -197,39 +199,9 @@ void orderSummary(BuildContext context) {
                       child: Row(
                         children: [
                           const Expanded(child: SizedBox()),
-
-                          // Column(
-                          //   crossAxisAlignment: CrossAxisAlignment.start,
-                          //   mainAxisAlignment: MainAxisAlignment.center,
-                          //   children: [
-                          //     Text(
-                          //       "Vivek",
-                          //       style:
-                          //           TextStyle(fontSize: mQuery.size.height * 0.016),
-                          //     ),
-                          //     Text(
-                          //       "+91 9978997899",
-                          //       style:
-                          //           TextStyle(fontSize: mQuery.size.height * 0.013),
-                          //     )
-                          //   ],
-                          // ),
                           SizedBox(
                             width: mQuery.size.width * 0.06,
                           ),
-                          // Container(
-                          //   width: mQuery.size.width * 0.07,
-                          //   height: mQuery.size.height * 0.06,
-                          //   decoration: const BoxDecoration(
-                          //       shape: BoxShape.circle, color: Color(0xff29b2fe)),
-                          //   child: Center(
-                          //     child: Icon(
-                          //       Icons.phone,
-                          //       color: Colors.white,
-                          //       size: mQuery.size.width * 0.04,
-                          //     ),
-                          //   ),
-                          // )
                         ],
                       ),
                     ),
@@ -247,7 +219,7 @@ void orderSummary(BuildContext context) {
                             boxShadow: [
                               BoxShadow(
                                 color: Colors.grey.withOpacity(0.5),
-                                blurRadius: 5,
+                                blurRadius: 7,
                                 spreadRadius: 0,
                                 offset: const Offset(0, 0),
                               ),
@@ -261,7 +233,6 @@ void orderSummary(BuildContext context) {
                                 "WASH",
                                 style: TextStyle(
                                   color: const Color(0xff29b2fe),
-                                  fontWeight: FontWeight.w500,
                                   fontSize: mQuery.size.height * 0.018,
                                   fontFamily: 'SatoshiMedium',
                                 ),
@@ -273,7 +244,7 @@ void orderSummary(BuildContext context) {
                                     "$shirtsNo1 Shirts",
                                     style: TextStyle(
                                       fontSize: mQuery.size.height * 0.017,
-                                      fontFamily: 'SatoshiBold',
+                                      fontFamily: 'SatoshiMedium',
                                     ),
                                   ),
                                   SizedBox(
@@ -301,7 +272,7 @@ void orderSummary(BuildContext context) {
                                       "₹ ${totalShirtPrice1.toStringAsFixed(0)}",
                                       style: TextStyle(
                                         fontSize: mQuery.size.height * 0.017,
-                                        fontFamily: 'SatoshiBold',
+                                        fontFamily: 'SatoshiMedium',
                                       ),
                                     ),
                                   ],
@@ -314,7 +285,7 @@ void orderSummary(BuildContext context) {
                                     "$blouseNo Blouse Designer",
                                     style: TextStyle(
                                       fontSize: mQuery.size.height * 0.017,
-                                      fontFamily: 'SatoshiBold',
+                                      fontFamily: 'SatoshiMedium',
                                     ),
                                   ),
                                   SizedBox(
@@ -342,7 +313,7 @@ void orderSummary(BuildContext context) {
                                       "₹ ${totalBlousePrice.toStringAsFixed(0)}",
                                       style: TextStyle(
                                         fontSize: mQuery.size.height * 0.017,
-                                        fontFamily: 'SatoshiBold',
+                                        fontFamily: 'SatoshiMedium',
                                       ),
                                     ),
                                   ],
@@ -355,7 +326,7 @@ void orderSummary(BuildContext context) {
                                     "$lehengaNo Lehenga Suit(Heavy)",
                                     style: TextStyle(
                                       fontSize: mQuery.size.height * 0.017,
-                                      fontFamily: 'SatoshiBold',
+                                      fontFamily: 'SatoshiMedium',
                                     ),
                                   ),
                                   SizedBox(width: mQuery.size.width * 0.38),
@@ -380,7 +351,7 @@ void orderSummary(BuildContext context) {
                                       "₹ ${totalLehengaPrice.toStringAsFixed(0)}",
                                       style: TextStyle(
                                         fontSize: mQuery.size.height * 0.017,
-                                        fontFamily: 'SatoshiBold',
+                                        fontFamily: 'SatoshiMedium',
                                       ),
                                     ),
                                   ],
@@ -393,7 +364,7 @@ void orderSummary(BuildContext context) {
                                     "$evDressNo Evening Dress(Heavy Work)",
                                     style: TextStyle(
                                       fontSize: mQuery.size.height * 0.017,
-                                      fontFamily: 'SatoshiBold',
+                                      fontFamily: 'SatoshiMedium',
                                     ),
                                   ),
                                   SizedBox(width: mQuery.size.width * 0.2),
@@ -418,7 +389,7 @@ void orderSummary(BuildContext context) {
                                       "₹ ${totalEvPrice.toStringAsFixed(0)}",
                                       style: TextStyle(
                                         fontSize: mQuery.size.height * 0.017,
-                                        fontFamily: 'SatoshiBold',
+                                        fontFamily: 'SatoshiMedium',
                                       ),
                                     ),
                                   ],
@@ -431,7 +402,7 @@ void orderSummary(BuildContext context) {
                                     "$nightSuiteNo Night Suit",
                                     style: TextStyle(
                                       fontSize: mQuery.size.height * 0.017,
-                                      fontFamily: 'SatoshiBold',
+                                      fontFamily: 'SatoshiMedium',
                                     ),
                                   ),
                                   SizedBox(width: mQuery.size.width * 0.54),
@@ -456,7 +427,7 @@ void orderSummary(BuildContext context) {
                                       "₹ ${totalNighSuitPrice.toStringAsFixed(0)}",
                                       style: TextStyle(
                                         fontSize: mQuery.size.height * 0.017,
-                                        fontFamily: 'SatoshiBold',
+                                        fontFamily: 'SatoshiMedium',
                                       ),
                                     ),
                                   ],
@@ -469,7 +440,7 @@ void orderSummary(BuildContext context) {
                                     "$waistSuitNo Waistcoat",
                                     style: TextStyle(
                                       fontSize: mQuery.size.height * 0.017,
-                                      fontFamily: 'SatoshiBold',
+                                      fontFamily: 'SatoshiMedium',
                                     ),
                                   ),
                                   SizedBox(width: mQuery.size.width * 0.54),
@@ -494,7 +465,7 @@ void orderSummary(BuildContext context) {
                                       "₹ ${totalWaistCoastPrice.toStringAsFixed(0)}",
                                       style: TextStyle(
                                         fontSize: mQuery.size.height * 0.017,
-                                        fontFamily: 'SatoshiBold',
+                                        fontFamily: 'SatoshiMedium',
                                       ),
                                     ),
                                   ],
@@ -507,7 +478,7 @@ void orderSummary(BuildContext context) {
                                     "$shortNo Short",
                                     style: TextStyle(
                                       fontSize: mQuery.size.height * 0.017,
-                                      fontFamily: 'SatoshiBold',
+                                      fontFamily: 'SatoshiMedium',
                                     ),
                                   ),
                                   SizedBox(
@@ -535,7 +506,7 @@ void orderSummary(BuildContext context) {
                                       "₹ ${totalShortPrice.toStringAsFixed(0)}",
                                       style: TextStyle(
                                         fontSize: mQuery.size.height * 0.017,
-                                        fontFamily: 'SatoshiBold',
+                                        fontFamily: 'SatoshiMedium',
                                       ),
                                     ),
                                   ],
@@ -548,7 +519,7 @@ void orderSummary(BuildContext context) {
                                     "$skirtNo Skirt",
                                     style: TextStyle(
                                       fontSize: mQuery.size.height * 0.017,
-                                      fontFamily: 'SatoshiBold',
+                                      fontFamily: 'SatoshiMedium',
                                     ),
                                   ),
                                   SizedBox(width: mQuery.size.width * 0.61),
@@ -573,7 +544,7 @@ void orderSummary(BuildContext context) {
                                       "₹ ${totalSkirtPrice.toStringAsFixed(0)}",
                                       style: TextStyle(
                                         fontSize: mQuery.size.height * 0.017,
-                                        fontFamily: 'SatoshiBold',
+                                        fontFamily: 'SatoshiMedium',
                                       ),
                                     ),
                                   ],
@@ -586,7 +557,7 @@ void orderSummary(BuildContext context) {
                                     "$sCNo Swimming Costume",
                                     style: TextStyle(
                                       fontSize: mQuery.size.height * 0.017,
-                                      fontFamily: 'SatoshiBold',
+                                      fontFamily: 'SatoshiMedium',
                                     ),
                                   ),
                                   SizedBox(width: mQuery.size.width * 0.37),
@@ -611,7 +582,7 @@ void orderSummary(BuildContext context) {
                                       "₹ ${totalScPrice.toStringAsFixed(0)}",
                                       style: TextStyle(
                                         fontSize: mQuery.size.height * 0.017,
-                                        fontFamily: 'SatoshiBold',
+                                        fontFamily: 'SatoshiMedium',
                                       ),
                                     ),
                                   ],
@@ -624,7 +595,7 @@ void orderSummary(BuildContext context) {
                                     "$inWearNo Inner wear",
                                     style: TextStyle(
                                       fontSize: mQuery.size.height * 0.017,
-                                      fontFamily: 'SatoshiBold',
+                                      fontFamily: 'SatoshiMedium',
                                     ),
                                   ),
                                   SizedBox(width: mQuery.size.width * 0.52),
@@ -649,7 +620,7 @@ void orderSummary(BuildContext context) {
                                       "₹ ${totalinWearPrice.toStringAsFixed(0)}",
                                       style: TextStyle(
                                         fontSize: mQuery.size.height * 0.017,
-                                        fontFamily: 'SatoshiBold',
+                                        fontFamily: 'SatoshiMedium',
                                       ),
                                     ),
                                   ],
@@ -662,7 +633,7 @@ void orderSummary(BuildContext context) {
                                     "$socksNo Socks/Stocking",
                                     style: TextStyle(
                                       fontSize: mQuery.size.height * 0.017,
-                                      fontFamily: 'SatoshiBold',
+                                      fontFamily: 'SatoshiMedium',
                                     ),
                                   ),
                                   SizedBox(width: mQuery.size.width * 0.43),
@@ -687,7 +658,7 @@ void orderSummary(BuildContext context) {
                                       "₹ ${totalSocksPrice.toStringAsFixed(0)}",
                                       style: TextStyle(
                                         fontSize: mQuery.size.height * 0.017,
-                                        fontFamily: 'SatoshiBold',
+                                        fontFamily: 'SatoshiMedium',
                                       ),
                                     ),
                                   ],
@@ -700,7 +671,7 @@ void orderSummary(BuildContext context) {
                                     "$frockNo Frock",
                                     style: TextStyle(
                                       fontSize: mQuery.size.height * 0.017,
-                                      fontFamily: 'SatoshiBold',
+                                      fontFamily: 'SatoshiMedium',
                                     ),
                                   ),
                                   SizedBox(width: mQuery.size.width * 0.58),
@@ -725,7 +696,7 @@ void orderSummary(BuildContext context) {
                                       "₹ ${totalfrockPrice.toStringAsFixed(0)}",
                                       style: TextStyle(
                                         fontSize: mQuery.size.height * 0.017,
-                                        fontFamily: 'SatoshiBold',
+                                        fontFamily: 'SatoshiMedium',
                                       ),
                                     ),
                                   ],
@@ -738,7 +709,7 @@ void orderSummary(BuildContext context) {
                                     "$jumpSuitNo Jump Suits",
                                     style: TextStyle(
                                       fontSize: mQuery.size.height * 0.017,
-                                      fontFamily: 'SatoshiBold',
+                                      fontFamily: 'SatoshiMedium',
                                     ),
                                   ),
                                   SizedBox(width: mQuery.size.width * 0.47),
@@ -763,7 +734,7 @@ void orderSummary(BuildContext context) {
                                       "₹ ${totalJumpSuitPrice.toStringAsFixed(0)}",
                                       style: TextStyle(
                                         fontSize: mQuery.size.height * 0.017,
-                                        fontFamily: 'SatoshiBold',
+                                        fontFamily: 'SatoshiMedium',
                                       ),
                                     ),
                                   ],
@@ -779,12 +750,14 @@ void orderSummary(BuildContext context) {
                                     "Add-On(Cloth Softener)",
                                     style: TextStyle(
                                       color: Color(0xff009c1a),
+                                      fontFamily: 'SatoshiMedium',
                                     ),
                                   ),
                                   Expanded(child: SizedBox()),
                                   Text(
                                     "₹ 240",
-                                    style: TextStyle(color: Color(0xff29b2fe)),
+                                    style: TextStyle(color: Color(0xff29b2fe),
+                                      fontFamily: 'SatoshiMedium',),
                                   )
                                 ],
                               ),
@@ -1090,12 +1063,14 @@ void orderSummary(BuildContext context) {
                               Text(
                                 "TOTAL",
                                 style: TextStyle(
+                                  fontFamily: 'SatoshiMedium',
                                     fontSize: mQuery.size.height * 0.02,
                                     color: Colors.white),
                               ),
                               Text(
                                 totalSum,
                                 style: TextStyle(
+                                  fontFamily: 'SatoshiMedium',
                                   color: Colors.white,
                                   fontSize: mQuery.size.height * 0.02,
                                 ),
@@ -1134,9 +1109,10 @@ void _showMessage(BuildContext context) {
         backgroundColor: Colors.white,
         title: const Center(child: Text('Congratulations',style: TextStyle(
          fontSize: 17,
-          fontWeight: FontWeight.w700
+          fontFamily: 'SatoshiBold'
         ),)),
         content: const Text('The order has been successfully picked',style: TextStyle(
+          fontFamily: 'SatoshiMedium',
           fontSize: 12
         ),),
         actions: <Widget>[
@@ -1158,6 +1134,7 @@ void _showMessage(BuildContext context) {
                   "Go to Order Status",
                   style: TextStyle(
                       color: Colors.white,
+                      fontFamily: 'SatoshiBold',
                       fontSize: mQuery.size.height * 0.023),
                 ),
               ),

@@ -57,7 +57,7 @@ class _ReportDisputeState extends State<ReportDispute> {
                     style: const TextStyle(
                         fontSize: 20,
                         color: Colors.white,
-                        fontWeight: FontWeight.w700),
+                        fontFamily: 'SatoshiBold'),
                   )
                 ],
               ),
@@ -70,15 +70,6 @@ class _ReportDisputeState extends State<ReportDispute> {
                   borderRadius: const BorderRadius.only(
                       topLeft: Radius.circular(16),
                       topRight: Radius.circular(16)),
-                  boxShadow: [
-                    BoxShadow(
-                      color: Colors.grey.withOpacity(0.5),
-                      spreadRadius: 0.3,
-                      blurRadius: 1,
-                      offset: const Offset(
-                          3, 3), // changes the position of the shadow
-                    ),
-                  ],
                 ),
                 child: Padding(
                     padding: const EdgeInsets.only(left: 16, right: 16),
@@ -94,8 +85,8 @@ class _ReportDisputeState extends State<ReportDispute> {
                                     .checkedandcollected,
                                 // textAlign: TextAlign.center,
                                 style: const TextStyle(
-                                    fontWeight: FontWeight.w700,
-                                    fontSize: 16,
+                                    fontFamily: 'SatoshiBold',
+                                    fontSize: 15,
                                     color: Color(0xff29b2fe)),
                               ),
                             ),
@@ -115,8 +106,8 @@ class _ReportDisputeState extends State<ReportDispute> {
                               boxShadow: [
                                 BoxShadow(
                                   color: Colors.grey.withOpacity(0.5),
-                                  spreadRadius: 2,
-                                  blurRadius: 10,
+                                  spreadRadius: 0,
+                                  blurRadius: 7,
                                   offset: const Offset(0,
                                       0), // changes the position of the shadow
                                 ),
@@ -142,8 +133,8 @@ class _ReportDisputeState extends State<ReportDispute> {
                                       .quantitymismatch,
                                   // textAlign: TextAlign.center,
                                   style: const TextStyle(
-                                      fontWeight: FontWeight.w500,
-                                      fontSize: 14),
+                                    fontFamily: 'SatoshiMedium'
+                                     ),
                                 ),
                               ],
                             )),
@@ -161,8 +152,8 @@ class _ReportDisputeState extends State<ReportDispute> {
                               boxShadow: [
                                 BoxShadow(
                                   color: Colors.grey.withOpacity(0.5),
-                                  spreadRadius: 2,
-                                  blurRadius: 10,
+                                  spreadRadius: 0,
+                                  blurRadius: 7,
                                   offset: const Offset(0,
                                       0), // changes the position of the shadow
                                 ),
@@ -187,8 +178,8 @@ class _ReportDisputeState extends State<ReportDispute> {
                                   AppLocalizations.of(context)!.stains,
                                   // textAlign: TextAlign.center,
                                   style: const TextStyle(
-                                      fontWeight: FontWeight.w500,
-                                      fontSize: 14),
+                                      fontFamily: 'SatoshiMedium'
+                                  ),
                                 ),
                               ],
                             )),
@@ -206,8 +197,8 @@ class _ReportDisputeState extends State<ReportDispute> {
                               boxShadow: [
                                 BoxShadow(
                                   color: Colors.grey.withOpacity(0.5),
-                                  spreadRadius: 2,
-                                  blurRadius: 10,
+                                  spreadRadius: 0,
+                                  blurRadius: 7,
                                   offset: const Offset(0,
                                       0), // changes the position of the shadow
                                 ),
@@ -232,8 +223,8 @@ class _ReportDisputeState extends State<ReportDispute> {
                                   AppLocalizations.of(context)!.typeofcloth,
                                   // textAlign: TextAlign.center,
                                   style: const TextStyle(
-                                      fontWeight: FontWeight.w500,
-                                      fontSize: 14),
+                                      fontFamily: 'SatoshiMedium'
+                                  ),
                                 ),
                               ],
                             )),
@@ -259,7 +250,8 @@ class _ReportDisputeState extends State<ReportDispute> {
                                 AppLocalizations.of(context)!.anyotherdispute,
                                 // textAlign: TextAlign.center,
                                 style: const TextStyle(
-                                    fontWeight: FontWeight.w700, fontSize: 16),
+                                    fontFamily: 'SatoshiBold',
+                                fontSize: 15),
                               ),
                             ),
                           ],
@@ -277,8 +269,8 @@ class _ReportDisputeState extends State<ReportDispute> {
                             boxShadow: [
                               BoxShadow(
                                 color: Colors.grey.withOpacity(0.5),
-                                spreadRadius: 2,
-                                blurRadius: 10,
+                                spreadRadius: 0,
+                                blurRadius: 7,
                                 offset: const Offset(
                                     0, 0), // changes the position of the shadow
                               ),
@@ -294,7 +286,7 @@ class _ReportDisputeState extends State<ReportDispute> {
                                   AppLocalizations.of(context)!.writeReason,
                               hintStyle: const TextStyle(
                                   fontSize: 13,
-                                  fontWeight: FontWeight.w600,
+                                  fontFamily: 'SatoshiMedium',
                                   color: Color(0xffABAFB1)),
                             ),
                           ),
@@ -319,7 +311,8 @@ class _ReportDisputeState extends State<ReportDispute> {
                                 AppLocalizations.of(context)!.uploadpics,
                                 // textAlign: TextAlign.center,
                                 style: const TextStyle(
-                                    fontWeight: FontWeight.w700, fontSize: 16),
+                                    fontFamily: 'SatoshiBold',
+                                fontSize: 15),
                               ),
                             ),
                           ],
@@ -376,7 +369,7 @@ class _ReportDisputeState extends State<ReportDispute> {
                                   style: TextStyle(
                                       fontSize: 15,
                                       color: Colors.white,
-                                      fontWeight: FontWeight.w600),
+                                      fontFamily: 'SatoshiBold'),
                                 ),
                               ),
                             ),

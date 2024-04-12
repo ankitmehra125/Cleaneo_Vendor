@@ -54,7 +54,7 @@ class _LocationState extends State<Location> {
                     style: const TextStyle(
                         fontSize: 20,
                         color: Colors.white,
-                        fontWeight: FontWeight.w700),
+                        fontFamily: 'SatoshiBold'),
                   )
                 ],
               ),
@@ -67,15 +67,6 @@ class _LocationState extends State<Location> {
                   borderRadius: const BorderRadius.only(
                       topLeft: Radius.circular(16),
                       topRight: Radius.circular(16)),
-                  boxShadow: [
-                    BoxShadow(
-                      color: Colors.grey.withOpacity(0.5),
-                      spreadRadius: 0.3,
-                      blurRadius: 1,
-                      offset: const Offset(
-                          3, 3), // changes the position of the shadow
-                    ),
-                  ],
                 ),
                 child: Padding(
                     padding: const EdgeInsets.only(left: 16, right: 16),
@@ -93,7 +84,8 @@ class _LocationState extends State<Location> {
                                 AppLocalizations.of(context)!.locationdesc,
                                 textAlign: TextAlign.center,
                                 style: const TextStyle(
-                                    fontWeight: FontWeight.w700, fontSize: 15),
+                                  fontFamily: 'SatoshiMedium',
+                                     fontSize: 15),
                               ),
                             ),
                           ],
@@ -126,7 +118,7 @@ class _LocationState extends State<Location> {
                                 style: TextStyle(
                                     fontSize: 15,
                                     color: Colors.white,
-                                    fontWeight: FontWeight.w600),
+                                    fontFamily: 'SatoshiBold'),
                               ),
                             ),
                           ),

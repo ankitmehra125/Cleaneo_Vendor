@@ -157,7 +157,10 @@ class VideoListItem extends StatelessWidget {
                 child: Center(
                   child: Text(
                     videoTitle,
-                    style: TextStyle(fontWeight: FontWeight.bold),
+                    style: TextStyle(
+                      fontFamily: 'SatoshiBold',
+                      fontSize: 13
+                    ),
                   ),
                 ),
               ),

@@ -60,7 +60,7 @@ class _LedgerState extends State<Ledger> {
                     style: TextStyle(
                         fontSize: 20,
                         color: Colors.white,
-                        fontWeight: FontWeight.w700),
+                        fontFamily: 'SatoshiBold'),
                   )
                 ],
               ),
@@ -86,9 +86,9 @@ class _LedgerState extends State<Ledger> {
                         const Text(
                           "Orders",
                           style: TextStyle(
-                              fontSize: 18,
+                              fontSize: 15,
                               color: Colors.black,
-                              fontWeight: FontWeight.w500),
+                              fontFamily: 'SatoshiMedium'),
                         ),
                         DropdownLedger(),
                       ],
@@ -115,7 +115,7 @@ class _LedgerState extends State<Ledger> {
                           boxShadow: [
                             BoxShadow(
                               color: Colors.grey.withOpacity(0.3),
-                              spreadRadius: 2,
+                              spreadRadius: 0,
                               blurRadius: 7,
                               offset: const Offset(
                                   0, 0), // changes the position of the shadow
@@ -136,16 +136,17 @@ class _LedgerState extends State<Ledger> {
                                   Text(
                                     "Total Amount",
                                     style: TextStyle(
-                                        fontSize: 16,
+                                      fontFamily: 'SatoshiBold',
+                                        fontSize: 15,
                                         color: Colors.black,
-                                        fontWeight: FontWeight.w600),
+                                        ),
                                   ),
                                   Text(
                                     "₹ 1,600",
                                     style: TextStyle(
-                                        fontSize: 18,
+                                        fontSize: 15,
                                         color: Colors.black,
-                                        fontWeight: FontWeight.w500),
+                                        fontFamily: 'SatoshiBold'),
                                   ),
                                 ],
                               ),
@@ -228,16 +229,16 @@ class _LedgerState extends State<Ledger> {
                                   Text(
                                     "Cleaneo Commission (20%)",
                                     style: TextStyle(
-                                        fontSize: 14,
+                                      fontSize: 13,
                                         color: Colors.black54,
-                                        fontWeight: FontWeight.w500),
+                                        fontFamily: 'SatoshiMedium'),
                                   ),
                                   Text(
                                     "₹ 320",
                                     style: TextStyle(
-                                        fontSize: 16,
+                                        fontSize: 15,
                                         color: Color(0xFF48BDFE),
-                                        fontWeight: FontWeight.w500),
+                                        fontFamily: 'SatoshiMedium'),
                                   ),
                                 ],
                               ),
@@ -259,16 +260,18 @@ class _LedgerState extends State<Ledger> {
                                   Text(
                                     "Convenience Fees (2.5%)",
                                     style: TextStyle(
-                                        fontSize: 14,
+                                        fontSize: 13,
+                                        fontFamily: 'SatoshiMedium',
                                         color: Colors.black54,
-                                        fontWeight: FontWeight.w500),
+                                    ),
                                   ),
                                   Text(
                                     "₹ 40",
                                     style: TextStyle(
-                                        fontSize: 16,
+                                        fontSize: 15,
+                                        fontFamily: 'SatoshiMedium',
                                         color: Color(0xFF48BDFE),
-                                        fontWeight: FontWeight.w500),
+                                        ),
                                   ),
                                 ],
                               ),
@@ -289,16 +292,16 @@ class _LedgerState extends State<Ledger> {
                                   Text(
                                     "Your Earnings",
                                     style: TextStyle(
-                                        fontSize: 16,
+                                        fontSize: 15,
                                         color: Colors.black,
-                                        fontWeight: FontWeight.w600),
+                                        fontFamily: 'SatoshiBold'),
                                   ),
                                   Text(
                                     "₹ 1,240",
                                     style: TextStyle(
-                                        fontSize: 18,
+                                        fontSize: 15,
                                         color: Colors.green,
-                                        fontWeight: FontWeight.w600),
+                                        fontFamily: 'SatoshiBold'),
                                   ),
                                 ],
                               ),

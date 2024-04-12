@@ -70,8 +70,8 @@ class _OrderStatusState extends State<OrderStatus> {
                           child: Text(
                             "Order Status - ID #12345",
                             style: TextStyle(
-                              fontWeight: FontWeight.w700,
-                              fontSize: 18,
+                              fontFamily: 'SatoshiBold',
+                              fontSize: 16,
                             ),
                           ),
                         ),
@@ -116,7 +116,8 @@ class _OrderStatusState extends State<OrderStatus> {
                                   ),
                                   Text(
                                     "Clock Tower Dehradun",
-                                    style: TextStyle(fontSize: 10),
+                                    style: TextStyle(fontSize: 10,
+                                     fontFamily: 'SatoshiMedium'),
                                   )
                                 ],
                               )
@@ -155,13 +156,14 @@ class _OrderStatusState extends State<OrderStatus> {
                                       Text(
                                         "Order Accepted",
                                         style: TextStyle(
-                                          fontSize: 15,
-                                          fontWeight: FontWeight.w700,
+                                          fontFamily: 'SatoshiBold'
                                         ),
                                       ),
                                       Text(
                                         "18th Jul 2021, 8:09 pm",
-                                        style: TextStyle(color: Colors.black54),
+                                        style: TextStyle(color: Colors.black54,
+                                        fontSize: 12,
+                                        fontFamily: 'SatoshiMedium'),
                                       )
                                     ],
                                   ),
@@ -180,9 +182,9 @@ class _OrderStatusState extends State<OrderStatus> {
                                       decoration: BoxDecoration(
                                         shape: BoxShape.circle,
                                         border: Border.all(
-                                          color: isChecked1 ? Colors.cyan : Colors.grey, // Change border color when selected
+                                          color: isChecked1 ? Color(0xff29b2fe)  : Colors.grey, // Change border color when selected
                                         ),
-                                        color: isChecked1 ? Colors.cyan : Colors.transparent, // Change background color when selected
+                                        color: isChecked1 ? Color(0xff29b2fe)  : Colors.transparent, // Change background color when selected
                                       ),
                                       child: isChecked1
                                           ? Icon(
@@ -223,13 +225,14 @@ class _OrderStatusState extends State<OrderStatus> {
                                       Text(
                                         "Order Recieved",
                                         style: TextStyle(
-                                          fontSize: 15,
-                                          fontWeight: FontWeight.w700,
+                                            fontFamily: 'SatoshiBold'
                                         ),
                                       ),
                                       Text(
                                         "18th Jul 2021, 8:09 pm",
-                                        style: TextStyle(color: Colors.black54),
+                                        style: TextStyle(color: Colors.black54,
+                                            fontSize: 12,
+                                            fontFamily: 'SatoshiMedium'),
                                       )
                                     ],
                                   ),
@@ -248,9 +251,9 @@ class _OrderStatusState extends State<OrderStatus> {
                                       decoration: BoxDecoration(
                                         shape: BoxShape.circle,
                                         border: Border.all(
-                                          color: isChecked2 ? Colors.cyan : Colors.grey,
+                                          color: isChecked2 ? Color(0xff29b2fe)  : Colors.grey,
                                         ),
-                                        color: isChecked2 ? Colors.cyan : Colors.transparent,
+                                        color: isChecked2 ? Color(0xff29b2fe)  : Colors.transparent,
                                       ),
                                       child: isChecked2
                                           ? Icon(
@@ -291,13 +294,14 @@ class _OrderStatusState extends State<OrderStatus> {
                                       Text(
                                         "Order in Process",
                                         style: TextStyle(
-                                          fontSize: 15,
-                                          fontWeight: FontWeight.w700,
+                                            fontFamily: 'SatoshiBold'
                                         ),
                                       ),
                                       Text(
                                         "18th Jul 2021, 8:09 pm",
-                                        style: TextStyle(color: Colors.black54),
+                                        style: TextStyle(color: Colors.black54,
+                                            fontSize: 12,
+                                            fontFamily: 'SatoshiMedium'),
                                       )
                                     ],
                                   ),
@@ -316,9 +320,9 @@ class _OrderStatusState extends State<OrderStatus> {
                                       decoration: BoxDecoration(
                                         shape: BoxShape.circle,
                                         border: Border.all(
-                                          color: isChecked3 ? Colors.cyan : Colors.grey,
+                                          color: isChecked3 ? Color(0xff29b2fe)  : Colors.grey,
                                         ),
-                                        color: isChecked3 ? Colors.cyan : Colors.transparent,
+                                        color: isChecked3 ? Color(0xff29b2fe)  : Colors.transparent,
                                       ),
                                       child: isChecked3
                                           ? Icon(
@@ -359,13 +363,14 @@ class _OrderStatusState extends State<OrderStatus> {
                                       Text(
                                         "Ready to Pickup",
                                         style: TextStyle(
-                                          fontSize: 15,
-                                          fontWeight: FontWeight.w700,
+                                            fontFamily: 'SatoshiBold'
                                         ),
                                       ),
                                       Text(
                                         "18th Jul 2021, 8:09 pm",
-                                        style: TextStyle(color: Colors.black54),
+                                        style: TextStyle(color: Colors.black54,
+                                            fontSize: 12,
+                                            fontFamily: 'SatoshiMedium'),
                                       )
                                     ],
                                   ),
@@ -384,9 +389,9 @@ class _OrderStatusState extends State<OrderStatus> {
                                       decoration: BoxDecoration(
                                         shape: BoxShape.circle,
                                         border: Border.all(
-                                          color: isChecked4 ? Colors.cyan : Colors.grey,
+                                          color: isChecked4 ? Color(0xff29b2fe) : Colors.grey,
                                         ),
-                                        color: isChecked4 ? Colors.cyan : Colors.transparent,
+                                        color: isChecked4 ? Color(0xff29b2fe)  : Colors.transparent,
                                       ),
                                       child: isChecked4
                                           ? Icon(
@@ -427,13 +432,14 @@ class _OrderStatusState extends State<OrderStatus> {
                                       Text(
                                         "Order on its way",
                                         style: TextStyle(
-                                          fontSize: 15,
-                                          fontWeight: FontWeight.w700,
+                                            fontFamily: 'SatoshiBold'
                                         ),
                                       ),
                                       Text(
                                         "18th Jul 2021, 8:09 pm",
-                                        style: TextStyle(color: Colors.black54),
+                                        style: TextStyle(color: Colors.black54,
+                                            fontSize: 12,
+                                            fontFamily: 'SatoshiMedium'),
                                       )
                                     ],
                                   ),
@@ -452,9 +458,9 @@ class _OrderStatusState extends State<OrderStatus> {
                                       decoration: BoxDecoration(
                                         shape: BoxShape.circle,
                                         border: Border.all(
-                                          color: isChecked5 ? Colors.cyan : Colors.grey,
+                                          color: isChecked5 ? Color(0xff29b2fe)  : Colors.grey,
                                         ),
-                                        color: isChecked5 ? Colors.cyan : Colors.transparent,
+                                        color: isChecked5 ? Color(0xff29b2fe)  : Colors.transparent,
                                       ),
                                       child: isChecked5
                                           ? Icon(
@@ -495,13 +501,14 @@ class _OrderStatusState extends State<OrderStatus> {
                                       Text(
                                         "Order Delivered",
                                         style: TextStyle(
-                                          fontSize: 15,
-                                          fontWeight: FontWeight.w700,
+                                            fontFamily: 'SatoshiBold'
                                         ),
                                       ),
                                       Text(
                                         "18th Jul 2021, 8:09 pm",
-                                        style: TextStyle(color: Colors.black54),
+                                        style: TextStyle(color: Colors.black54,
+                                            fontSize: 12,
+                                            fontFamily: 'SatoshiMedium'),
                                       )
                                     ],
                                   ),
@@ -520,9 +527,9 @@ class _OrderStatusState extends State<OrderStatus> {
                                       decoration: BoxDecoration(
                                         shape: BoxShape.circle,
                                         border: Border.all(
-                                          color: isChecked6 ? Colors.cyan : Colors.grey,
+                                          color: isChecked6 ? Color(0xff29b2fe)  : Colors.grey,
                                         ),
-                                        color: isChecked6 ? Colors.cyan : Colors.transparent,
+                                        color: isChecked6 ? Color(0xff29b2fe)  : Colors.transparent,
                                       ),
                                       child: isChecked6
                                           ? Icon(
@@ -561,6 +568,7 @@ class _OrderStatusState extends State<OrderStatus> {
                       child: Center(
                         child: Text("Done",style: TextStyle(
                             color: Colors.white,
+                            fontFamily: 'SatoshiBold',
                             fontSize: mQuery.size.height*0.024
                         ),),
                       ),
@@ -628,9 +636,9 @@ class _OrderStatusState extends State<OrderStatus> {
             decoration: BoxDecoration(
               shape: BoxShape.circle,
               border: Border.all(
-                color: isChecked ? Colors.cyan : Colors.grey,
+                color: isChecked ? Color(0xff29b2fe)  : Colors.grey,
               ),
-              color: isChecked ? Colors.cyan : Colors.transparent,
+              color: isChecked ? Color(0xff29b2fe)  : Colors.transparent,
             ),
             child: isChecked
                 ? Icon(
@@ -681,8 +689,9 @@ class _OrderStatusState extends State<OrderStatus> {
                     AppLocalizations.of(context)!.orderstatus,
                     style: const TextStyle(
                         fontSize: 20,
+                        fontFamily : "SatoshiBold",
                         color: Colors.white,
-                        fontWeight: FontWeight.w700),
+                    ),
                   )
                 ],
               ),
@@ -696,15 +705,6 @@ class _OrderStatusState extends State<OrderStatus> {
                   borderRadius: const BorderRadius.only(
                       topLeft: Radius.circular(16),
                       topRight: Radius.circular(16)),
-                  boxShadow: [
-                    BoxShadow(
-                      color: Colors.grey.withOpacity(0.5),
-                      spreadRadius: 0.3,
-                      blurRadius: 1,
-                      offset: const Offset(
-                          3, 3), // changes the position of the shadow
-                    ),
-                  ],
                 ),
                 child: Column(
                   children: [
@@ -749,7 +749,7 @@ class _OrderStatusState extends State<OrderStatus> {
                             const Text(
                               'Select All',
                               style: TextStyle(
-                                fontWeight: FontWeight.w500,
+                                fontFamily : "SatoshiMedium",
                                 fontSize: 14,
                               ),
                             ),
@@ -812,7 +812,7 @@ class _OrderStatusState extends State<OrderStatus> {
                                       style: const TextStyle(
                                           color: Color.fromARGB(
                                               255, 184, 184, 184),
-                                          fontWeight: FontWeight.w600,
+                                          fontFamily: 'SatoshiMedium',
                                           fontSize: 12.0),
                                     ),
                                   ],
@@ -831,7 +831,7 @@ class _OrderStatusState extends State<OrderStatus> {
                                     boxShadow: [
                                       BoxShadow(
                                         color: Colors.grey.withOpacity(0.3),
-                                        spreadRadius: 2,
+                                        spreadRadius: 0,
                                         blurRadius: 7,
                                         offset: const Offset(0,
                                             0), // changes the position of the shadow
@@ -865,7 +865,7 @@ class _OrderStatusState extends State<OrderStatus> {
                                                     ? const Icon(
                                                         Icons.check,
                                                         size: 10,
-                                                        color: Colors.blue,
+                                                        color: Color(0xff29b2fe),
                                                       )
                                                     : null,
                                               ),
@@ -893,8 +893,7 @@ class _OrderStatusState extends State<OrderStatus> {
                                               Text(
                                                 'Order #${index + 1}',
                                                 style: const TextStyle(
-                                                  fontSize: 16,
-                                                  fontWeight: FontWeight.w600,
+                                                  fontFamily: 'SatoshiBold'
                                                 ),
                                               ),
                                               Text(
@@ -902,8 +901,7 @@ class _OrderStatusState extends State<OrderStatus> {
                                                 style: const TextStyle(
                                                     fontSize: 12,
                                                     color: Colors.grey,
-                                                    fontWeight:
-                                                        FontWeight.w600),
+                                                    fontFamily: 'SatoshiBold'),
                                               ),
                                             ],
                                           ),
@@ -922,7 +920,7 @@ class _OrderStatusState extends State<OrderStatus> {
                                             status,
                                             style: TextStyle(
                                                 color: textcolor,
-                                                fontWeight: FontWeight.bold,
+                                                fontFamily: 'SatoshiBold',
                                                 fontSize: 12.0),
                                           ),
                                         ),
@@ -959,7 +957,7 @@ class _OrderStatusState extends State<OrderStatus> {
                                   style: TextStyle(
                                       fontSize: 15,
                                       color: Colors.white,
-                                      fontWeight: FontWeight.w600),
+                                      fontFamily: 'SatoshiBold'),
                                 ),
                               ),
                             ),

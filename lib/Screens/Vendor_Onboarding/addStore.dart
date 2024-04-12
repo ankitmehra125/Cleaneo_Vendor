@@ -51,7 +51,8 @@ class _StoreDetailsPageState extends State<StoreDetailsPage> {
                     style: const TextStyle(
                         fontSize: 20,
                         color: Colors.white,
-                        fontWeight: FontWeight.w700),
+                        fontFamily: 'SatoshiBold'
+                        ),
                   )
                 ],
               ),
@@ -64,15 +65,6 @@ class _StoreDetailsPageState extends State<StoreDetailsPage> {
                   borderRadius: const BorderRadius.only(
                       topLeft: Radius.circular(16),
                       topRight: Radius.circular(16)),
-                  boxShadow: [
-                    BoxShadow(
-                      color: Colors.grey.withOpacity(0.5),
-                      spreadRadius: 0.3,
-                      blurRadius: 1,
-                      offset: const Offset(
-                          3, 3), // changes the position of the shadow
-                    ),
-                  ],
                 ),
                 child: Padding(
                   padding: const EdgeInsets.only(left: 16, right: 16),
@@ -86,7 +78,8 @@ class _StoreDetailsPageState extends State<StoreDetailsPage> {
                         Text(
                           AppLocalizations.of(context)!.basicinfo,
                           style: const TextStyle(
-                              fontWeight: FontWeight.w600, fontSize: 15),
+                            fontFamily: 'SatoshiBold',
+                               fontSize: 15),
                         ),
                         SizedBox(
                           height: mQuery.size.height * 0.02,
@@ -101,10 +94,9 @@ class _StoreDetailsPageState extends State<StoreDetailsPage> {
                             boxShadow: [
                               BoxShadow(
                                 color: Colors.grey.withOpacity(0.5),
-                                spreadRadius: 2,
-                                blurRadius: 10,
-                                offset: const Offset(
-                                    0, 0), // changes the position of the shadow
+                                spreadRadius: 0,
+                                blurRadius: 7,
+                                offset: const Offset(0, 0), // changes the position of the shadow
                               ),
                             ],
                           ),
@@ -114,10 +106,13 @@ class _StoreDetailsPageState extends State<StoreDetailsPage> {
                             decoration: const InputDecoration(
                               focusedBorder: InputBorder.none,
                               enabledBorder: InputBorder.none,
+                              contentPadding: EdgeInsets.symmetric(
+                                vertical: 16
+                              ),
                               hintText: "Name of the Store",
                               hintStyle: TextStyle(
-                                  fontSize: 14,
-                                  fontWeight: FontWeight.w600,
+                                fontSize: 13,
+                                  fontFamily: 'SatoshiMedium',
                                   color: Color(0xffABAFB1)),
                             ),
                           ),
@@ -135,8 +130,8 @@ class _StoreDetailsPageState extends State<StoreDetailsPage> {
                             boxShadow: [
                               BoxShadow(
                                 color: Colors.grey.withOpacity(0.5),
-                                spreadRadius: 2,
-                                blurRadius: 10,
+                                spreadRadius: 0,
+                                blurRadius: 7,
                                 offset: const Offset(
                                     0, 0), // changes the position of the shadow
                               ),
@@ -148,10 +143,13 @@ class _StoreDetailsPageState extends State<StoreDetailsPage> {
                             decoration: const InputDecoration(
                               focusedBorder: InputBorder.none,
                               enabledBorder: InputBorder.none,
+                              contentPadding: EdgeInsets.symmetric(
+                                  vertical: 16
+                              ),
                               hintText: "Address",
                               hintStyle: TextStyle(
-                                  fontSize: 14,
-                                  fontWeight: FontWeight.w600,
+                                fontSize: 13,
+                                  fontFamily: 'SatoshiMedium',
                                   color: Color(0xffABAFB1)),
                             ),
                           ),
@@ -169,8 +167,8 @@ class _StoreDetailsPageState extends State<StoreDetailsPage> {
                             boxShadow: [
                               BoxShadow(
                                 color: Colors.grey.withOpacity(0.5),
-                                spreadRadius: 2,
-                                blurRadius: 10,
+                                spreadRadius: 0,
+                                blurRadius: 7,
                                 offset: const Offset(
                                     0, 0), // changes the position of the shadow
                               ),
@@ -180,12 +178,15 @@ class _StoreDetailsPageState extends State<StoreDetailsPage> {
                             cursorColor: Colors.grey,
                             controller: gstinController,
                             decoration: const InputDecoration(
+                              contentPadding: EdgeInsets.symmetric(
+                                  vertical: 16
+                              ),
                               focusedBorder: InputBorder.none,
                               enabledBorder: InputBorder.none,
                               hintText: "GSTIN",
                               hintStyle: TextStyle(
-                                  fontSize: 14,
-                                  fontWeight: FontWeight.w600,
+                                fontSize: 13,
+                                  fontFamily: 'SatoshiMedium',
                                   color: Color(0xffABAFB1)),
                             ),
                           ),
@@ -196,7 +197,7 @@ class _StoreDetailsPageState extends State<StoreDetailsPage> {
                         Text(
                           AppLocalizations.of(context)!.selecttheservices,
                           style: const TextStyle(
-                              fontSize: 15, fontWeight: FontWeight.w600),
+                              fontSize: 15, fontFamily: 'SatoshiBold'),
                         ),
                         SizedBox(
                           height: mQuery.size.height * 0.023,
@@ -290,11 +291,12 @@ class _StoreDetailsPageState extends State<StoreDetailsPage> {
                                 style: TextStyle(
                                     fontSize: 15,
                                     color: Colors.white,
-                                    fontWeight: FontWeight.w600),
+                                    fontFamily: 'SatoshiBold'),
                               ),
                             ),
                           ),
                         ),
+                        SizedBox(height: mQuery.size.height*0.023,)
                       ],
                     ),
                   ),
@@ -324,8 +326,8 @@ class _StoreDetailsPageState extends State<StoreDetailsPage> {
             boxShadow: [
               BoxShadow(
                 color: Colors.grey.withOpacity(0.5),
-                spreadRadius: 2,
-                blurRadius: 10,
+                spreadRadius: 1,
+                blurRadius: 7,
                 offset:
                     const Offset(0, 0), // changes the position of the shadow
               ),
@@ -347,8 +349,8 @@ class _StoreDetailsPageState extends State<StoreDetailsPage> {
               Text(
                 serviceName,
                 style: const TextStyle(
-                  fontWeight: FontWeight.w600,
-                  fontSize: 11.8,
+                  fontFamily: 'SatoshiMedium',
+                  fontSize: 11,
                 ),
               )
             ],

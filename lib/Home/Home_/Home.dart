@@ -153,7 +153,7 @@ class _HomePageState extends State<HomePage> {
                               style: const TextStyle(
                                 color: Colors.white,
                                 fontSize: 17,
-                                fontWeight: FontWeight.w800,
+                                fontFamily: 'SatoshiBold'
                               ),
                             ),
                           ],
@@ -170,7 +170,7 @@ class _HomePageState extends State<HomePage> {
                           "Narendra",
                           style: TextStyle(
                             color: Colors.white,
-                            fontWeight: FontWeight.w500,
+                            fontFamily: 'SatoshiBold',
                             fontSize: mQuery.size.height * 0.018,
                           ),
                         ),
@@ -180,7 +180,8 @@ class _HomePageState extends State<HomePage> {
                               status ? 'Online' : 'Offline',
                               style: TextStyle(
                                   color: Colors.white,
-                                  fontSize: 15
+                                  fontSize: 15,
+                                fontFamily: 'SatoshiMedium'
                               ),
                             ),
                             SizedBox(width: mQuery.size.width*0.012,),
@@ -231,7 +232,7 @@ class _HomePageState extends State<HomePage> {
                         hintStyle: TextStyle(
                           fontSize: mQuery.size.height * 0.02,
                           color: const Color.fromARGB(255, 179, 179, 179),
-                          fontWeight: FontWeight.w600,
+                          fontFamily: 'SatoshiMedium'
                         ),
                         suffixIcon: const Icon(Icons.search,
                             color: Color.fromARGB(255, 179, 179, 179)),
@@ -281,7 +282,8 @@ class _HomePageState extends State<HomePage> {
                                 width: mQuery.size.width*0.16,),
                                SizedBox(height: mQuery.size.height*0.006),
                                Text("Order Request",style: TextStyle(
-                                 fontSize: mQuery.size.height*0.015
+                                 fontSize: mQuery.size.height*0.015,
+                                 fontFamily: 'SatoshiMedium'
                                ),)
                              ],
                            ),
@@ -317,6 +319,7 @@ class _HomePageState extends State<HomePage> {
                                 ),
                                SizedBox(height: mQuery.size.height*0.006),
                                Text("Order Status",style: TextStyle(
+                                   fontFamily: 'SatoshiMedium',
                                  fontSize: mQuery.size.height*0.015
                                ),)
                              ],
@@ -364,6 +367,7 @@ class _HomePageState extends State<HomePage> {
                                   width: mQuery.size.width*0.11,),
                                 SizedBox(height: mQuery.size.height*0.006),
                                 Text("My Earnings",style: TextStyle(
+                                    fontFamily: 'SatoshiMedium',
                                     fontSize: mQuery.size.height*0.015
                                 ),)
                               ],
@@ -400,6 +404,7 @@ class _HomePageState extends State<HomePage> {
                                 ),
                                 SizedBox(height: mQuery.size.height*0.006),
                                 Text("Ledger",style: TextStyle(
+                                    fontFamily: 'SatoshiMedium',
                                     fontSize: mQuery.size.height*0.015
                                 ),)
                               ],
@@ -451,7 +456,8 @@ class _HomePageState extends State<HomePage> {
                                   mainAxisAlignment: MainAxisAlignment.center,
                                   children: [
                                     Text("Inventory\n Request",style: TextStyle(
-                                        fontSize: mQuery.size.height*0.015
+                                        fontSize: mQuery.size.height*0.015,
+                                      fontFamily: 'SatoshiMedium',
                                     ),),
                                   ],
                                 )
@@ -489,6 +495,7 @@ class _HomePageState extends State<HomePage> {
                                 ),
                                 SizedBox(height: mQuery.size.height*0.006),
                                 Text("Training Modules",style: TextStyle(
+                                    fontFamily: 'SatoshiMedium',
                                     fontSize: mQuery.size.height*0.015
                                 ),)
                               ],

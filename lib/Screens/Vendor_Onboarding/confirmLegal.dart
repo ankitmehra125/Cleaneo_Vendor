@@ -59,7 +59,7 @@ class _ConfirmLegalState extends State<ConfirmLegal> {
                     style: const TextStyle(
                         fontSize: 20,
                         color: Colors.white,
-                        fontWeight: FontWeight.w700),
+                        fontFamily: 'SatoshiBold'),
                   )
                 ],
               ),
@@ -72,15 +72,6 @@ class _ConfirmLegalState extends State<ConfirmLegal> {
                   borderRadius: const BorderRadius.only(
                       topLeft: Radius.circular(16),
                       topRight: Radius.circular(16)),
-                  boxShadow: [
-                    BoxShadow(
-                      color: Colors.grey.withOpacity(0.5),
-                      spreadRadius: 0.3,
-                      blurRadius: 1,
-                      offset: const Offset(
-                          3, 3), // changes the position of the shadow
-                    ),
-                  ],
                 ),
                 child: Padding(
                     padding: const EdgeInsets.only(left: 16, right: 16),
@@ -96,7 +87,9 @@ class _ConfirmLegalState extends State<ConfirmLegal> {
                               child: Text(
                                 AppLocalizations.of(context)!.legaldesc,
                                 style: const TextStyle(
-                                    fontSize: 16, fontWeight: FontWeight.w500),
+                                    fontSize: 16,
+                                  fontFamily: 'SatoshiMedium'
+                                ),
                               ),
                             ),
                           ],
@@ -109,7 +102,9 @@ class _ConfirmLegalState extends State<ConfirmLegal> {
                           children: <Widget>[
                             const Text(
                               'I agree to all the above terms of services',
-                              style: TextStyle(fontSize: 14),
+                              style: TextStyle(
+                                fontFamily: 'SatoshiMedium'
+                              ),
                             ),
                             Transform.scale(
                               scale: 0.7,
@@ -134,7 +129,9 @@ class _ConfirmLegalState extends State<ConfirmLegal> {
                               width: mQuery.size.width * 0.7,
                               child: const Text(
                                 'I consent to electronic signatures and by checking this i agree to all the above terms of services.',
-                                style: TextStyle(fontSize: 14),
+                                style: TextStyle(
+                                  fontFamily: 'SatoshiMedium'
+                                ),
                               ),
                             ),
                             Transform.scale(
@@ -160,7 +157,9 @@ class _ConfirmLegalState extends State<ConfirmLegal> {
                               width: mQuery.size.width * 0.7,
                               child: const Text(
                                 'I agree to receive promotional messages based on my location from Cleaneo via email and SMS until I unsubscribed.',
-                                style: TextStyle(fontSize: 14),
+                                style: TextStyle(
+                                  fontFamily: 'SatoshiMedium'
+                                ),
                               ),
                             ),
                             Transform.scale(
@@ -198,7 +197,7 @@ class _ConfirmLegalState extends State<ConfirmLegal> {
                                   style: TextStyle(
                                       fontSize: 15,
                                       color: Colors.white,
-                                      fontWeight: FontWeight.w600),
+                                      fontFamily: 'SatoshiBold'),
                                 ),
                               ),
                             ),

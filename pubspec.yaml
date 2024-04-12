@@ -52,3 +52,17 @@ flutter:
     - assets/images/
     - assets/onboarding/
     - assets/images/Home/
+
+  fonts:
+    - family: SatoshiRegular
+      fonts:
+        - asset: assets/Fonts/Satoshi-Regular.otf
+    - family: SatoshiLight
+      fonts:
+        - asset: assets/Fonts/Satoshi-Light.otf
+    - family: SatoshiMedium
+      fonts:
+        - asset: assets/Fonts/Satoshi-Medium.otf
+    - family: SatoshiBold
+      fonts:
+        - asset: assets/Fonts/Satoshi-Bold.otf

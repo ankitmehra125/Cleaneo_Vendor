@@ -145,7 +145,7 @@ class _NavigationWithTabsState extends State<NavigationWithTabs> {
                         _tabNames[index],
                         style: TextStyle(
                           fontSize: 18,
-                          fontWeight: FontWeight.bold,
+                          fontFamily: 'SatoshiBold',
                           color: _selectedIndex == index
                               ? const Color(0xFF29B2FE)
                               : Colors.grey,
@@ -173,7 +173,7 @@ class _NavigationWithTabsState extends State<NavigationWithTabs> {
                   boxShadow: [
                     BoxShadow(
                       color: Colors.grey.withOpacity(0.3),
-                      spreadRadius: 2,
+                      spreadRadius: 0,
                       blurRadius: 7,
                       offset: const Offset(
                           0, 0), // changes the position of the shadow
@@ -212,17 +212,20 @@ class _NavigationWithTabsState extends State<NavigationWithTabs> {
                             Text(
                               'Order: ${order["orderNumber"]}',
                               style: const TextStyle(
-                                   fontWeight: FontWeight.w600),
+                                fontSize: 13,
+                                fontFamily: 'SatoshiBold'
+                                   ),
                             ),
                             // SizedBox(height: 5.0),
                             Text(
                               '${order["time"]}',
                               style: const TextStyle(
                                   fontSize: 10.0,
-                                  fontWeight: FontWeight.w600,
+                                  fontFamily: 'SatoshiMedium',
                                   color: Colors.grey),
                             ),
                             Text("29/04/2026",style: TextStyle(
+                              fontFamily: 'SatoshiRegular',
                               fontSize: mQuery.size.height*0.016
                             ),)
 
@@ -233,15 +236,15 @@ class _NavigationWithTabsState extends State<NavigationWithTabs> {
                           Text(
                             '${order["earning"]}',
                             style: const TextStyle(
-                                fontWeight: FontWeight.w600,
-                                color: Color(0xFF29B2FE)),
+                                color: Color(0xFF29B2FE),
+                            fontFamily: 'SatoshiBold'),
                           ),
                         if (order["onlineMode"] == "No")
                           Text(
                             '${order["earning"]}',
                             style: const TextStyle(
-                                fontWeight: FontWeight.w600,
-                                color: Color(0xFF13A32B)),
+                                color: Color(0xFF13A32B),
+                            fontFamily: 'SatoshiBold'),
                           ),
                       ],
                     ),

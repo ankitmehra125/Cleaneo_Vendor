@@ -56,7 +56,7 @@ class _OrderReqState extends State<OrderReq> {
                     style: const TextStyle(
                         fontSize: 20,
                         color: Colors.white,
-                        fontWeight: FontWeight.w700),
+                        fontFamily: 'SatoshiBold'),
                   )
                 ],
               ),
@@ -69,15 +69,6 @@ class _OrderReqState extends State<OrderReq> {
                   borderRadius: const BorderRadius.only(
                       topLeft: Radius.circular(16),
                       topRight: Radius.circular(16)),
-                  boxShadow: [
-                    BoxShadow(
-                      color: Colors.grey.withOpacity(0.5),
-                      spreadRadius: 0.3,
-                      blurRadius: 1,
-                      offset: const Offset(
-                          3, 3), // changes the position of the shadow
-                    ),
-                  ],
                 ),
                 child: ListView.builder(
                   itemCount: OrderReqData
@@ -97,7 +88,7 @@ class _OrderReqState extends State<OrderReq> {
                                 data['orderdate'],
                                 style: const TextStyle(
                                     color: Color.fromARGB(255, 181, 181, 181),
-                                    fontWeight: FontWeight.w600,
+                                    fontFamily: 'SatoshiMedium',
                                     fontSize: 12.0),
                               ),
                             ],
@@ -111,11 +102,11 @@ class _OrderReqState extends State<OrderReq> {
                                   const BorderRadius.all(Radius.circular(12.0)),
                               boxShadow: [
                                 BoxShadow(
-                                  color: Colors.grey.withOpacity(0.4),
-                                  spreadRadius: 3,
-                                  blurRadius: 8,
+                                  color: Colors.grey.withOpacity(0.5),
+                                  spreadRadius: 0,
+                                  blurRadius: 7,
                                   offset: const Offset(
-                                      0, 3), // changes position of shadow
+                                      0, 0), // changes position of shadow
                                 ),
                               ],
                               color: Colors.white,
@@ -150,8 +141,8 @@ class _OrderReqState extends State<OrderReq> {
                                       Text(
                                         data['name'],
                                         style: const TextStyle(
-                                            fontSize: 14,
-                                            fontWeight: FontWeight.w700),
+                                            fontSize: 13,
+                                         fontFamily: 'SatoshiBold'),
                                       ),
                                       const Expanded(child: SizedBox()),
                                       Icon(
@@ -165,7 +156,8 @@ class _OrderReqState extends State<OrderReq> {
                                       Text(
                                         data["rating"],
                                         style: const TextStyle(
-                                            fontWeight: FontWeight.w600),
+                                          fontSize: 12,
+                                            fontFamily: 'SatoshiBold'),
                                       )
                                     ],
                                   ),
@@ -184,12 +176,14 @@ class _OrderReqState extends State<OrderReq> {
                                         AppLocalizations.of(context)!.loc,
                                         style: const TextStyle(
                                             color: Colors.black54,
+                                            fontFamily: 'SatoshiMedium',
                                             fontSize: 13),
                                       ),
                                       Text(
                                         AppLocalizations.of(context)!.acceptin,
                                         style: const TextStyle(
                                             color: Colors.black54,
+                                            fontFamily: 'SatoshiMedium',
                                             fontSize: 13),
                                       ),
                                     ],
@@ -220,15 +214,16 @@ class _OrderReqState extends State<OrderReq> {
                                       Text(
                                         data["location"],
                                         style: const TextStyle(
-                                            fontSize: 13,
-                                            fontWeight: FontWeight.w600),
+                                            fontSize: 12,
+                                            fontFamily: 'SatoshiBold'),
                                       ),
                                       const Expanded(child: SizedBox()),
                                       Text(
                                         data["acceptin"],
                                         style: const TextStyle(
                                             color: Color(0xff29b2fe),
-                                            fontWeight: FontWeight.w600),
+                                            fontSize: 12,
+                                            fontFamily: 'SatoshiBold'),
                                       )
                                     ],
                                   ),
@@ -263,6 +258,7 @@ class _OrderReqState extends State<OrderReq> {
                                                   .pickdatetime,
                                               style: const TextStyle(
                                                   color: Colors.black54,
+                                                  fontFamily: 'SatoshiMedium',
                                                   fontSize: 12),
                                             ),
                                             SizedBox(
@@ -273,7 +269,7 @@ class _OrderReqState extends State<OrderReq> {
                                               data['pickupdatetime'],
                                               style: const TextStyle(
                                                   fontSize: 12,
-                                                  fontWeight: FontWeight.w600),
+                                                  fontFamily: 'SatoshiMedium'),
                                             )
                                           ],
                                         ),
@@ -296,6 +292,7 @@ class _OrderReqState extends State<OrderReq> {
                                                   .deldatetime,
                                               style: const TextStyle(
                                                   color: Colors.black54,
+                                                  fontFamily: 'SatoshiMedium',
                                                   fontSize: 12),
                                             ),
                                             SizedBox(
@@ -306,7 +303,7 @@ class _OrderReqState extends State<OrderReq> {
                                               data['deldatetime'],
                                               style: const TextStyle(
                                                   fontSize: 12,
-                                                  fontWeight: FontWeight.w600),
+                                                  fontFamily: 'SatoshiMedium'),
                                             )
                                           ],
                                         ),
@@ -340,7 +337,7 @@ class _OrderReqState extends State<OrderReq> {
                                             style: const TextStyle(
                                                 color: Colors.white,
                                                 fontSize: 13,
-                                                fontWeight: FontWeight.w600),
+                                                fontFamily: 'SatoshiBold'),
                                           ),
                                         ),
                                       ),

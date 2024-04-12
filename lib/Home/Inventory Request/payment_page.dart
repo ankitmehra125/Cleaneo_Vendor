@@ -1,4 +1,5 @@
 
+import 'package:cleaneo_vendor/Home/BotNav.dart';
 import 'package:cleaneo_vendor/Home/Home_/Home.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
@@ -503,7 +504,7 @@ class _PaymentPageState extends State<PaymentPage> {
                                 );
                               } else {
                                   Navigator.pushReplacement(context, MaterialPageRoute(builder: (context){
-                                    return HomePage();
+                                    return BotNav();
                                   }));
                                 }
                             },
