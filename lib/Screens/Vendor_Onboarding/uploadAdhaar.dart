@@ -24,7 +24,7 @@ class _UploadAdhaarState extends State<UploadAdhaar> {
     return Scaffold(
       body: Container(
         width: double.infinity,
-        decoration: BoxDecoration(
+        decoration: const BoxDecoration(
           color: Color(0xff006acb),
         ),
         child: Column(
@@ -43,7 +43,7 @@ class _UploadAdhaarState extends State<UploadAdhaar> {
                     onTap: () {
                       Navigator.of(context).pop();
                     },
-                    child: Icon(
+                    child: const Icon(
                       Icons.arrow_back,
                       color: Colors.white,
                     ),
@@ -64,7 +64,7 @@ class _UploadAdhaarState extends State<UploadAdhaar> {
             Expanded(
               child: Container(
                 width: double.infinity,
-                decoration: BoxDecoration(
+                decoration: const BoxDecoration(
                   color: Colors.white,
                   borderRadius: BorderRadius.only(
                       topLeft: Radius.circular(16),
@@ -83,7 +83,7 @@ class _UploadAdhaarState extends State<UploadAdhaar> {
                       ),
                       Row(
                         children: [
-                          Container(
+                          SizedBox(
                             width: mQuery.size.width * 0.9,
                             child: Text(
                               AppLocalizations.of(context)!
@@ -97,12 +97,10 @@ class _UploadAdhaarState extends State<UploadAdhaar> {
                       SizedBox(
                         height: mQuery.size.height * 0.03,
                       ),
-                      buildImageContainer(
-                          mQuery, _image1, 1), // First Image Container
+                      buildImageContainer(mQuery, _image1, 1), // First Image Container
                       SizedBox(height: mQuery.size.height * 0.02,),
-                      buildImageContainer(
-                          mQuery, _image2, 2), // Second Image Container
-                      Expanded(child: SizedBox()),
+                      buildImageContainer(mQuery, _image2, 2), // Second Image Container
+                      const Expanded(child: SizedBox()),
                       Container(
                         color: Colors.white,
                         child: Column(
@@ -111,7 +109,7 @@ class _UploadAdhaarState extends State<UploadAdhaar> {
                               onTap: () {
                                 Navigator.push(context,
                                     MaterialPageRoute(builder: (context) {
-                                      return UploadPan();
+                                      return const UploadPan();
                                     }));
                               },
                               child: Container(
@@ -120,8 +118,8 @@ class _UploadAdhaarState extends State<UploadAdhaar> {
                                 decoration: BoxDecoration(
                                     color: const Color(0xff29b2fe),
                                     borderRadius: BorderRadius.circular(6)),
-                                child: Center(
-                                  child: const Text(
+                                child: const Center(
+                                  child: Text(
                                     "Next",
                                     style: TextStyle(
                                         fontSize: 15,

@@ -1,3 +1,5 @@
+import 'dart:math';
+
 import 'package:cleaneo_vendor/Screens/Auth/Login.dart';
 import 'package:cleaneo_vendor/Screens/Auth/OTP.dart';
 import 'package:cleaneo_vendor/Screens/Welcome/WelcomePage.dart';
@@ -5,6 +7,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:intl_phone_number_input/intl_phone_number_input.dart';
 import 'package:country_code_picker/country_code_picker.dart';
+
+import '../../Constant/signupVariables.dart';
 
 class SignUpPage extends StatefulWidget {
   const SignUpPage({Key? key}) : super(key: key);
@@ -202,6 +206,18 @@ class _SignUpPageState extends State<SignUpPage> {
                             // Phone number input
                             Expanded(
                               child: TextField(
+                                onSubmitted: (value) {
+                                  setState(() {
+                                    phone = value;
+                                  });
+
+                                },
+                                onChanged: (value) {
+                                  setState(() {
+                                    phone = value;
+                                  });
+
+                                },
                                 keyboardType: TextInputType.number,
                                 cursorColor: Colors.grey,
                                 controller: phonenoController,
@@ -659,6 +675,11 @@ class _SignUpPageState extends State<SignUpPage> {
                         onTap: tns == false
                             ? null
                             : () {
+                          setState(() {
+                            OTP =( Random().nextInt(9000) + 1000).toString();
+
+                          });
+
                           Otp = "Signup";
                           logedIn = "Signup";
                           Navigator.push(context,

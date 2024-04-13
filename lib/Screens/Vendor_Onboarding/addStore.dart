@@ -3,6 +3,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
+import '../../Constant/signupVariables.dart';
+
 class StoreDetailsPage extends StatefulWidget {
   const StoreDetailsPage({Key? key}) : super(key: key);
 
@@ -15,7 +17,6 @@ class _StoreDetailsPageState extends State<StoreDetailsPage> {
   TextEditingController addressController = TextEditingController();
   TextEditingController gstinController = TextEditingController();
 
-  List<String> selectedServices = [];
 
   @override
   Widget build(BuildContext context) {
@@ -312,9 +313,11 @@ class _StoreDetailsPageState extends State<StoreDetailsPage> {
   Widget buildServiceContainer(String imagePath, String serviceName) {
     var mQuery = MediaQuery.of(context);
     bool isSelected = selectedServices.contains(serviceName);
-
+print(selectedServices);
     return Stack(
+
       children: [
+
         Container(
           height: mQuery.size.height * 0.11,
           width: mQuery.size.width * 0.27,

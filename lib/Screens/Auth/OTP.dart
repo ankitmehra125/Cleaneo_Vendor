@@ -1,8 +1,10 @@
+import 'package:cleaneo_vendor/Constant/signupVariables.dart';
 import 'package:cleaneo_vendor/Home/BotNav.dart';
 import 'package:cleaneo_vendor/Home/Home_/Home.dart';
 import 'package:cleaneo_vendor/Screens/Auth/Login.dart';
 import 'package:cleaneo_vendor/Screens/Auth/Signup.dart';
 import 'package:cleaneo_vendor/Screens/Vendor_Onboarding/addStore.dart';
+import 'package:cleaneo_vendor/Screens/Welcome/Components/termsService.dart';
 import 'package:flutter/material.dart';
 import 'package:pinput/pinput.dart';
 
@@ -19,6 +21,8 @@ class _OTPPageState extends State<OTPPage> {
   late List<FocusNode> focusNodes;
   int focusedIndex = -1;
   var phoneNo = "+91 9793878788";
+  String checkOTP = "";
+  bool showError = false;
 
   @override
   void initState() {
@@ -108,83 +112,128 @@ class _OTPPageState extends State<OTPPage> {
                       topLeft: Radius.circular(16),
                       topRight: Radius.circular(16)),
                 ),
-                child: SingleChildScrollView(
-                  child: Padding(
-                    padding:
-                        const EdgeInsets.only(left: 16, right: 16, top: 16),
-                    child: Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        Text(
-                          "Enter 4 Digit Code",
-                          style: TextStyle(
-                              fontSize: mQuery.size.height * 0.0215,
-                              fontFamily: 'SatoshiBold'),
+                child: Padding(
+                  padding:
+                      const EdgeInsets.only(left: 16, right: 16, top: 16),
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Text(
+                        "Enter 4 Digit Code $OTP",
+                        style: TextStyle(
+                            fontSize: mQuery.size.height * 0.0215,
+                            fontFamily: 'SatoshiBold'),
+                      ),
+                      SizedBox(height: mQuery.size.height * 0.006),
+                      Text(
+                        "Sent to $phone",
+                        style: TextStyle(
+                            fontSize: mQuery.size.height * 0.018,
+                            fontFamily: 'SatoshiRegular',
+                            color: Colors.black87),
+                      ),
+                      SizedBox(height: mQuery.size.height * 0.04),
+                      Pinput(
+                        length: 4,
+                        onChanged: (value) {
+                          setState(() {
+                            checkOTP = value;
+                            showError = false;
+                          });
+
+                        },
+                        onSubmitted: (value) {
+                          setState(() {
+                            checkOTP = value;
+                            showError = false;
+                          });
+                        },
+                        defaultPinTheme: defaultPinTheme,
+                      ),
+                      SizedBox(height: mQuery.size.height*0.01,),
+                      showError && checkOTP.isEmpty
+                          ? Text(
+                        "Please Enter OTP",
+                        style: TextStyle(
+                          fontFamily: 'SatoshiMedium',
+                          color: Colors.red,
                         ),
-                        SizedBox(height: mQuery.size.height * 0.006),
-                        Text(
-                          "Sent to $phoneNo",
-                          style: TextStyle(
-                              fontSize: mQuery.size.height * 0.018,
-                              fontFamily: 'SatoshiRegular',
-                              color: Colors.black87),
+                      )
+                          : showError && checkOTP.isNotEmpty && checkOTP != OTP
+                          ? Text(
+                        "Incorrect OTP. Please Enter Correct OTP",
+                        style: TextStyle(
+                          fontFamily: 'SatoshiMedium',
+                          color: Colors.red,
                         ),
-                        SizedBox(height: mQuery.size.height * 0.04),
-                        Pinput(
-                          length: 4,
-                          defaultPinTheme: defaultPinTheme,
-                        ),
-                        SizedBox(height: mQuery.size.height * 0.1),
-                        Text(
-                          "Problems receiving the code?",
-                          style: TextStyle(
-                              fontSize: mQuery.size.height * 0.018,
-                              fontFamily: 'SatoshiBold'),
-                        ),
-                        SizedBox(height: mQuery.size.height * 0.008),
-                        Row(
-                          children: [
-                            const Icon(
-                              Icons.refresh,
-                              color: Color(0xff29b2fe),
-                            ),
-                            SizedBox(width: mQuery.size.width * 0.015),
-                            Text(
-                              "RESEND",
-                              style: TextStyle(
-                                  color: const Color(0xff29b2fe),
-                                  fontSize: mQuery.size.height * 0.018,
-                                  fontFamily: 'SatoshiBold'),
-                            )
-                          ],
-                        ), 
-                        SizedBox(height: mQuery.size.height * 0.35),
-                        GestureDetector(
-                          onTap: () {
-                            Navigator.push(context,
-                                MaterialPageRoute(builder: (context) {
-                              return logedIn == "Login" ? BotNav() :  StoreDetailsPage();
-                            }));
-                          },
-                          child: Container(
-                            width: double.infinity,
-                            height: mQuery.size.height * 0.06,
-                            decoration: BoxDecoration(
+                      )
+                          : Text(""),
+
+                      SizedBox(height: mQuery.size.height * 0.09),
+                      Text(
+                        "Problems receiving the code?",
+                        style: TextStyle(
+                            fontSize: mQuery.size.height * 0.018,
+                            fontFamily: 'SatoshiBold'),
+                      ),
+                      SizedBox(height: mQuery.size.height * 0.008),
+                      Row(
+                        children: [
+                          const Icon(
+                            Icons.refresh,
+                            color: Color(0xff29b2fe),
+                          ),
+                          SizedBox(width: mQuery.size.width * 0.015),
+                          Text(
+                            "RESEND",
+                            style: TextStyle(
                                 color: const Color(0xff29b2fe),
-                                borderRadius: BorderRadius.circular(6)),
-                            child: Center(
-                              child: Text(
-                                "Verify",
-                                style: TextStyle(
-                                    fontSize: mQuery.size.height * 0.02,
-                                    color: Colors.white,
-                                    fontFamily: 'SatoshiBold'),
+                                fontSize: mQuery.size.height * 0.018,
+                                fontFamily: 'SatoshiBold'),
+                          )
+                        ],
+                      ),
+                      Expanded(child: SizedBox()),
+                      GestureDetector(
+                        onTap: () {
+                          if (checkOTP.isEmpty) {
+                            setState(() {
+                              showError = true;
+                            });
+                          } else {
+                            if (checkOTP == OTP) {
+                              Navigator.push(context, MaterialPageRoute(builder: (context) {
+                                return logedIn == "Login" ? BotNav() : StoreDetailsPage();
+                              }));
+                            } else {
+                              setState(() {
+                                showError = true;
+                              });
+                            }
+                          }
+                        },
+                        child: Container(
+                          width: double.infinity,
+                          height: mQuery.size.height * 0.06,
+                          decoration: BoxDecoration(
+                            color: const Color(0xff29b2fe),
+                            borderRadius: BorderRadius.circular(6),
+                          ),
+                          child: Center(
+                            child: Text(
+                              "Verify",
+                              style: TextStyle(
+                                fontSize: mQuery.size.height * 0.02,
+                                color: Colors.white,
+                                fontFamily: 'SatoshiBold',
                               ),
                             ),
                           ),
                         ),
-                      ],
-                    ),
+                      ),
+                      
+                      SizedBox(height: mQuery.size.height*0.023,)
+                    ],
                   ),
                 ),
               ),
